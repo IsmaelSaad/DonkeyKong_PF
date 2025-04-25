@@ -1,0 +1,3679 @@
+fileFormatVersion: 2
+guid: f298cbf92e2f5a34c9f554b1f5966eaf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 2
+    wrapV: 2
+    wrapW: 2
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e050165950af74592aa522f2dff701
+      internalID: -257288495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4784663640e93418fa8775e925e57c
+      internalID: -312519299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79685604909f7434c961cdf3930b923e
+      internalID: -809544233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_3
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ec4350a15676c4f8a21a9509e90980
+      internalID: -1269501216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 352
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818446e75c9039d47866783474ce1869
+      internalID: 376849921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_5
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e83701a1c749154fa48a603b98ad3c3
+      internalID: -97804159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_6
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cf0622a21d43e43bb5685276f5f9ba
+      internalID: -683539360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_7
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecaa6187b98f1994b97eda43b99399b3
+      internalID: -1953207439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_8
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 352
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd3e0178dc440149998058f7a9236fd
+      internalID: -998698693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_9
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a0d5a94bf2e1848b98194795323e62
+      internalID: 1574628730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_10
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5411a32a58623f46873709fd903353e
+      internalID: 1568451403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_11
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 352
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f8b7a7ae68b8634390b94305a97fdcd
+      internalID: 1023060133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_12
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b7c53c1f68a2b4c8b35b3f3a1e40f4
+      internalID: 1943737451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_13
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d109b9fc638e04479231fd22e6b8288
+      internalID: -1827397110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_14
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670c3136020a0d945a8626c8a2aaf7bc
+      internalID: -1021014995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_15
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c15b454a201640439166222e1f9585c
+      internalID: 616468908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_16
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad48c9142ce020548945b19b91faaf53
+      internalID: -149594767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_17
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c66ceb3497729984bba9a5063664b099
+      internalID: -1131517359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_18
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e9dbba9c353d14dafa1edc8bb23bee
+      internalID: -1468132490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_19
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 352
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc69aaacb3d481b4590b7d5522aae48d
+      internalID: 841649483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_20
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93994bf3a5adcd3409772bcf2387bdfe
+      internalID: -1695990411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_21
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3644b9e563179544c80ed187763cec7f
+      internalID: -905258790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_22
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af65b8133eff9194fb60b3de17a38fb8
+      internalID: 1624231883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_23
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db9cf2fdb3af8045b922923cd9182e6
+      internalID: 1382366988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_24
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 352
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634dbca7ac47a6046b3b2249ec362d9c
+      internalID: -1380935708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_25
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 352
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 472bb3dbbfa98e349b6ad1f35224a09a
+      internalID: -490114425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_26
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 352
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcff90c74736bba42b8e4f28d78635c7
+      internalID: 1324842162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_27
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 352
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb8fcb014be32e4b8955e2648467279
+      internalID: -1663667589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_28
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 352
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0347c364d4a27da48ba442eb6d62d18b
+      internalID: -964882949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_29
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 352
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e836e2a0b884a4b9809a8f760aa5f0
+      internalID: 200355156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_30
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 352
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1081118a1bdcf6941a211fc91b154c23
+      internalID: -162131208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_31
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4370454405c53f4ab4b146671ed3369
+      internalID: 979960615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_32
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2bf08a7842bfae45b9495335ab2f744
+      internalID: 100641683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_33
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a600221a39920247a683fde44446e07
+      internalID: -479304513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_34
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d62d3eef89786b47a2317f1528af328
+      internalID: 842577111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_35
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e6fcf7014d14d84c8de009d0439c358
+      internalID: 492169879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_36
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4ebf59703939640b49524177bddb66
+      internalID: 808294197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_37
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667ff311761500f47842b737a98166f8
+      internalID: -1785674352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_38
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 352
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b13b6eae0c56846ae70e0143630f04
+      internalID: 270774792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_39
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 352
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f9d16f804bc8440850cb756e5413bc
+      internalID: -318074330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_40
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 352
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c268ad47b2815f44a79615769901882
+      internalID: -612603937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_41
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 352
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e67bf190ca8eec45ad709b63114f67d
+      internalID: 1108336065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_42
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7bfacb720314f4193994c5c6ea8395
+      internalID: 445494234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_43
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2850894a383f9479b6c1709f2e4dca
+      internalID: 1996814035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_44
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7a8d1bfdb075746b85fa1d2b8cd385
+      internalID: 620286837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_45
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4406e7001a86c2d4093669e250f3e14a
+      internalID: -217378744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_46
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7942d33e48d16ec4d8bf3eec410fb1fa
+      internalID: -982660606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_47
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146e3a63ea10781449eb86ac57148ee8
+      internalID: 1283895810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_48
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc0419462456524f8846e98bf246e5f
+      internalID: -1802559500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_49
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b956672d2dbbcd64fb788a95cdc66bcf
+      internalID: -1751872062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_50
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 352
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc564a44d5dffa04d9d12821a85aa50b
+      internalID: 842845569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_51
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 353
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36cbe10137243184f9cd09bc07f29022
+      internalID: 1921119567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_52
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 353
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc31157cd3e05464f859ebbffdf3ddd3
+      internalID: -177919286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_53
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 353
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a2df14b6ef92254fb7912c0ecf3f88b
+      internalID: -912060608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_54
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 353
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209c41873abb11041bfe1184a7647073
+      internalID: -2013732290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_55
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 353
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7e6cbf9f0718444a2b60e8b149bd08
+      internalID: 1313686949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_56
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 353
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d91d9217710e634996806660da19d3e
+      internalID: 126515814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_57
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 311
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805861f5b59ad974199f1d4e2fe85335
+      internalID: -1818644676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_58
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 311
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4eee95cd657094092f79fe39a2c03a
+      internalID: 469603609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_62
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 333
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bf67ec1e8d5fff4d94e8932af5511f6
+      internalID: -1041304528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_63
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 311
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aab1604be88f1343bef325e47e31f16
+      internalID: -2000104716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_64
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 311
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac45433647deff49a28b6d898e152a9
+      internalID: -509040880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_68
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 324
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3198771ba491894a91c9516b6e46661
+      internalID: 1971066118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_69
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 319
+        width: 16
+        height: 13
+      alignment: 9
+      pivot: {x: 0.4613495, y: 0.5475722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc7a6c168fea154ca0175d8ba1cdfbe
+      internalID: 235306395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_70
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 319
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3347e13fa1daae468d6db2d3542209c
+      internalID: -1619566434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_72
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 311
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ce9246d2a978d45a1ee099b821f6c6
+      internalID: 423286060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_73
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 274
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86abf6b5cfdfdd74494e758e6b0419d5
+      internalID: 805930310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_74
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 274
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf9716e9166c6e4694a51a942e6feb5
+      internalID: 1011824693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_75
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 274
+        width: 47
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f8d154aee69e6f41b8b2eba06ec367a
+      internalID: 441872887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_76
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 285
+        width: 44
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb896752fad5124ab6667bdf2e6c6c9
+      internalID: 917379286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_77
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 285
+        width: 44
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5cea888daaff3545bbec1cb82299b9f
+      internalID: -297590315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_78
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 285
+        width: 44
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8aca6865cd80b5438e0d660803ee075
+      internalID: 396859184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_79
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 237
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b25023974138ca42b5ee9d9d84ebed6
+      internalID: 1266433062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_80
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 237
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbfb3033d81c5ef4691a77be67c518f4
+      internalID: 1005851398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_81
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 235
+        width: 46
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6ca95d696eaf245be415afaf4f640d
+      internalID: 1640662925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_82
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 235
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b39faeb3813ea714fa9d8822b3a74a1b
+      internalID: 1823991871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_83
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 235
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3d1dbbaca634df4692147e5c1aa31dd
+      internalID: 1484062360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_84
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 235
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c969ef1fd52a9da4b943141cd3efc538
+      internalID: -1081476717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_85
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 235
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f6b0572cb81b854f86e8cf7000ba848
+      internalID: -2004201406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_86
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 235
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670de9a60eddf4f4aac4a146f2b44a08
+      internalID: -715400685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_87
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 224
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c38b9d124db8247aa1d7d30fb95186
+      internalID: 1037678575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_88
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 214
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b919ded857f13449497851271fa098
+      internalID: -427813394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_89
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 214
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455f8ba6ad9fe054faa04457c557b557
+      internalID: 253635145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_90
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 216
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31dc663db07a03f46a898a79805eede3
+      internalID: -1058160918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_91
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 215
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f429b140d89cda489b581034c5f7bae
+      internalID: 714453265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_93
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 203
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5fde9e843f3f2e4bafd39195400dc9f
+      internalID: -1874481468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_94
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 203
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d535ced1487954991d09d8005a2da4
+      internalID: -1935165237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_95
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 203
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4854393}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b7dcf4c1c95854c9e0b9e2bc5be2fb
+      internalID: -1585410591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_96
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 216
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6caabd94c54613b42940ed3bddea3cc1
+      internalID: 1087642501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_97
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 216
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f594f13631a56b245958b4412a8174bc
+      internalID: 548203251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_100
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 195
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d56db70e91ce894186f71cf44946d9b
+      internalID: -1156842110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_101
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 195
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52bc74be621c174d9df77ec3b0e210d
+      internalID: 312267399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_102
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 195
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb84cbce3e54fd42a5938e0a1ae1deb
+      internalID: 877111820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_103
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 195
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb6d65662428304e981cf5b9768038f
+      internalID: -540037099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_104
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 199
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af003506d3e7e234d8a7e9fa6e52d6a3
+      internalID: 523661584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_105
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 199
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc9dcc51f36e7c4f97a070e27728f10
+      internalID: -1045640479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_106
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 204
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2d085ed4c1ba24c8cd68fa6fb2f0da
+      internalID: 1168270071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_108
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 196
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e34f83dee58c9847afe7344fdde7887
+      internalID: 391574250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_109
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 196
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a13b440a7acef41b16e2838239ca10
+      internalID: 1095907751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_110
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 182
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abdbae365d4ec5a4982e123afd71673e
+      internalID: 210412053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_111
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 182
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b56bde92f53294fb159534c7a2773e
+      internalID: 1859590685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_112
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 182
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4da0f7690b53b04aa7520b005810c3c
+      internalID: -1923444264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_113
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 192
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7240916df78473743b27b1056ea601bd
+      internalID: -1537153091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_116
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 196
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fdacb0f5ff52234fb181874ae060afc
+      internalID: 1772701908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_117
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 182
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1c02ea359f9a64d956a9152a73adef
+      internalID: 179095791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_118
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 174
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2bbc93b733fd2f479b3057ab8647407
+      internalID: 337089718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_119
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 174
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b89a5f6c6819604e9ab0cb0bcb79598
+      internalID: 356121401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_120
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 174
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e71cc3ed1caff14b9807238f2adb7ad
+      internalID: 445571584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_121
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 174
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 701bc3d80557133468a5a0485f74fd96
+      internalID: 428116736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_122
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 184
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced95d11364b8604aab3823ae7ad99c1
+      internalID: -1022431973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_123
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 184
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d297c704f752d5a46832e51e8158f26b
+      internalID: 2118960704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_124
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 184
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f1b1bbd63753b49993042de26e5ece
+      internalID: -1155578451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_125
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 184
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11aa722029a1c8f448ec1c798936f341
+      internalID: 1426283971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_126
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 180
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfadaf4a8b7f8946b1d640a51eb1b99
+      internalID: -614781000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_129
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 162
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a3c905a58352442a6d31a4f779d47b
+      internalID: 291896230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_130
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 169
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08706487601f217429cc8648910a5f63
+      internalID: -1370446411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_131
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 169
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3920f8dd244db444b0da19ed8f6f0c9
+      internalID: -864745763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_132
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 141
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a15ba9347d78143a3d4d07515e6c4a
+      internalID: -1407241467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_133
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 141
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4893891ecf1ef41ab59ae64fc07ec2
+      internalID: -1503799688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_134
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 141
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4ec794806e7bb4fa9b14cc9744e7c6
+      internalID: -159000110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_135
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 141
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed2ece56b57b9b49a98ca5afb99477d
+      internalID: 520555131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_136
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 141
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975b7923b07f371428e5239e190d01e0
+      internalID: -2095784747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_137
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 154
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b99edc412f8075a459a002384b7a1353
+      internalID: -992743528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_138
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 154
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6691fd59a80626140a616493edcf6d56
+      internalID: 679538106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_139
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 154
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef25ed3804661d44ab9c5c412e3f8724
+      internalID: 1500533798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_140
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 154
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17572dbdd8b277e46800cb452ecfeaed
+      internalID: -1861012196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_141
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 141
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d1dc3c41ab0ab4ca50ca01ed88bfd3
+      internalID: -1179268129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_142
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 119
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2db6ea75cb9c04c9dbc91b2d52a099
+      internalID: 1438554864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_143
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 119
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f7d4116cccbad2429a30947af1a632e
+      internalID: 1122295193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_144
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 127
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c7916db7aa80548a05129bc0ab8faf
+      internalID: -1733013676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_145
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 127
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beac1985290e00c44b920b74f2152532
+      internalID: -1949627482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_146
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 127
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dc52c1f4a08ab4581246659ff2b577
+      internalID: -1522859272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_147
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 127
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda284b5509b93144937f3a274460b3d
+      internalID: 671131775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_148
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 121
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6950681d6ad137e46b05cfa64aca9e49
+      internalID: -2103680974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_149
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 121
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2b6116a6afd914796e28d1f69f7cab
+      internalID: 2034923465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_150
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 0
+        width: 169
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551f8ff8520fac446a174aa43d9a2bda
+      internalID: -220749303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_151
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12204ecfba7b9f4797f9c5043c160e1
+      internalID: -1694769900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_152
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 98
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a7c37b9f9d18544a82043ca265e8c88
+      internalID: -1503449047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_153
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cefeff0557095e4eaca7e26b577e07d
+      internalID: -1195953626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_154
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c07bcdf5dd70c4fbbb16f04a394e7d
+      internalID: -950898219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_155
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 104
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2fdf6424c325c443946f025720db5ed
+      internalID: -2111864536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_156
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 104
+        width: 16
+        height: 12
+      alignment: 9
+      pivot: {x: 0.47134876, y: 0.50000066}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa88c0d985817f41b43082305ce2822
+      internalID: -1967512228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_157
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 85
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8ebe573673ee7842a1b3a5200e97c34
+      internalID: -1701589897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_158
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 85
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d989ab410683734290ad4d8b63c9f6c
+      internalID: -345960613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_159
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 87
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e05050a8f258a4c8a0ceed069e9bbd
+      internalID: -2056405499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_160
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 87
+        width: 16
+        height: 12
+      alignment: 9
+      pivot: {x: 0.4785118, y: 0.5191021}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd2cba4bc52c6940b4f57bc33423036
+      internalID: 969944009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_161
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7507b7bb45e7ea041a89aa5e7fec23a6
+      internalID: 360400029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_162
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7384080ac178449b5b51b144637fc9
+      internalID: 1287644090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_163
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a014740cc1dcd994f94368a9798f5ac6
+      internalID: 699655122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_164
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 51
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ceb501920b27f4daf6e8baade561d9
+      internalID: 1861788486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_165
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 63
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093849e2cb7487547b0ca25dbb4a5198
+      internalID: -1578269964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_166
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbf6646e1b9ed04784f87031455a875
+      internalID: 126988724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_167
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 51
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269d38ac0af79eb49a2f8af01ab6a70b
+      internalID: 1414844638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_168
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 36
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37883d21e0ba6544b6aef3f79622d98
+      internalID: 1783617835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_169
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 36
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9455c157fd67b43bfccc7d9e870a7d
+      internalID: -87048678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_170
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 36
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9b9547c09e1da48ad06074cb071d6d
+      internalID: 997882321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_171
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 15
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad77874d48459f4c86eaaab4c02b9a2
+      internalID: 1317467828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_172
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba6777ca454f4b04689e6dac25979cf8
+      internalID: -1323049673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_173
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acfa1ecff49d00b4d956a80f8ba2e36c
+      internalID: -2053444196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_0: -257288495
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_1: -312519299
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_10: 1568451403
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_100: -1156842110
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_101: 312267399
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_102: 877111820
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_103: -540037099
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_104: 523661584
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_105: -1045640479
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_106: 1168270071
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_107: 1670748273
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_108: 391574250
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_109: 1095907751
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_11: 1023060133
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_110: 210412053
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_111: 1859590685
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_112: -1923444264
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_113: -1537153091
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_114: 1337448438
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_115: -758264322
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_116: 1772701908
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_117: 179095791
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_118: 337089718
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_119: 356121401
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_12: 1943737451
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_120: 445571584
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_121: 428116736
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_122: -1022431973
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_123: 2118960704
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_124: -1155578451
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_125: 1426283971
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_126: -614781000
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_127: 1798664143
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_128: 619977747
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_129: 291896230
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_13: -1827397110
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_130: -1370446411
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_131: -864745763
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_132: -1407241467
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_133: -1503799688
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_134: -159000110
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_135: 520555131
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_136: -2095784747
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_137: -992743528
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_138: 679538106
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_139: 1500533798
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_14: -1021014995
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_140: -1861012196
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_141: -1179268129
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_142: 1438554864
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_143: 1122295193
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_144: -1733013676
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_145: -1949627482
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_146: -1522859272
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_147: 671131775
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_148: -2103680974
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_149: 2034923465
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_15: 616468908
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_150: -220749303
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_151: -1694769900
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_152: -1503449047
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_153: -1195953626
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_154: -950898219
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_155: -2111864536
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_156: -1967512228
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_157: -1701589897
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_158: -345960613
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_159: -2056405499
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_16: -149594767
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_160: 969944009
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_161: 360400029
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_162: 1287644090
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_163: 699655122
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_164: 1861788486
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_165: -1578269964
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_166: 126988724
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_167: 1414844638
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_168: 1783617835
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_169: -87048678
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_17: -1131517359
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_170: 997882321
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_171: 1317467828
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_172: -1323049673
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_173: -2053444196
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_18: -1468132490
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_19: 841649483
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_2: -809544233
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_20: -1695990411
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_21: -905258790
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_22: 1624231883
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_23: 1382366988
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_24: -1380935708
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_25: -490114425
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_26: 1324842162
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_27: -1663667589
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_28: -964882949
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_29: 200355156
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_3: -1269501216
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_30: -162131208
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_31: 979960615
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_32: 100641683
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_33: -479304513
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_34: 842577111
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_35: 492169879
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_36: 808294197
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_37: -1785674352
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_38: 270774792
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_39: -318074330
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_4: 376849921
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_40: -612603937
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_41: 1108336065
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_42: 445494234
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_43: 1996814035
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_44: 620286837
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_45: -217378744
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_46: -982660606
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_47: 1283895810
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_48: -1802559500
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_49: -1751872062
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_5: -97804159
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_50: 842845569
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_51: 1921119567
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_52: -177919286
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_53: -912060608
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_54: -2013732290
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_55: 1313686949
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_56: 126515814
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_57: -1818644676
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_58: 469603609
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_59: -1609051320
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_6: -683539360
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_60: 1502948544
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_61: 427303135
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_62: -1041304528
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_63: -2000104716
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_64: -509040880
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_65: -1599769999
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_66: 2042381573
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_67: 467247448
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_68: 1971066118
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_69: 235306395
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_7: -1953207439
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_70: -1619566434
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_71: -799260258
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_72: 423286060
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_73: 805930310
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_74: 1011824693
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_75: 441872887
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_76: 917379286
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_77: -297590315
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_78: 396859184
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_79: 1266433062
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_8: -998698693
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_80: 1005851398
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_81: 1640662925
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_82: 1823991871
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_83: 1484062360
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_84: -1081476717
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_85: -2004201406
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_86: -715400685
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_87: 1037678575
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_88: -427813394
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_89: 253635145
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_9: 1574628730
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_90: -1058160918
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_91: 714453265
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_92: -113233243
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_93: -1874481468
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_94: -1935165237
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_95: -1585410591
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_96: 1087642501
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_97: 548203251
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_98: -1482348942
+      Nintendo 64 - Donkey Kong 64 - DK Arcade_99: -151969578
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
