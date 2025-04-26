@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        mario = new Player(speed, jumpSpeed, rb, animator, inputActionMapping);
+        mario = new Player(transform, speed, jumpSpeed, rb, animator, inputActionMapping);
         mario.WakePlayer();
     }
 
@@ -37,6 +37,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        mario.UpdatePlayer();
     }
 }
