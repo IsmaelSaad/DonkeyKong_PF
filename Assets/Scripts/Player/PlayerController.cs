@@ -22,13 +22,16 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        mario = new Player(speed, jumpSpeed, rb, animator, inputActionMapping);
+        mario.WakePlayer();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        mario = new Player(speed, jumpSpeed, rb, animator, inputActionMapping);
+        mario.StartPlayer();
     }
 
     // Update is called once per frame
