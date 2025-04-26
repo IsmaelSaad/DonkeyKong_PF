@@ -1,37 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player 
 {
     private Transform transform;
-    private float speed;
-    private float jumpSpeed;
+    private Transform raycastOrigin;
+    public float speed;
+    public float jumpSpeed;
     private Rigidbody2D rb;
     private Animator animator;
     public InputActionAsset inputActionMapping;
+    private LayerMask layer;
 
     InputAction hor_ia, ver_ia, jump_ia;
 
-    enum PlayerState {
-        IDLE, RUN,
+    enum PLAYERSTATE {
+        FLOOR,
         JUMP, ONSTAIROUT,
         ONSTAIRIN, ONSTAIRSUP,
         ONSTAIRSDOWN, DEATH,
         HAMMERIDLE, HAMMERWALK,
         FALLING
     }
-    private PlayerState state;
+    private PLAYERSTATE state;
 
-    public Player(Transform transform, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping)
+    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer)
     {
         this.transform = transform;
+        this.raycastOrigin = raycastOrigin;
         this.speed = speed;
         this.jumpSpeed = jumpSpeed;
         this.rb = rb;
         this.animator = animator;
         this.inputActionMapping = inputActionMapping;
+        this.layer = layer;
     }
 
     public void WakePlayer() { 
@@ -43,20 +50,46 @@ public class Player
 
     public void StartPlayer()
     {
-        this.state = PlayerState.IDLE;
+        state = PLAYERSTATE.FLOOR;
     }
 
-    public void UpdatePlayer() {
-        FloorMovement();
+    public void UpdatePlayer() 
+    {
+        ChangeState();
+        State();
+        Debug.DrawLine(raycastOrigin.position, raycastOrigin.position - raycastOrigin.up * 0.3f, Color.red);
     }
 
-    private void UpdateState() { 
-        
+
+    private void ChangeState() {
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.3f, layer);
+
+        if (hit)
+        {
+            state = PLAYERSTATE.FLOOR;
+        }
+        else 
+        {
+            state = PLAYERSTATE.JUMP;
+        }
     }
 
-    private void FloorMovement() {
+    private void State() {
+        switch (state)
+        { 
+            case PLAYERSTATE.FLOOR:
+                FloorMovement();
+                break;
+        }
+    }
+
+    private void FloorMovement() { 
         float mx = hor_ia.ReadValue<float>();
-        float my = ver_ia.ReadValue<float>();
+
+        Run(mx);
+    }
+
+    private void Run(float mx) {
         rb.velocity = new Vector2 (speed*mx, rb.velocity.y);
 
         if (mx > 0)

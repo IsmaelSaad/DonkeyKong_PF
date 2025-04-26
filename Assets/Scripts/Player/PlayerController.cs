@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask floorLayer;
     [SerializeField]
+    Transform raycastOrigin;
+    [SerializeField]
     public InputActionAsset inputActionMapping;
     [SerializeField]
     float speed, jumpSpeed;
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        mario = new Player(transform, speed, jumpSpeed, rb, animator, inputActionMapping);
+        mario = new Player(transform, raycastOrigin, speed, jumpSpeed, rb, animator, inputActionMapping, floorLayer);
         mario.WakePlayer();
     }
 
