@@ -80,10 +80,24 @@ public class Player
             case PLAYERSTATE.FLOOR:
                 FloorMovement();
                 break;
+            case PLAYERSTATE.JUMP:
+                JumpMovement();
+                break;
         }
     }
 
     private void FloorMovement() { 
+        float mx = hor_ia.ReadValue<float>();
+
+        Run(mx);
+
+        if (jump_ia.triggered)
+        {
+            rb.AddForce(new Vector2(0, 1) * jumpSpeed, ForceMode2D.Impulse);
+        }
+    }
+
+    private void JumpMovement() {
         float mx = hor_ia.ReadValue<float>();
 
         Run(mx);
@@ -100,10 +114,6 @@ public class Player
         if (mx < 0)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-        }
-
-        if (jump_ia.triggered) {
-            rb.AddForce(new Vector2(0,1) * jumpSpeed, ForceMode2D.Impulse);
         }
     }
 
