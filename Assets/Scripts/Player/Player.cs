@@ -89,7 +89,15 @@ public class Player
             case PLAYERSTATE.JUMP:
                 JumpMovement();
                 break;
+            case PLAYERSTATE.ONSTAIRIN:
+                StairMovement();
+                break;
         }
+    }
+
+    private void StairMovement()
+    {
+
     }
 
     private void FloorMovement() { 
