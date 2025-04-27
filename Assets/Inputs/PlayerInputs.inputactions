@@ -1,0 +1,112 @@
+{
+    "name": "PlayerInputs",
+    "maps": [
+        {
+            "name": "H_Movement",
+            "id": "f568fdf4-ac32-4fad-9300-069ee37d6b3b",
+            "actions": [
+                {
+                    "name": "move",
+                    "type": "Value",
+                    "id": "16886de6-6cac-4d37-b6eb-110efe7b9090",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "73af937b-e5d5-4b6f-9c3c-f70569340558",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78f31074-12f7-45f1-b383-5d630dedfbb7",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Jumping",
+            "id": "67daa773-8ecb-45b9-a8cc-3fe18514eaf8",
+            "actions": [
+                {
+                    "name": "jump",
+                    "type": "Button",
+                    "id": "f96c697d-88f4-49ed-9600-213c873e8afe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5c048053-51fb-4e12-942b-33bd6585dcaa",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "V_Movement",
+            "id": "eaa58afe-1c5d-48bd-bad5-99266db79539",
+            "actions": [
+                {
+                    "name": "move",
+                    "type": "Value",
+                    "id": "1044c31b-abd5-4ab4-a405-974cbaf9a45d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "70c9c4be-1bf2-46c3-af39-1572b9f9f131",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f62c8fc1-6cd0-407d-9c47-1f38ccfc987f",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
