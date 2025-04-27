@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -16,11 +17,12 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActionMapping;
     [SerializeField]
     float speed, jumpSpeed;
-
+    [SerializeField]
     Animator animator;
+
     Rigidbody2D rb;
 
-    Player mario;
+    public Player mario;
 
     private void Awake()
     {
@@ -40,5 +42,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         mario.UpdatePlayer();
+    }
+
+    public Player GetMario() { 
+        return mario;
     }
 }

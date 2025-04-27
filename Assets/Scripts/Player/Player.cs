@@ -10,16 +10,16 @@ public class Player
 {
     private Transform transform;
     private Transform raycastOrigin;
-    public float speed;
-    public float jumpSpeed;
     private Rigidbody2D rb;
-    private Animator animator;
-    public InputActionAsset inputActionMapping;
     private LayerMask layer;
+    public float speed;
+    public float dir;
+    public float jumpSpeed;
+    public Animator animator;
+    public InputActionAsset inputActionMapping;
+    
 
-    InputAction hor_ia, ver_ia, jump_ia;
-
-    enum PLAYERSTATE {
+    public enum PLAYERSTATE {
         FLOOR,
         JUMP, ONSTAIROUT,
         ONSTAIRIN, ONSTAIRSUP,
@@ -27,7 +27,9 @@ public class Player
         HAMMERIDLE, HAMMERWALK,
         FALLING
     }
-    private PLAYERSTATE state;
+    public PLAYERSTATE state;
+
+    InputAction hor_ia, ver_ia, jump_ia;
 
     public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer)
     {
@@ -57,12 +59,16 @@ public class Player
     {
         ChangeState();
         State();
-        Debug.DrawLine(raycastOrigin.position, raycastOrigin.position - raycastOrigin.up * 0.3f, Color.red);
+        Debug.DrawLine(raycastOrigin.position, raycastOrigin.position - raycastOrigin.up * 0.1f, Color.red);
+    }
+
+    public float GetPlayerSpeed() { 
+        return speed * dir;
     }
 
 
     private void ChangeState() {
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.3f, layer);
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.1f, layer);
 
         if (hit)
         {
@@ -87,9 +93,9 @@ public class Player
     }
 
     private void FloorMovement() { 
-        float mx = hor_ia.ReadValue<float>();
+        dir = hor_ia.ReadValue<float>();
 
-        Run(mx);
+        Run(dir);
 
         if (jump_ia.triggered)
         {
@@ -98,20 +104,20 @@ public class Player
     }
 
     private void JumpMovement() {
-        float mx = hor_ia.ReadValue<float>();
+        dir = hor_ia.ReadValue<float>();
 
-        Run(mx);
+        Run(dir);
     }
 
-    private void Run(float mx) {
-        rb.velocity = new Vector2 (speed*mx, rb.velocity.y);
+    private void Run(float dir) {
+        rb.velocity = new Vector2 (speed* dir, rb.velocity.y);
 
-        if (mx > 0)
+        if (dir > 0)
         {
             transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
 
-        if (mx < 0)
+        if (dir < 0)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
