@@ -68,33 +68,6 @@ public class Player
         //Debug.DrawLine(raycastOrigin.position, raycastOrigin.position - raycastOrigin.up * 0.1f, Color.red);
     }
 
-    private void ChangeState()
-    {
-        
-        vDir = ver_ia.ReadValue<float>();
-
-        if ((hit) || (hit && escalandoEscalera && vDir < 0))
-        {
-            escalandoEscalera = false;
-            state = PLAYERSTATE.FLOOR;
-        }
-        else if (escalandoEscalera)
-        {
-            state = PLAYERSTATE.ONSTAIRS;
-        }
-        else if (enEscalera && vDir > 0f)
-        {
-            escalandoEscalera = true;
-            state = PLAYERSTATE.ONSTAIRS;
-        }
-        else
-        {
-            state = PLAYERSTATE.AIR;
-        }
-    }
-
-
-
     private void State() {
         switch (state)
         { 
@@ -118,14 +91,26 @@ public class Player
 
     private void OnFloor()
     {
+        if (ToOnAir())
+        {
+            return;
+        }
+
+        if (ToOnDownStairs())
+        {
+            return;
+        }
+
+        if (ToOnUpStairs())
+        {
+            return;
+        }
+
         hDir = hor_ia.ReadValue<float>();
 
         Run(hDir);
 
-        if (jump_ia.triggered)
-        {
-            rb.AddForce(new Vector2(0, 1) * jumpSpeed, ForceMode2D.Impulse);
-        }
+        Jump();
     }
 
     private void OnAir() 
@@ -140,25 +125,51 @@ public class Player
 
     private void OnStairs()
     {
-        float vertical = ver_ia.ReadValue<float>();
-
-        if (Math.Abs(vertical) > 0f)
-        {
-            rb.velocity = new Vector2(0, vertical * speed);
+        if (ToOnUpStairs()) {
+            return;
         }
-        else
-        {
-            rb.velocity = new Vector2(0, 0); 
+
+        if (ToOnDownStairs()) {
+            return;
         }
     }
 
     private void OnTopStairs() 
-    { 
-    
+    {
+        if (ToOnFloor())
+        {
+            return;
+        }
+
+        if (ToOnStairs())
+        {
+            return;
+        }
+
+        if (ToOnAir())
+        {
+            return;
+        }
     }
 
     private void OnBottomStairs()
     {
+        if (ToOnStairs())
+        {
+            return;
+        }
+
+        if (ToOnFloor())
+        {
+            return;
+        }
+
+        if (ToOnAir())
+        {
+            return;
+        }
+
+
 
     }
 
@@ -166,7 +177,14 @@ public class Player
         RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.1f, layer);
         return hit ? true : false;
     }
-    
+
+
+    private void Jump() {
+        if (jump_ia.triggered)
+        {
+            rb.AddForce(new Vector2(0, 1) * jumpSpeed, ForceMode2D.Impulse);
+        }
+    }
 
     private void Run(float hDir) {
         rb.velocity = new Vector2 (speed* hDir, rb.velocity.y);
@@ -180,13 +198,6 @@ public class Player
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
-    }
-
-    private void Jump()
-    {
-        hDir = hor_ia.ReadValue<float>();
-
-        Run(hDir);
     }
 
     bool ToOnFloor() 
@@ -204,12 +215,12 @@ public class Player
         return false;
     }
 
-    bool ToOnBottomStairs()
+    bool ToOnDownStairs()
     {
         return false;
     }
 
-    bool ToOnTopStairs()
+    bool ToOnUpStairs()
     {
         return false;
     }
