@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Player;
 
 
 public class PlayerController : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
 
     Rigidbody2D rb;
+    
 
     public Player mario;
 
@@ -43,6 +45,12 @@ public class PlayerController : MonoBehaviour
     {
         mario.UpdatePlayer();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        mario.EscaleraEnterTrigger(collision);
+    }
+
 
     public Player GetMario() { 
         return mario;
