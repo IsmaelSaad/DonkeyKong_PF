@@ -387,7 +387,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2917036616042247067, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_Size.x
-      value: 0.1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4774157200856828819, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: escaleraLength
@@ -400,6 +400,10 @@ PrefabInstance:
     - target: {fileID: 5285824194024978405, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_Offset.y
       value: 0.90000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285824194024978405, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6243908898756525864, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -447,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7896792722133154843, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_Size.x
-      value: 0.1
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

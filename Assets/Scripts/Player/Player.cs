@@ -12,7 +12,7 @@ public class Player
     private Transform raycastOrigin;
     private Rigidbody2D rb;
     private LayerMask layer;
-    private bool enEscalera;
+    private bool enEscalera, escalandoEscalera;
     public float speed;
     public float jumpSpeed;
     public float hDir;
@@ -21,16 +21,15 @@ public class Player
     public InputActionAsset inputActionMapping;
 
     public enum PLAYERSTATE {
-        FLOOR,
-        JUMP, ONSTAIROUT,
-        ONSTAIRIN, ONSTAIRSUP,
-        ONSTAIRSDOWN, DEATH,
-        HAMMERIDLE, HAMMERWALK,
-        FALLING
+        FLOOR, AIR, 
+        ONSTAIRS, 
+        ONSTAIRSUP, ONSTAIRSDOWN, 
+        DEATH, HAMMERIDLE, 
+        HAMMERWALK, FALLING
     }
     public PLAYERSTATE state;
 
-    InputAction hor_ia, ver_ia, jump_ia;
+    public InputAction hor_ia, ver_ia, jump_ia;
 
     public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb,  Animator animator, InputActionAsset inputActionMapping, LayerMask layer)
     {
@@ -43,6 +42,11 @@ public class Player
         this.inputActionMapping = inputActionMapping;
         this.layer = layer;
         this.enEscalera = false;
+    }
+
+    public float GetPlayerSpeed()
+    {
+        return speed * hDir;
     }
 
     public void WakePlayer() { 
@@ -59,86 +63,61 @@ public class Player
 
     public void UpdatePlayer() 
     {
-        ChangeState();
         State();
-        Debug.Log(state);
+        //Debug.Log(enEscalera);
         //Debug.DrawLine(raycastOrigin.position, raycastOrigin.position - raycastOrigin.up * 0.1f, Color.red);
     }
 
-    public float GetPlayerSpeed() { 
-        return speed * hDir;
-    }
-
-    public void EscaleraEnterTrigger(Collider2D collision)
-    {
-        if (collision.tag == "EscalerasEnter")
-        {
-            enEscalera = true;
-            rb.gravityScale = 0;
-        }
-        else if (collision.tag == "EscalerasExit")
-        {
-            enEscalera = false;
-            rb.gravityScale = 1;
-        }
-    }
-
-
     private void ChangeState()
     {
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.1f, layer);
+        
+        vDir = ver_ia.ReadValue<float>();
 
-        vDir = ver_ia.ReadValue<float>(); 
-
-        if ((enEscalera && vDir>0f) || (state == PLAYERSTATE.ONSTAIRIN))
+        if ((hit) || (hit && escalandoEscalera && vDir < 0))
         {
-            state = PLAYERSTATE.ONSTAIRIN;
+            escalandoEscalera = false;
+            state = PLAYERSTATE.FLOOR;
+        }
+        else if (escalandoEscalera)
+        {
+            state = PLAYERSTATE.ONSTAIRS;
+        }
+        else if (enEscalera && vDir > 0f)
+        {
+            escalandoEscalera = true;
+            state = PLAYERSTATE.ONSTAIRS;
         }
         else
         {
-            if (hit)
-            {
-                state = PLAYERSTATE.FLOOR;
-            }
-            else
-            {
-                state = PLAYERSTATE.JUMP;
-            }
+            state = PLAYERSTATE.AIR;
         }
     }
+
 
 
     private void State() {
         switch (state)
         { 
             case PLAYERSTATE.FLOOR:
-                FloorMovement();
+                OnFloor();
                 break;
-            case PLAYERSTATE.JUMP:
-                JumpMovement();
+            case PLAYERSTATE.AIR:
+                OnAir();
                 break;
-            case PLAYERSTATE.ONSTAIRIN:
-                StairMovement();
+            case PLAYERSTATE.ONSTAIRS:
+                OnStairs();
+                break;
+            case PLAYERSTATE.ONSTAIRSUP:
+                OnTopStairs();
+                break;
+            case PLAYERSTATE.ONSTAIRSDOWN:
+                OnBottomStairs();
                 break;
         }
     }
 
-    private void StairMovement()
+    private void OnFloor()
     {
-        float vertical = ver_ia.ReadValue<float>();
-
-        if (Mathf.Abs(vertical) > 0.1f)
-        {
-            rb.velocity = new Vector2(0, vertical * speed);
-        }
-        else
-        {
-            rb.velocity = new Vector2(0, 0); 
-        }
-    }
-
-
-    private void FloorMovement() { 
         hDir = hor_ia.ReadValue<float>();
 
         Run(hDir);
@@ -149,11 +128,45 @@ public class Player
         }
     }
 
-    private void JumpMovement() {
-        hDir = hor_ia.ReadValue<float>();
+    private void OnAir() 
+    {
+        if (ToOnFloor()) {
+            return;
+        }
 
+        hDir = hor_ia.ReadValue<float>();
         Run(hDir);
     }
+
+    private void OnStairs()
+    {
+        float vertical = ver_ia.ReadValue<float>();
+
+        if (Math.Abs(vertical) > 0f)
+        {
+            rb.velocity = new Vector2(0, vertical * speed);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, 0); 
+        }
+    }
+
+    private void OnTopStairs() 
+    { 
+    
+    }
+
+    private void OnBottomStairs()
+    {
+
+    }
+
+    private bool DetectFloor() {
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.1f, layer);
+        return hit ? true : false;
+    }
+    
 
     private void Run(float hDir) {
         rb.velocity = new Vector2 (speed* hDir, rb.velocity.y);
@@ -169,6 +182,59 @@ public class Player
         }
     }
 
-    
+    private void Jump()
+    {
+        hDir = hor_ia.ReadValue<float>();
+
+        Run(hDir);
+    }
+
+    bool ToOnFloor() 
+    {
+        return false;
+    }
+
+    bool ToOnAir()
+    {
+        return false;
+    }
+
+    bool ToOnStairs()
+    {
+        return false;
+    }
+
+    bool ToOnBottomStairs()
+    {
+        return false;
+    }
+
+    bool ToOnTopStairs()
+    {
+        return false;
+    }
+
+    /*
+    public void EscaleraEnterTrigger(Collider2D collision)
+    {
+        //vDir = ver_ia.ReadValue<float>();
+        if ((collision.tag == "EscalerasEnter"))
+        {
+            enEscalera = true;
+            rb.gravityScale = 0;
+        }
+    }
+
+    public void EscaleraExitTrigger(Collider2D collision)
+    {
+        //vDir = ver_ia.ReadValue<float>();
+        if ((collision.tag == "EscalerasExit"))
+        {
+            escalandoEscalera = false;
+            rb.gravityScale = 1;
+        }
+    }
+    */
+
 
 }
