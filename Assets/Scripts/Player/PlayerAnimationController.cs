@@ -39,7 +39,7 @@ public class PlayerAnimationController : MonoBehaviour
                 mario.animator.SetBool("jumping", false);
                 mario.animator.SetFloat("speed", Mathf.Abs(mario.speed * mario.hDir));
                 break;
-            case (Player.PLAYERSTATE.JUMP):
+            case (Player.PLAYERSTATE.AIR):
                 mario.animator.SetBool("jumping", true);
                 break;
         }

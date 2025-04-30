@@ -48,14 +48,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        mario.EscaleraEnterTrigger(collision);
+        mario.EscalerasCollisionEnter(collision);
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        mario.EscaleraExitTrigger(collision);
-    }
-
 
     public Player GetMario() { 
         return mario;

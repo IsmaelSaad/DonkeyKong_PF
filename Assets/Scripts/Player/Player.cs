@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,7 +13,7 @@ public class Player
     private Transform raycastOrigin;
     private Rigidbody2D rb;
     private LayerMask layer;
-    private bool enEscalera, escalandoEscalera;
+    private bool enEscaleraUp, escalandoEscalera, enEscaleraDown;
     public float speed;
     public float jumpSpeed;
     public float hDir;
@@ -41,7 +42,6 @@ public class Player
         this.animator = animator;
         this.inputActionMapping = inputActionMapping;
         this.layer = layer;
-        this.enEscalera = false;
     }
 
     public float GetPlayerSpeed()
@@ -81,10 +81,10 @@ public class Player
                 OnStairs();
                 break;
             case PLAYERSTATE.ONSTAIRSUP:
-                OnTopStairs();
+                OnUpStairs();
                 break;
             case PLAYERSTATE.ONSTAIRSDOWN:
-                OnBottomStairs();
+                OnDownStairs();
                 break;
         }
     }
@@ -134,7 +134,7 @@ public class Player
         }
     }
 
-    private void OnTopStairs() 
+    private void OnUpStairs() 
     {
         if (ToOnFloor())
         {
@@ -152,7 +152,7 @@ public class Player
         }
     }
 
-    private void OnBottomStairs()
+    private void OnDownStairs()
     {
         if (ToOnStairs())
         {
@@ -169,8 +169,40 @@ public class Player
             return;
         }
 
+        hDir = hor_ia.ReadValue<float>();
 
+        Run(hDir);
 
+        Jump();
+    }
+
+    public void EscalerasCollisionEnter(Collider2D collision) {
+        if (collision.gameObject.tag == "EscaleraEnter") 
+        {
+            enEscaleraUp = true;
+            return;
+        }
+
+        if (collision.gameObject.tag == "EscaleraExit")
+        {
+            enEscaleraDown = true;
+            return;
+        }
+    }
+
+    public void EscalerasCollisionExit(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EscaleraEnter")
+        {
+            escalandoEscalera = true;
+            return;
+        }
+
+        if (collision.gameObject.tag == "EscaleraExit")
+        {
+            escalandoEscalera = false;
+            return;
+        }
     }
 
     private bool DetectFloor() {
@@ -202,26 +234,60 @@ public class Player
 
     bool ToOnFloor() 
     {
+        if (DetectFloor() == true)
+        {
+            state = PLAYERSTATE.AIR;
+            OnAir();
+            return true;
+        }
+        else if (DetectFloor() == false) {
+            state = PLAYERSTATE.FLOOR;
+        }
         return false;
     }
 
     bool ToOnAir()
     {
+        if (DetectFloor() == false)
+        {
+            state = PLAYERSTATE.AIR;
+            OnAir();
+            return true;
+        }
+        else if (DetectFloor() == true)
+        {
+            state = PLAYERSTATE.FLOOR;
+        }
         return false;
     }
 
     bool ToOnStairs()
     {
+        if (escalandoEscalera) {
+            state = PLAYERSTATE.ONSTAIRS;
+            OnStairs();
+            return true;
+        }
         return false;
     }
 
     bool ToOnDownStairs()
     {
+        if (enEscaleraDown) {
+            state = PLAYERSTATE.ONSTAIRSDOWN;
+            OnDownStairs();
+            return true;
+        }
         return false;
     }
 
     bool ToOnUpStairs()
     {
+        if (enEscaleraUp) {
+            state = PLAYERSTATE.ONSTAIRSUP;
+            OnUpStairs();
+            return true;
+        }
         return false;
     }
 
