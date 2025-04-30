@@ -14,6 +14,8 @@ public class BarrelController : MonoBehaviour
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
 
+    CircleCollider2D crcColl;
+
     bool hasGround = false;
 
     enum State { MOVEMENT, FALLING, BOUNCING, BOUNCING_FALL };
@@ -22,6 +24,7 @@ public class BarrelController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        crcColl = GetComponent<CircleCollider2D>(); 
     }
 
     // Update is called once per frame
@@ -47,8 +50,12 @@ public class BarrelController : MonoBehaviour
                     rb.velocity = Vector2.zero;
                     rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
                 }
+                else { 
+                    crcColl.enabled = false;
+                }
                 break;
             case State.BOUNCING:
+                
                 if (!hasGround)
                 {
                     if (rb.velocity.y < 0)
@@ -58,6 +65,7 @@ public class BarrelController : MonoBehaviour
                 }
                 break;
             case State.BOUNCING_FALL:
+                crcColl.enabled = true;
                 if (hasGround)
                 {
                     speed *= -1;
@@ -69,11 +77,6 @@ public class BarrelController : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("ChangeDirection"))
-    //    {
-    //        speed *= -1;
-    //    }
-    //}
+    
 }
+ 
