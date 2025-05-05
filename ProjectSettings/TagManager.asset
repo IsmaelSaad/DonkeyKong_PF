@@ -7,6 +7,7 @@ TagManager:
   - ChangeDirection
   - EscalerasEnter
   - EscalerasExit
+  - EscalerasMiddle
   layers:
   - Default
   - TransparentFX

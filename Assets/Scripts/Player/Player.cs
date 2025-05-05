@@ -1,19 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player 
+public class Player
 {
     private Transform transform;
     private Transform raycastOrigin;
     private Rigidbody2D rb;
     private LayerMask layer;
-    private bool enEscaleraUp, escalandoEscalera, enEscaleraDown;
+    private bool enEscaleraUp, enEscaleraMid, enEscaleraDown;
     public float speed;
     public float jumpSpeed;
     public float hDir;
@@ -21,18 +15,19 @@ public class Player
     public Animator animator;
     public InputActionAsset inputActionMapping;
 
-    public enum PLAYERSTATE {
-        FLOOR, AIR, 
-        ONSTAIRS, 
-        ONSTAIRSUP, ONSTAIRSDOWN, 
-        DEATH, HAMMERIDLE, 
+    public enum PLAYERSTATE
+    {
+        FLOOR, AIR,
+        ONSTAIRS,
+        ONSTAIRSUP, ONSTAIRSDOWN,
+        DEATH, HAMMERIDLE,
         HAMMERWALK, FALLING
     }
     public PLAYERSTATE state;
 
     public InputAction hor_ia, ver_ia, jump_ia;
 
-    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb,  Animator animator, InputActionAsset inputActionMapping, LayerMask layer)
+    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer)
     {
         this.transform = transform;
         this.raycastOrigin = raycastOrigin;
@@ -44,12 +39,8 @@ public class Player
         this.layer = layer;
     }
 
-    public float GetPlayerSpeed()
+    public void WakePlayer()
     {
-        return speed * hDir;
-    }
-
-    public void WakePlayer() { 
         inputActionMapping.Enable();
         hor_ia = inputActionMapping.FindActionMap("H_Movement").FindAction("move");
         ver_ia = inputActionMapping.FindActionMap("V_Movement").FindAction("move");
@@ -61,16 +52,10 @@ public class Player
         state = PLAYERSTATE.FLOOR;
     }
 
-    public void UpdatePlayer() 
+    public void UpdatePlayer()
     {
-        State();
-        //Debug.Log(enEscalera);
-        //Debug.DrawLine(raycastOrigin.position, raycastOrigin.position - raycastOrigin.up * 0.1f, Color.red);
-    }
-
-    private void State() {
         switch (state)
-        { 
+        {
             case PLAYERSTATE.FLOOR:
                 OnFloor();
                 break;
@@ -91,33 +76,22 @@ public class Player
 
     private void OnFloor()
     {
-        if (ToOnAir())
-        {
-            return;
-        }
+        if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
+        if (ver_ia.ReadValue<float>() < -0.5f && ToOnDownStairs()) return;
 
-        if (ToOnDownStairs())
-        {
-            return;
-        }
-
-        if (ToOnUpStairs())
-        {
-            return;
-        }
+        if (ToOnAir()) return;
 
         hDir = hor_ia.ReadValue<float>();
-
         Run(hDir);
-
         Jump();
     }
 
-    private void OnAir() 
+    private void OnAir()
     {
-        if (ToOnFloor()) {
-            return;
-        }
+        if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
+        if (ver_ia.ReadValue<float>() < -0.5f && ToOnDownStairs()) return;
+
+        if (ToOnFloor()) return;
 
         hDir = hor_ia.ReadValue<float>();
         Run(hDir);
@@ -125,157 +99,162 @@ public class Player
 
     private void OnStairs()
     {
-        if (ToOnUpStairs()) {
-            return;
+        vDir = ver_ia.ReadValue<float>();
+
+        if (Mathf.Abs(vDir) > 0.1f)
+        {
+            rb.velocity = new Vector2(0, vDir * speed);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
 
-        if (ToOnDownStairs()) {
-            return;
-        }
+        // Transiciones
+        if (ToOnUpStairs()) return;
+        if (ToOnDownStairs()) return;
+        if (ToOnFloor()) return;
+        if (ToOnAir()) return;
     }
 
-    private void OnUpStairs() 
+    private void OnUpStairs()
     {
-        if (ToOnFloor())
+        vDir = ver_ia.ReadValue<float>();
+
+        if (Mathf.Abs(vDir) > 0.1f)
         {
-            return;
+            rb.velocity = new Vector2(0, vDir * speed);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
 
-        if (ToOnStairs())
+        // Salir si ya no estamos en escalera
+        if (!enEscaleraUp && !enEscaleraMid)
         {
-            return;
-        }
-
-        if (ToOnAir())
-        {
-            return;
+            state = PLAYERSTATE.AIR;
+            rb.gravityScale = 1;
         }
     }
 
     private void OnDownStairs()
     {
-        if (ToOnStairs())
+        vDir = ver_ia.ReadValue<float>();
+
+        if (Mathf.Abs(vDir) > 0.1f)
         {
-            return;
+            rb.velocity = new Vector2(0, vDir * speed);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
 
-        if (ToOnFloor())
-        {
-            return;
-        }
-
-        if (ToOnAir())
-        {
-            return;
-        }
-
+        // Permitir movimiento hor
         hDir = hor_ia.ReadValue<float>();
-
-        Run(hDir);
-
-        Jump();
-    }
-
-    public void EscalerasCollisionEnter(Collider2D collision) {
-        if (collision.gameObject.tag == "EscaleraEnter") 
+        if (Mathf.Abs(hDir) > 0.1f)
         {
-            enEscaleraUp = true;
-            return;
+            rb.velocity = new Vector2(hDir * speed * 0.5f, rb.velocity.y);
         }
 
-        if (collision.gameObject.tag == "EscaleraExit")
+        if (!enEscaleraDown && !enEscaleraMid)
         {
-            enEscaleraDown = true;
-            return;
+            state = PLAYERSTATE.AIR;
+            rb.gravityScale = 1;
         }
     }
 
-    public void EscalerasCollisionExit(Collider2D collision)
+    private bool DetectFloor()
     {
-        if (collision.gameObject.tag == "EscaleraEnter")
-        {
-            escalandoEscalera = true;
-            return;
-        }
-
-        if (collision.gameObject.tag == "EscaleraExit")
-        {
-            escalandoEscalera = false;
-            return;
-        }
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.2f, layer);
+        Debug.DrawRay(raycastOrigin.position, -Vector2.up * 0.2f, Color.green);
+        return hit.collider != null;
     }
 
-    private bool DetectFloor() {
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -raycastOrigin.up, 0.1f, layer);
-        return hit ? true : false;
-    }
-
-
-    private void Jump() {
-        if (jump_ia.triggered)
+    private void Jump()
+    {
+        if (jump_ia.triggered && state == PLAYERSTATE.FLOOR)
         {
-            rb.AddForce(new Vector2(0, 1) * jumpSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         }
     }
 
-    private void Run(float hDir) {
-        rb.velocity = new Vector2 (speed* hDir, rb.velocity.y);
+    private void Run(float hDir)
+    {
+        rb.velocity = new Vector2(speed * hDir, rb.velocity.y);
 
-        if (hDir > 0)
+        if (hDir > 0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
-
-        if (hDir < 0)
+        else if (hDir < -0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
     }
 
-    bool ToOnFloor() 
+    public void EscalerasCollisionEnter(Collider2D collision)
     {
-        if (DetectFloor() == true)
+        if (collision.CompareTag("EscalerasEnter"))
         {
-            state = PLAYERSTATE.AIR;
-            OnAir();
-            return true;
+            enEscaleraDown = true;
         }
-        else if (DetectFloor() == false) {
+        else if (collision.CompareTag("EscalerasMiddle"))
+        {
+            enEscaleraMid = true;
+        }
+        else if (collision.CompareTag("EscalerasExit"))
+        {
+            enEscaleraUp = true;
+        }
+    }
+
+    public void EscalerasCollisionExit(Collider2D collision)
+    {
+        if (collision.CompareTag("EscalerasEnter"))
+        {
+            enEscaleraDown = false;
+        }
+        else if (collision.CompareTag("EscalerasMiddle"))
+        {
+            enEscaleraMid = false;
+        }
+        else if (collision.CompareTag("EscalerasExit"))
+        {
+            enEscaleraUp = false;
+        }
+    }
+
+    bool ToOnFloor()
+    {
+        if (DetectFloor() && rb.velocity.y <= 0)
+        {
             state = PLAYERSTATE.FLOOR;
+            rb.gravityScale = 1;
+            return true;
         }
         return false;
     }
 
     bool ToOnAir()
     {
-        if (DetectFloor() == false)
+        if (!DetectFloor())
         {
             state = PLAYERSTATE.AIR;
-            OnAir();
+            rb.gravityScale = 1;
             return true;
-        }
-        else if (DetectFloor() == true)
-        {
-            state = PLAYERSTATE.FLOOR;
         }
         return false;
     }
 
     bool ToOnStairs()
     {
-        if (escalandoEscalera) {
+        if (enEscaleraMid)
+        {
             state = PLAYERSTATE.ONSTAIRS;
-            OnStairs();
-            return true;
-        }
-        return false;
-    }
-
-    bool ToOnDownStairs()
-    {
-        if (enEscaleraDown) {
-            state = PLAYERSTATE.ONSTAIRSDOWN;
-            OnDownStairs();
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
             return true;
         }
         return false;
@@ -283,35 +262,25 @@ public class Player
 
     bool ToOnUpStairs()
     {
-        if (enEscaleraUp) {
+        if ((enEscaleraDown || enEscaleraMid) && ver_ia.ReadValue<float>() > 0.5f)
+        {
             state = PLAYERSTATE.ONSTAIRSUP;
-            OnUpStairs();
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
             return true;
         }
         return false;
     }
 
-    /*
-    public void EscaleraEnterTrigger(Collider2D collision)
+    bool ToOnDownStairs()
     {
-        //vDir = ver_ia.ReadValue<float>();
-        if ((collision.tag == "EscalerasEnter"))
+        if ((enEscaleraUp || enEscaleraMid) && ver_ia.ReadValue<float>() < -0.5f)
         {
-            enEscalera = true;
+            state = PLAYERSTATE.ONSTAIRSDOWN;
             rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
+            return true;
         }
+        return false;
     }
-
-    public void EscaleraExitTrigger(Collider2D collision)
-    {
-        //vDir = ver_ia.ReadValue<float>();
-        if ((collision.tag == "EscalerasExit"))
-        {
-            escalandoEscalera = false;
-            rb.gravityScale = 1;
-        }
-    }
-    */
-
-
 }

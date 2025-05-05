@@ -1,29 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Player;
-
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] LayerMask floorLayer;
+    [SerializeField] Transform raycastOrigin;
+    [SerializeField] InputActionAsset inputActionMapping;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float jumpSpeed = 10f;
 
-    [SerializeField]
-    LayerMask floorLayer;
-    [SerializeField]
-    Transform raycastOrigin;
-    [SerializeField]
-    public InputActionAsset inputActionMapping;
-    [SerializeField]
-    float speed, jumpSpeed;
-    [SerializeField]
-    Animator animator;
-
-    Rigidbody2D rb;
-    
-
+    private Rigidbody2D rb;
+    private Animator animator;
     public Player mario;
 
     private void Awake()
@@ -34,16 +21,17 @@ public class PlayerController : MonoBehaviour
         mario.WakePlayer();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         mario.StartPlayer();
     }
 
-    // Update is called once per frame
     void Update()
     {
         mario.UpdatePlayer();
+
+        // Debug raycast
+        Debug.DrawRay(raycastOrigin.position, -Vector2.up * 0.2f, Color.green);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,7 +39,13 @@ public class PlayerController : MonoBehaviour
         mario.EscalerasCollisionEnter(collision);
     }
 
-    public Player GetMario() { 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        mario.EscalerasCollisionExit(collision);
+    }
+
+    public Player GetMario()
+    {
         return mario;
     }
 }
