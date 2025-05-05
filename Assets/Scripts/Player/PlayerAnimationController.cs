@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Authentication.ExtendedProtection;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
@@ -41,6 +42,10 @@ public class PlayerAnimationController : MonoBehaviour
                 break;
             case (Player.PLAYERSTATE.AIR):
                 mario.animator.SetBool("jumping", true);
+                break;
+            case (Player.PLAYERSTATE.ONSTAIRSUP):
+                mario.animator.SetBool("onStair", true);
+                mario.animator.SetFloat("speedStair", Mathf.Abs(mario.speed * mario.vDir));
                 break;
         }
     }

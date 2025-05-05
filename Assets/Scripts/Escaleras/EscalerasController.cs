@@ -38,7 +38,7 @@ public class EscalerasController : MonoBehaviour
         float stairHeight = (escaleraSprite.sprite.rect.height / escaleraSprite.sprite.pixelsPerUnit);
 
         entrar.offset = new Vector3(entrar.offset.x, -0.05f, 0);
-        salir.offset = new Vector3(entrar.offset.x, (escaleraSprite.sprite.rect.height / escaleraSprite.sprite.pixelsPerUnit) * escaleraLength - stairHeight/4, 0);
+        salir.offset = new Vector3(entrar.offset.x, (stairHeight * escaleraLength) + stairHeight/2f, 0);
         for (int i = 0; i < escaleraLength; i++)
         {
             Vector3 position = new Vector3(transform.position.x, transform.position.y + (escaleraSprite.sprite.rect.height / escaleraSprite.sprite.pixelsPerUnit) * i, 1);

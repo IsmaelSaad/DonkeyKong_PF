@@ -284,6 +284,7 @@ MonoBehaviour:
   escaleraSprite: {fileID: 4712003224172310696, guid: 23416148207555f44bf40606d008ad8d, type: 3}
   entrar: {fileID: 2917036616042247067}
   salir: {fileID: 7896792722133154843}
+  middle: {fileID: 0}
   sizeCollider: {fileID: 5285824194024978405}
 --- !u!61 &5285824194024978405
 BoxCollider2D:

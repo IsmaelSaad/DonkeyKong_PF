@@ -1,3 +1,4 @@
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class Player
     private Rigidbody2D rb;
     private LayerMask layer;
     private bool enEscaleraUp, enEscaleraMid, enEscaleraDown;
+    private Vector3 actualEscalera;
     public float speed;
     public float jumpSpeed;
     public float hDir;
@@ -54,6 +56,7 @@ public class Player
 
     public void UpdatePlayer()
     {
+        Debug.Log(state);
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -69,18 +72,21 @@ public class Player
                 OnUpStairs();
                 break;
             case PLAYERSTATE.ONSTAIRSDOWN:
-                OnDownStairs();
+                //OnDownStairs();
                 break;
         }
     }
 
     private void OnFloor()
     {
+        // Primero verificar transición a escaleras
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
         if (ver_ia.ReadValue<float>() < -0.5f && ToOnDownStairs()) return;
 
+        // Luego verificar otras transiciones
         if (ToOnAir()) return;
 
+        // Movimiento normal
         hDir = hor_ia.ReadValue<float>();
         Run(hDir);
         Jump();
@@ -88,6 +94,7 @@ public class Player
 
     private void OnAir()
     {
+        // Intentar transición a escaleras primero
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
         if (ver_ia.ReadValue<float>() < -0.5f && ToOnDownStairs()) return;
 
@@ -151,13 +158,14 @@ public class Player
             rb.velocity = Vector2.zero;
         }
 
-        // Permitir movimiento hor
+        // Permitir movimiento horizontal limitado
         hDir = hor_ia.ReadValue<float>();
         if (Mathf.Abs(hDir) > 0.1f)
         {
             rb.velocity = new Vector2(hDir * speed * 0.5f, rb.velocity.y);
         }
 
+        // Salir si ya no estamos en escalera
         if (!enEscaleraDown && !enEscaleraMid)
         {
             state = PLAYERSTATE.AIR;
@@ -196,6 +204,11 @@ public class Player
 
     public void EscalerasCollisionEnter(Collider2D collision)
     {
+        if (collision.CompareTag("Escaleras"))
+        {
+            actualEscalera = collision.transform.position;
+        }
+
         if (collision.CompareTag("EscalerasEnter"))
         {
             enEscaleraDown = true;
@@ -262,8 +275,9 @@ public class Player
 
     bool ToOnUpStairs()
     {
-        if ((enEscaleraDown || enEscaleraMid) && ver_ia.ReadValue<float>() > 0.5f)
+        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f)
         {
+            transform.position = new Vector2(actualEscalera.x, transform.position.y);
             state = PLAYERSTATE.ONSTAIRSUP;
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
@@ -274,7 +288,7 @@ public class Player
 
     bool ToOnDownStairs()
     {
-        if ((enEscaleraUp || enEscaleraMid) && ver_ia.ReadValue<float>() < -0.5f)
+        if (enEscaleraUp && ver_ia.ReadValue<float>() < -0.5f)
         {
             state = PLAYERSTATE.ONSTAIRSDOWN;
             rb.gravityScale = 0;

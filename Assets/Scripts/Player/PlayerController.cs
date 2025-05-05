@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InputActionAsset inputActionMapping;
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpSpeed = 10f;
+    [SerializeField] Collider2D detectFloor;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -29,14 +30,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         mario.UpdatePlayer();
-
-        // Debug raycast
-        Debug.DrawRay(raycastOrigin.position, -Vector2.up * 0.2f, Color.green);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        mario.EscalerasCollisionEnter(collision);
+        if (detectFloor.IsTouching(collision)) 
+        {
+            mario.EscalerasCollisionEnter(collision);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
