@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
-public class BarrelController : MonoBehaviour
+public class BarrelRollingController : MonoBehaviour
 {
     [SerializeField] float speed;
 
     [SerializeField] float bounceForce;
     [SerializeField] float groundRayDistance = 2.0f;
-    [SerializeField] LayerMask groundMask;
+    [SerializeField] LayerMask groundMaskRolling;
 
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
 
-    CircleCollider2D crcColl;
+    CapsuleCollider2D crcColl;
 
     bool hasGround = false;
 
@@ -24,13 +23,13 @@ public class BarrelController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        crcColl = GetComponent<CircleCollider2D>(); 
+        crcColl = GetComponent<CapsuleCollider2D>(); 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
+        RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMaskRolling);
         hasGround = hit2D.collider != null;
 
         switch (state)
@@ -65,10 +64,9 @@ public class BarrelController : MonoBehaviour
                 }
                 break;
             case State.BOUNCING_FALL:
-                crcColl.enabled = true;
+                
                 if (hasGround)
                 {
-                    speed *= -1;
                     state = State.MOVEMENT;
                 }
                 break;
@@ -77,7 +75,4 @@ public class BarrelController : MonoBehaviour
 
 
     }
-
-    
 }
- 
