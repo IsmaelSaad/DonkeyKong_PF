@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class BarrelRollingController : MonoBehaviour
 {
     [SerializeField] float speed;
-
+    [SerializeField] GameObject Barrel;
     [SerializeField] float bounceForce;
     [SerializeField] float groundRayDistance = 2.0f;
     [SerializeField] LayerMask groundMaskRolling;
+    
 
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
@@ -16,6 +18,7 @@ public class BarrelRollingController : MonoBehaviour
     CapsuleCollider2D crcColl;
 
     bool hasGround = false;
+    bool lastFloor = false;
 
     enum State { MOVEMENT, FALLING, BOUNCING, BOUNCING_FALL };
     State state = State.MOVEMENT;
@@ -44,13 +47,17 @@ public class BarrelRollingController : MonoBehaviour
             case State.FALLING:
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 if (hasGround)
-                {
+                { 
                     state = State.BOUNCING;
                     rb.velocity = Vector2.zero;
                     rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+                    StartCoroutine(temporalDeactivate());
                 }
-                else { 
-                    crcColl.enabled = false;
+                else if (hasGround && lastFloor)
+                {
+                    Instantiate(Barrel, gameObject.transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                    crcColl.enabled = true;
                 }
                 break;
             case State.BOUNCING:
@@ -74,5 +81,21 @@ public class BarrelRollingController : MonoBehaviour
         }
 
 
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("LastFloor"))
+        {
+            lastFloor = true;
+            Debug.Log("HA COLISIONAO CON LASTFLOOR");
+        }
+    }
+
+    private IEnumerator temporalDeactivate()
+    {
+        crcColl.enabled = false;
+        yield return new WaitForSecondsRealtime(0.7f);
+        crcColl.enabled = true;
     }
 }

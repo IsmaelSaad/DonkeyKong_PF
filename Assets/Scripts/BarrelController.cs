@@ -5,11 +5,13 @@ using UnityEngine.XR;
 
 public class BarrelController : MonoBehaviour
 {
-    [SerializeField] float speed;
+    
 
+    [SerializeField] float speed;
     [SerializeField] float bounceForce;
     [SerializeField] float groundRayDistance = 2.0f;
     [SerializeField] LayerMask groundMask;
+    
 
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
@@ -76,8 +78,11 @@ public class BarrelController : MonoBehaviour
         }
 
 
+
     }
 
     
+
+
 }
  
