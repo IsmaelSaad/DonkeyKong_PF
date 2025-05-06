@@ -264,12 +264,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   raycastOrigin: {fileID: 7784311267162775648}
   inputActionMapping: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
   speed: 2
   jumpSpeed: 4
-  detectFloor: {fileID: 0}
+  detectFloor: {fileID: 2324293877636097475}
+  capsuleCollider: {fileID: 7985452638554380372}
 --- !u!114 &881500613896044835
 MonoBehaviour:
   m_ObjectHideFlags: 0

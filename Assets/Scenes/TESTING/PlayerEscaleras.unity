@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: capsuleCollider
       value: 
       objectReference: {fileID: 22915139}
+    - target: {fileID: 5374769052897086724, guid: 432ced1bfb96e80498beec878404863b, type: 3}
+      propertyPath: floorLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5781228856786063588, guid: 432ced1bfb96e80498beec878404863b, type: 3}
       propertyPath: m_Name
       value: Player
