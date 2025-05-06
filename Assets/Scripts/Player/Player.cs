@@ -60,6 +60,7 @@ public class Player
     public void UpdatePlayer()
     {
         Debug.Log(state);
+
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -129,7 +130,7 @@ public class Player
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
-            transform.position += new Vector3(0,0.3f,0);
+            transform.position += new Vector3(0,0.35f,0);
             rb.gravityScale = 1.0f;
             Debug.Log("finishexit");
             animator.SetBool("exitStair", false);
@@ -180,8 +181,8 @@ public class Player
 
     private bool DetectFloor()
     {
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.2f, layer);
-        Debug.DrawRay(raycastOrigin.position, -Vector2.up * 0.2f, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.1f, layer);
+        Debug.DrawRay(raycastOrigin.position, -Vector2.up * 0.1f, Color.green);
         return hit.collider != null;
     }
 
