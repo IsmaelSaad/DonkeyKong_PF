@@ -9,16 +9,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpSpeed = 10f;
     [SerializeField] Collider2D detectFloor;
+    [SerializeField] Collider2D capsuleCollider;
 
     private Rigidbody2D rb;
     private Animator animator;
+    
     public Player mario;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        mario = new Player(transform, raycastOrigin, speed, jumpSpeed, rb, animator, inputActionMapping, floorLayer);
+        mario = new Player(transform, raycastOrigin, speed, jumpSpeed, rb, animator, inputActionMapping, floorLayer, capsuleCollider);
         mario.WakePlayer();
     }
 
@@ -30,6 +32,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         mario.UpdatePlayer();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        mario.IgnoreOutStairs(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

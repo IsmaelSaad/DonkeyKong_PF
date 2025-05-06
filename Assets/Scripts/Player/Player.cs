@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,11 +17,12 @@ public class Player
     public float vDir;
     public Animator animator;
     public InputActionAsset inputActionMapping;
+    public Collider2D capsuleCollider;
 
     public enum PLAYERSTATE
     {
         FLOOR, AIR,
-        ONSTAIRS,
+        ONSTAIRSOUT,
         ONSTAIRSUP, ONSTAIRSDOWN,
         DEATH, HAMMERIDLE,
         HAMMERWALK, FALLING
@@ -29,13 +31,16 @@ public class Player
 
     public InputAction hor_ia, ver_ia, jump_ia;
 
-    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer)
+    public bool exitingStair = true;
+
+    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer, Collider2D capsuleCollider)
     {
         this.transform = transform;
         this.raycastOrigin = raycastOrigin;
         this.speed = speed;
         this.jumpSpeed = jumpSpeed;
         this.rb = rb;
+        this.capsuleCollider = capsuleCollider;
         this.animator = animator;
         this.inputActionMapping = inputActionMapping;
         this.layer = layer;
@@ -65,14 +70,14 @@ public class Player
             case PLAYERSTATE.AIR:
                 OnAir();
                 break;
-            case PLAYERSTATE.ONSTAIRS:
-                OnStairs();
+            case PLAYERSTATE.ONSTAIRSOUT:
+                OnStairsOut();
                 break;
             case PLAYERSTATE.ONSTAIRSUP:
                 OnUpStairs();
                 break;
             case PLAYERSTATE.ONSTAIRSDOWN:
-                //OnDownStairs();
+                OnDownStairs();
                 break;
         }
     }
@@ -81,9 +86,8 @@ public class Player
     {
         // Primero verificar transición a escaleras
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
-        if (ver_ia.ReadValue<float>() < -0.5f && ToOnDownStairs()) return;
 
-        // Luego verificar otras transiciones
+        if (ToOnDownStairs()) return;
         if (ToOnAir()) return;
 
         // Movimiento normal
@@ -104,24 +108,33 @@ public class Player
         Run(hDir);
     }
 
-    private void OnStairs()
+    public void IgnoreOutStairs(Collision2D collision) {
+        if (exitingStair)
+        {
+            if ((collision.gameObject.layer == 6) && rb.velocity.y > 0)
+            {
+                Physics2D.IgnoreCollision(capsuleCollider, collision.collider, exitingStair);
+            }
+        }
+        else {
+            if (collision.gameObject.layer == 6)
+            {
+                Physics2D.IgnoreCollision(capsuleCollider, collision.collider, exitingStair);
+            }
+        }       
+    }
+
+    private void OnStairsOut()
     {
-        vDir = ver_ia.ReadValue<float>();
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (Mathf.Abs(vDir) > 0.1f)
-        {
-            rb.velocity = new Vector2(0, vDir * speed);
+        if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
+            rb.gravityScale = 1.0f;
+            Debug.Log("finishexit");
+            exitingStair = false;
+            animator.SetBool("exitStair", false);
+            state = PLAYERSTATE.ONSTAIRSDOWN;
         }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
-
-        // Transiciones
-        if (ToOnUpStairs()) return;
-        if (ToOnDownStairs()) return;
-        if (ToOnFloor()) return;
-        if (ToOnAir()) return;
     }
 
     private void OnUpStairs()
@@ -134,42 +147,34 @@ public class Player
         }
         else
         {
+            animator.StopPlayback();
             rb.velocity = Vector2.zero;
         }
 
         // Salir si ya no estamos en escalera
         if (!enEscaleraUp && !enEscaleraMid)
         {
+            animator.SetBool("idleStair", true);
             state = PLAYERSTATE.AIR;
             rb.gravityScale = 1;
+        }
+
+        if (enEscaleraUp) {
+            animator.SetBool("exitStair", true);
+            rb.velocity = Vector2.zero;
+            state = PLAYERSTATE.ONSTAIRSOUT;
         }
     }
 
     private void OnDownStairs()
     {
-        vDir = ver_ia.ReadValue<float>();
-
-        if (Mathf.Abs(vDir) > 0.1f)
-        {
-            rb.velocity = new Vector2(0, vDir * speed);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
-
-        // Permitir movimiento horizontal limitado
         hDir = hor_ia.ReadValue<float>();
-        if (Mathf.Abs(hDir) > 0.1f)
-        {
-            rb.velocity = new Vector2(hDir * speed * 0.5f, rb.velocity.y);
-        }
 
-        // Salir si ya no estamos en escalera
-        if (!enEscaleraDown && !enEscaleraMid)
-        {
-            state = PLAYERSTATE.AIR;
-            rb.gravityScale = 1;
+        if (ToOnUpStairs()) return;
+
+        if (hDir != 0) {
+            animator.SetBool("idleStair", false);
+            if (ToOnFloor()) return;
         }
     }
 
@@ -260,7 +265,7 @@ public class Player
         }
         return false;
     }
-
+    /*
     bool ToOnStairs()
     {
         if (enEscaleraMid)
@@ -271,7 +276,7 @@ public class Player
             return true;
         }
         return false;
-    }
+    }*/
 
     bool ToOnUpStairs()
     {
@@ -288,11 +293,10 @@ public class Player
 
     bool ToOnDownStairs()
     {
-        if (enEscaleraUp && ver_ia.ReadValue<float>() < -0.5f)
+        if (animator.GetBool("idleStair"))
         {
             state = PLAYERSTATE.ONSTAIRSDOWN;
-            rb.gravityScale = 0;
-            rb.velocity = Vector2.zero;
+            rb.gravityScale = 1;
             return true;
         }
         return false;
