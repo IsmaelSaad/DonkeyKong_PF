@@ -4,11 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ChangeDirection
   - Barrel
+  - EscalerasExit
+  - EscalerasEnter
+  - EscalerasMiddle
   - BarrelRolling
   - LastFloor
+  - ChangeDirection
   - OilBarrel
+  - Escaleras
   layers:
   - Default
   - TransparentFX
@@ -16,17 +20,10 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
   - Floor
-  - Escaleras
   - 
   - 
-=======
-  - Barrel
-  - BarrelRolling
-  - FirstFloor
-  - LastFloor
->>>>>>> EnemyBarrel
+  - 
   - 
   - 
   - 
