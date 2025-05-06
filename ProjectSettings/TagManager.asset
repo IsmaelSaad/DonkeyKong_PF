@@ -8,6 +8,7 @@ TagManager:
   - Barrel
   - BarrelRolling
   - LastFloor
+  - OilBarrel
   layers:
   - Default
   - TransparentFX
