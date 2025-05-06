@@ -64,6 +64,7 @@ public class BarrelController : MonoBehaviour
                     {
                         state = State.BOUNCING_FALL;
                     }
+
                 }
                 break;
             case State.BOUNCING_FALL:

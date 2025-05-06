@@ -167,7 +167,7 @@ MonoBehaviour:
   groundRayDistance: 0.75
   groundMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 823
 --- !u!95 &4395340545328235321
 Animator:
   serializedVersion: 5

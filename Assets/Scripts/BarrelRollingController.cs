@@ -34,7 +34,7 @@ public class BarrelRollingController : MonoBehaviour
     {
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMaskRolling);
         hasGround = hit2D.collider != null;
-
+        crcColl.enabled = false;
         switch (state)
         {
             case State.MOVEMENT:
@@ -47,17 +47,17 @@ public class BarrelRollingController : MonoBehaviour
             case State.FALLING:
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 if (hasGround)
-                { 
+                {
                     state = State.BOUNCING;
                     rb.velocity = Vector2.zero;
                     rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
-                    StartCoroutine(temporalDeactivate());
                 }
-                else if (hasGround && lastFloor)
+                if (hit2D.collider.CompareTag("LastFloor"))
                 {
                     Instantiate(Barrel, gameObject.transform.position, Quaternion.identity);
                     Destroy(gameObject);
                     crcColl.enabled = true;
+                    speed *= -1;
                 }
                 break;
             case State.BOUNCING:
@@ -68,6 +68,8 @@ public class BarrelRollingController : MonoBehaviour
                     {
                         state = State.BOUNCING_FALL;
                     }
+
+                    
                 }
                 break;
             case State.BOUNCING_FALL:
@@ -76,6 +78,7 @@ public class BarrelRollingController : MonoBehaviour
                 {
                     state = State.MOVEMENT;
                 }
+                
                 break;
 
         }
@@ -83,19 +86,13 @@ public class BarrelRollingController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    /*void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("LastFloor"))
         {
             lastFloor = true;
             Debug.Log("HA COLISIONAO CON LASTFLOOR");
         }
-    }
+    }*/
 
-    private IEnumerator temporalDeactivate()
-    {
-        crcColl.enabled = false;
-        yield return new WaitForSecondsRealtime(0.7f);
-        crcColl.enabled = true;
-    }
 }
