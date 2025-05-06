@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - ChangeDirection
+  - Barrel
+  - BarrelRolling
+  - LastFloor
+  - OilBarrel
   layers:
   - Default
   - TransparentFX
@@ -12,10 +16,17 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< HEAD
   - Floor
   - 
   - 
   - 
+=======
+  - Barrel
+  - BarrelRolling
+  - FirstFloor
+  - LastFloor
+>>>>>>> EnemyBarrel
   - 
   - 
   - 
