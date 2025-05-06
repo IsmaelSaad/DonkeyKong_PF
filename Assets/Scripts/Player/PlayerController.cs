@@ -34,11 +34,6 @@ public class PlayerController : MonoBehaviour
         mario.UpdatePlayer();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        mario.IgnoreOutStairs(collision);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (detectFloor.IsTouching(collision)) 

@@ -31,8 +31,6 @@ public class Player
 
     public InputAction hor_ia, ver_ia, jump_ia;
 
-    public bool exitingStair = true;
-
     public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer, Collider2D capsuleCollider)
     {
         this.transform = transform;
@@ -108,6 +106,8 @@ public class Player
         Run(hDir);
     }
 
+    // sin uso
+    /*
     public void IgnoreOutStairs(Collision2D collision) {
         if (exitingStair)
         {
@@ -122,16 +122,16 @@ public class Player
                 Physics2D.IgnoreCollision(capsuleCollider, collision.collider, exitingStair);
             }
         }       
-    }
+    }*/
 
     private void OnStairsOut()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
+            transform.position += new Vector3(0,0.3f,0);
             rb.gravityScale = 1.0f;
             Debug.Log("finishexit");
-            exitingStair = false;
             animator.SetBool("exitStair", false);
             state = PLAYERSTATE.ONSTAIRSDOWN;
         }
@@ -265,6 +265,7 @@ public class Player
         }
         return false;
     }
+
     /*
     bool ToOnStairs()
     {
