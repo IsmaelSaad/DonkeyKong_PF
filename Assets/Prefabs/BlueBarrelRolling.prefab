@@ -121,10 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ae5d6416f257f448f2674cead6632c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 3.5
   Barrel: {fileID: 5405870211953198987, guid: 3d74ca9d8cdd12b4e8a963f6337f5164, type: 3}
   bounceForce: 3
-  groundRayDistance: 0.75
+  groundRayDistance: 0.3
   groundMaskRolling:
     serializedVersion: 2
     m_Bits: 567
@@ -161,7 +161,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.6, y: 1}
+  m_Size: {x: 0.8, y: 0.5}
   m_Direction: 1
 --- !u!50 &5962837976670601659
 Rigidbody2D:
