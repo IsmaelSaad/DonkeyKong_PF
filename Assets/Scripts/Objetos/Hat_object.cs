@@ -22,6 +22,7 @@ public class Hat_object : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(obj: gameObject);
+
         }
     }
 
