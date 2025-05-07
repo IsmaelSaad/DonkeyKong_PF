@@ -8,7 +8,7 @@ public class BarrelController : MonoBehaviour
 {
     
 
-    [SerializeField] float speed;
+    [SerializeField] public float speed;
     [SerializeField] float bounceForce;
     [SerializeField] float groundRayDistance = 2.0f;
     [SerializeField] LayerMask groundMask;
@@ -36,6 +36,8 @@ public class BarrelController : MonoBehaviour
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
         hasGround = hit2D.collider != null;
 
+        
+
         switch (state)
         {
             case State.MOVEMENT:
@@ -46,7 +48,8 @@ public class BarrelController : MonoBehaviour
                 }
                 break;
             case State.FALLING:
-                rb.velocity = new Vector2(speed, rb.velocity.y);
+                
+                rb.velocity = new Vector2(speed * 0.5f , rb.velocity.y);
                 if (hasGround)
                 {
                     state = State.BOUNCING;

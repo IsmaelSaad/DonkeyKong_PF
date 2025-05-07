@@ -70,7 +70,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.27
 --- !u!50 &4945589024227503563
 Rigidbody2D:
   serializedVersion: 4
@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46552a63d36a83848acd8e7b62efd1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  bounceForce: 3.5
-  groundRayDistance: 0.75
+  speed: 3
+  bounceForce: 3
+  groundRayDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 823

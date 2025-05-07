@@ -18,7 +18,6 @@ public class BarrelRollingController : MonoBehaviour
     CapsuleCollider2D crcColl;
 
     bool hasGround = false;
-    bool lastFloor = false;
 
     enum State { MOVEMENT, FALLING, BOUNCING, BOUNCING_FALL };
     State state = State.MOVEMENT;
@@ -45,6 +44,7 @@ public class BarrelRollingController : MonoBehaviour
                 }
                 break;
             case State.FALLING:
+
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 if (hasGround)
                 {
@@ -52,16 +52,16 @@ public class BarrelRollingController : MonoBehaviour
                     rb.velocity = Vector2.zero;
                     rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
                 }
-                if (hit2D.collider.CompareTag("LastFloor"))
+                if (hit2D.collider.CompareTag("LastFloor") || hit2D.collider.CompareTag("OilBarrel"))
                 {
-                    Instantiate(Barrel, gameObject.transform.position, Quaternion.identity);
+                    GameObject barrelInstantiate = Instantiate(Barrel, gameObject.transform.position, Quaternion.identity);
+                    barrelInstantiate.GetComponent<BarrelController>().speed *= -1;
                     Destroy(gameObject);
                     crcColl.enabled = true;
-                    speed *= -1;
                 }
                 break;
             case State.BOUNCING:
-                
+                speed = Random.Range(-5f, 5f);
                 if (!hasGround)
                 {
                     if (rb.velocity.y < 0)
@@ -85,14 +85,12 @@ public class BarrelRollingController : MonoBehaviour
 
 
     }
-
-    /*void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("LastFloor"))
+        if (collision.CompareTag("OilBarrel"))
         {
-            lastFloor = true;
-            Debug.Log("HA COLISIONAO CON LASTFLOOR");
+            Destroy(gameObject);
         }
-    }*/
+    }
 
 }
