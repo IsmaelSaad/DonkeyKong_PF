@@ -48,7 +48,8 @@ public class BarrelController : MonoBehaviour
                 }
                 break;
             case State.FALLING:
-                rb.velocity = new Vector2(speed, rb.velocity.y);
+                
+                rb.velocity = new Vector2(speed * 0.5f , rb.velocity.y);
                 if (hasGround)
                 {
                     state = State.BOUNCING;

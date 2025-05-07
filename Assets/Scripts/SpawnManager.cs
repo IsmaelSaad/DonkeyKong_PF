@@ -23,7 +23,6 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        Invoke("spawnBarrel", 1f);
         
     }
 
@@ -34,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     }
 
 
-    void spawnBarrel()
+    /*void spawnBarrel()
     {
         Vector2 spawnPosition;
         float randomTime = Random.Range(1.5f, 3f);
@@ -79,7 +78,7 @@ public class SpawnManager : MonoBehaviour
         Instantiate(Barrels[barrelIndex], spawnPosition, Barrels[0].transform.rotation);
 
         Invoke("spawnBarrel", randomTime);
-    }
+    }*/
 
     
 }

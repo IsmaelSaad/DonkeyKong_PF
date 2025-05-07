@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class DonkeyKongController : MonoBehaviour
@@ -9,18 +10,40 @@ public class DonkeyKongController : MonoBehaviour
     int barrelIndex;
     public GameObject[] Barrels;
     public Transform rollingBarrelsSpawn, normalBarrelSpawn;
+    Vector2 spawnPosition;
+
+
+    public void changeAnimation()
+    {
+        
+        numRollingBarrel = Random.Range(0, 20);
+        if (numRollingBarrel == 1)
+        {
+            LanzarBarrilCritico();
+        }
+        else
+        {
+            LanzarBarrilNormal();
+        }
+    }
+
+
     public void LanzarBarrilNormal()
     {
+        animator.SetTrigger("ThrowBarrel");
         Debug.Log("Lanzo Barril");
+        
     }
     public void LanzarBarrilCritico()
     {
-        Debug.Log("Lanzo Barril Especial");
+        animator.SetTrigger("ThrowSpecialBarrel");
+        Debug.Log("Lanzo Barril critico");
+        
     }
 
     void Start()
     {
-        Invoke("AnimateThrow", 2.0f);
+        
     }
 
     // Update is called once per frame
@@ -31,39 +54,51 @@ public class DonkeyKongController : MonoBehaviour
 
     void AnimateThrow()
     {
+        Vector2 spawnPosition;
         numBlueBarrel = Random.Range(0, 6);
-        numRollingBarrel = Random.Range(0, 20);
+        
 
 
-        switch (numBlueBarrel)
+        if (numRollingBarrel == 1) 
         {
-            case 1:
-               barrelIndex = 1;
-               animator.SetTrigger("ThrowBarrel");
-               break;
-            default:
-               barrelIndex = 0;
-               animator.SetTrigger("ThrowBarrel");
-               break;
-        }
+            if (barrelIndex == 0)
+            {
+                barrelIndex = 3;
+            }
 
-        if (barrelIndex == 0 && numRollingBarrel == 1)
-        {    
-            barrelIndex = 3;    
-            animator.SetTrigger("ThrowSpecialBarrel");
-        }
-            
-        else if (barrelIndex == 1 && numRollingBarrel == 1)
+            else if (barrelIndex == 1)
+            {
+                barrelIndex = 2;
+            }
+        } 
+        else 
         {
-            barrelIndex = 2;
-            animator.SetTrigger("ThrowSpecialBarrel");
+            if (numBlueBarrel == 1)
+            {
+                barrelIndex = 1;
+            }
+            else
+            {
+                barrelIndex = 0;
+            }
         }
 
-        Instantiate(Barrels[barrelIndex], normalBarrelSpawn.transform.position, Barrels[0].transform.rotation);
+        if (barrelIndex == 2 || barrelIndex == 3)
+        {
+            spawnPosition = rollingBarrelsSpawn.position;
+        }
+        else
+        {
+            spawnPosition = normalBarrelSpawn.transform.position;
+        }
 
-        float randomTime = Random.Range(1.5f, 3f);
+
+
+
+        Instantiate(Barrels[barrelIndex], spawnPosition, Barrels[0].transform.rotation);
+
+        float randomTime = Random.Range(3f, 5f);
         Invoke("AnimationThrow", randomTime);
-
     }
 
     /*void spawnBarrel()
@@ -95,4 +130,7 @@ public class DonkeyKongController : MonoBehaviour
 
         Invoke("spawnBarrel", randomTime);
     }*/
+
+    
+
 }

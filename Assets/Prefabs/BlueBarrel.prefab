@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  bounceForce: 3.5
+  bounceForce: 3
   groundRayDistance: 0.4
   groundMask:
     serializedVersion: 2
