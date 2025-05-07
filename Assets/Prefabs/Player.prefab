@@ -154,18 +154,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.375}
+  m_Offset: {x: 0, y: -0.27}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 0.8}
+    oldSize: {x: 0.46153846, y: 0.61538464}
     newSize: {x: 0.6, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.05}
+  m_Size: {x: 0.45, y: 0.09}
   m_EdgeRadius: 0
 --- !u!50 &4347282913226216854
 Rigidbody2D:
@@ -227,7 +227,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.6, y: 0.8}
+  m_Size: {x: 0.45, y: 0.62}
   m_Direction: 0
 --- !u!95 &3082356001094836056
 Animator:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   raycastOrigin: {fileID: 7784311267162775648}
   inputActionMapping: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
   speed: 2
