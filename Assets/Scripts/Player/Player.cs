@@ -84,7 +84,7 @@ public class Player
     private void OnFloor()
     {
         // Primero verificar transición a escaleras
-        if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
+        if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && !jump_ia.triggered) return;
 
         if (ToOnDownStairs()) return;
         if (ToOnAir()) return;
@@ -97,9 +97,10 @@ public class Player
 
     private void OnAir()
     {
-        // Intentar transición a escaleras primero
-        if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs()) return;
-        if (ver_ia.ReadValue<float>() < -0.5f && ToOnDownStairs()) return;
+        if (DetectFloor()) {
+            // Intentar transición a escaleras primero
+            if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && DetectFloor()) return;
+        }
 
         if (ToOnFloor()) return;
 
@@ -282,7 +283,8 @@ public class Player
 
     bool ToOnUpStairs()
     {
-        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f)
+
+        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered)
         {
             transform.position = new Vector2(actualEscalera.x, transform.position.y);
             state = PLAYERSTATE.ONSTAIRSUP;
