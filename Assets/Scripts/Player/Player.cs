@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.U2D;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Player
     private LayerMask layer;
     private bool enEscaleraUp, enEscaleraMid, enEscaleraDown;
     private Vector3 actualEscalera;
+    public bool enteredFloor;
     public float speed;
     public float jumpSpeed;
     public float hDir;
@@ -97,7 +99,8 @@ public class Player
 
     private void OnAir()
     {
-        if (DetectFloor()) {
+        if (DetectFloor() && !(rb.velocity.y < 0))
+        {
             // Intentar transición a escaleras primero
             if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && DetectFloor()) return;
         }
@@ -130,12 +133,24 @@ public class Player
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
-            transform.position += new Vector3(0,0.35f,0);
+        if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0))
+        {
+            transform.position += new Vector3(0, 0.35f, 0);
             rb.gravityScale = 1.0f;
             Debug.Log("finishexit");
             animator.SetBool("exitStair", false);
+            actualEscalera = Vector3.zero;
             state = PLAYERSTATE.ONSTAIRSDOWN;
+        }
+    }
+
+    IEnumerator _Subir()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            transform.position += new Vector3(0, 0.01f, 0);
+            // CHECK POINT if () {}
+            yield return null;
         }
     }
 
@@ -161,7 +176,8 @@ public class Player
             rb.gravityScale = 1;
         }
 
-        if (enEscaleraUp) {
+        if (enEscaleraUp)
+        {
             animator.SetBool("exitStair", true);
             rb.velocity = Vector2.zero;
             state = PLAYERSTATE.ONSTAIRSOUT;
@@ -174,7 +190,8 @@ public class Player
 
         if (ToOnUpStairs()) return;
 
-        if (hDir != 0) {
+        if (hDir != 0)
+        {
             animator.SetBool("idleStair", false);
             if (ToOnFloor()) return;
         }
@@ -284,7 +301,7 @@ public class Player
     bool ToOnUpStairs()
     {
 
-        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered)
+        if (enEscaleraDown && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered && actualEscalera != Vector3.zero)
         {
             transform.position = new Vector2(actualEscalera.x, transform.position.y);
             state = PLAYERSTATE.ONSTAIRSUP;
