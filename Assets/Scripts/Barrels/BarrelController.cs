@@ -52,8 +52,6 @@ public class BarrelController : MonoBehaviour
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
         hasGround = hit2D.collider != null;
 
-        Debug.Log();
-
         switch (state)
         {
             case State.MOVEMENT:
@@ -69,6 +67,7 @@ public class BarrelController : MonoBehaviour
                 {
                     if (transform.position.x < hitStairs.transform.position.x)
                     {
+                        transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y); 
                         state = State.FALLSTAIRS;
                         animator.SetBool("falling", true);
                         crcColl.enabled = false;
@@ -78,6 +77,7 @@ public class BarrelController : MonoBehaviour
                 {
                     if (transform.position.x > hitStairs.transform.position.x)
                     {
+                        transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y);
                         state = State.FALLSTAIRS;
                         animator.SetBool("falling", true);
                         crcColl.enabled = false;
@@ -87,16 +87,25 @@ public class BarrelController : MonoBehaviour
                 break;
             case State.FALLSTAIRS:
                 rb.velocity = new Vector2(0, rb.velocity.y);
-                if (hitStairs.collider.transform.position.y > transform.position.y) {
-
-                    if (hasGround) {
-                        state = State.MOVEMENT;
-                        animator.SetBool("falling", false);
-                        crcColl.enabled = true;
+                if (hitStairs.collider.tag == "EscaleraEnter")
+                {
+                    state = State.MOVEMENT;
+                    animator.SetBool("falling", false);
+                    crcColl.enabled = true;
+                }
+                /*
+                if (hitStairs.collider.transform.position.y - 2f > transform.position.y) {
+                    
+                        if (hasGround)
+                        {
+                            state = State.MOVEMENT;
+                            animator.SetBool("falling", false);
+                            crcColl.enabled = true;
+                        }
                     }
                 } else {
                     crcColl.enabled = false;
-                }
+                }*/
 
                 //if (!crcColl.enabled) {
                 //    if (hasGround) {
