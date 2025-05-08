@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6294587430223057507}
   - component: {fileID: 1441521785165925316}
   - component: {fileID: 2718223882735542283}
+  - component: {fileID: 7809849448963447083}
   m_Layer: 0
   m_Name: Parasol
   m_TagString: Untagged
@@ -63,21 +64,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.5}
+    oldSize: {x: 0.61538464, y: 0.5769231}
     newSize: {x: 1.6, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7, y: 1.5}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!212 &1441521785165925316
 SpriteRenderer:
@@ -143,4 +144,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df469c0f10f302439b92ca63d39aca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 0
+  Score: 500
+  animator: {fileID: 7809849448963447083}
+--- !u!95 &7809849448963447083
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562497439705341909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac866561be3d7a949819ce448ba80d20, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

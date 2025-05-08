@@ -7,7 +7,10 @@ using UnityEngine;
 public class Purse_object : MonoBehaviour
 {
     [SerializeField] int Score;
-    // Start is called before the first frame update
+    [SerializeField] Animator animator;
+    float destroyDelay = 2.5f;
+    string IsScored = "IsScored";
+
     void Start()
     {
         
@@ -18,12 +21,17 @@ public class Purse_object : MonoBehaviour
     {
        
     }
-
-    private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-      if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(obj: gameObject);
-        }       
+            animator.SetBool(IsScored, false);
+            StartCoroutine(DestroyAfterAnimation());
+        }
+    }
+    IEnumerator DestroyAfterAnimation()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
     }
 }
