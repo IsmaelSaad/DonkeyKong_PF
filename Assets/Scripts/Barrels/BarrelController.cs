@@ -19,7 +19,7 @@ public class BarrelController : MonoBehaviour
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
 
-    CircleCollider2D crcColl;
+    BoxCollider2D boxColl;
 
     bool hasGround = false, hasStairs = false;
 
@@ -29,7 +29,20 @@ public class BarrelController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        crcColl = GetComponent<CircleCollider2D>(); 
+        boxColl = GetComponent<BoxCollider2D>(); 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (state == State.FALLSTAIRS && collision.CompareTag("EscalerasExit")) {
+            Debug.Log("asda");
+        }
+
+
+        if (collision.CompareTag("OilBarrel"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -45,7 +58,6 @@ public class BarrelController : MonoBehaviour
                 state = State.ONSTAIRS;
             }
         }
-
 
         Debug.Log(state);
 
@@ -70,7 +82,7 @@ public class BarrelController : MonoBehaviour
                         transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y); 
                         state = State.FALLSTAIRS;
                         animator.SetBool("falling", true);
-                        crcColl.enabled = false;
+                        boxColl.enabled = false;
                     }
                 }
                 else 
@@ -80,18 +92,19 @@ public class BarrelController : MonoBehaviour
                         transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y);
                         state = State.FALLSTAIRS;
                         animator.SetBool("falling", true);
-                        crcColl.enabled = false;
+                        boxColl.enabled = false;
                     }
                 }
                 
                 break;
             case State.FALLSTAIRS:
                 rb.velocity = new Vector2(0, rb.velocity.y);
-                if (hitStairs.collider.tag == "EscaleraEnter")
+                
+                /*if (hitStairs.collider.tag == "EscaleraEnter")
                 {
                     state = State.MOVEMENT;
                     animator.SetBool("falling", false);
-                    crcColl.enabled = true;
+                    boxColl.enabled = true;
                 }
                 /*
                 if (hitStairs.collider.transform.position.y - 2f > transform.position.y) {
@@ -100,14 +113,14 @@ public class BarrelController : MonoBehaviour
                         {
                             state = State.MOVEMENT;
                             animator.SetBool("falling", false);
-                            crcColl.enabled = true;
+                            boxColl.enabled = true;
                         }
                     }
                 } else {
-                    crcColl.enabled = false;
+                    boxColl.enabled = false;
                 }*/
 
-                //if (!crcColl.enabled) {
+                //if (!boxColl.enabled) {
                 //    if (hasGround) {
                 //        return;
                 //    }
@@ -116,11 +129,11 @@ public class BarrelController : MonoBehaviour
                 //{
                 //    if (hasGround)
                 //    {
-                //        crcColl.enabled = false;
+                //        boxColl.enabled = false;
                 //    }
                 //    else 
                 //    {
-                //        crcColl.enabled = true;
+                //        boxColl.enabled = true;
                 //        state = State.MOVEMENT;
                 //        animator.SetBool("falling", false);
                 //    }
@@ -136,7 +149,7 @@ public class BarrelController : MonoBehaviour
                     rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
                 }
                 else { 
-                    crcColl.enabled = false;
+                    boxColl.enabled = false;
                 }
                 break;
             case State.BOUNCING:
@@ -151,7 +164,7 @@ public class BarrelController : MonoBehaviour
                 }
                 break;
             case State.BOUNCING_FALL:
-                crcColl.enabled = true;
+                boxColl.enabled = true;
                 if (hasGround)
                 {
                     speed *= -1;
@@ -163,13 +176,7 @@ public class BarrelController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("OilBarrel"))
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
 
 
