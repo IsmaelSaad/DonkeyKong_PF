@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,6 +33,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         mario.UpdatePlayer();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        mario.enteredFloor = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        mario.enteredFloor = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
