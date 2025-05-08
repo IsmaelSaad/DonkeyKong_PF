@@ -13,6 +13,7 @@ TagManager:
   - OilBarrel
   - Barrel
   - BarrelRolling
+  - BarrelEscaleras
   layers:
   - Default
   - TransparentFX

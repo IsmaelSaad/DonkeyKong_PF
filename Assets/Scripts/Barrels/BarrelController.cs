@@ -14,6 +14,7 @@ public class BarrelController : MonoBehaviour
     [SerializeField] float bounceForce;
     [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
     [SerializeField] LayerMask groundMask, stairMask;
+    int downStairs;
     
 
     //RigiBody para la clase de Enemies
@@ -51,15 +52,20 @@ public class BarrelController : MonoBehaviour
         RaycastHit2D hitStairs = Physics2D.Raycast(raycastOriginStairs.position, -raycastOriginStairs.up, stairRayDistance, stairMask);
         hasStairs = hitStairs.collider != null;
 
-        Debug.DrawLine(raycastOriginStairs.position, raycastOriginStairs.position - raycastOriginStairs.up * stairRayDistance, Color.red);
+         
 
-        if (hasStairs) {
-            if (hitStairs.collider.CompareTag("Escaleras")) {
-                state = State.ONSTAIRS;
+        
+        if (hasStairs && state != State.ONSTAIRS) { // PONER TODOS LOS QUE TENGAN QUE VER CON BARRIL CAYENDO
+            downStairs = Random.Range(0, 15);
+            if (downStairs == 1)
+            {
+                if (hitStairs.collider.CompareTag("Escaleras"))
+                {
+                    state = State.ONSTAIRS;
+                }
             }
+                    
         }
-
-        Debug.Log(state);
 
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
         hasGround = hit2D.collider != null;
@@ -79,6 +85,7 @@ public class BarrelController : MonoBehaviour
                 {
                     if (transform.position.x < hitStairs.transform.position.x)
                     {
+                        rb.gravityScale = 0.5f;
                         transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y); 
                         state = State.FALLSTAIRS;
                         animator.SetBool("falling", true);
@@ -91,15 +98,24 @@ public class BarrelController : MonoBehaviour
                     {
                         transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y);
                         state = State.FALLSTAIRS;
-                        animator.SetBool("falling", true);
                         boxColl.enabled = false;
+                        animator.SetBool("falling", true);
                     }
                 }
                 
                 break;
             case State.FALLSTAIRS:
                 rb.velocity = new Vector2(0, rb.velocity.y);
-                
+                animator.SetBool("falling", true);
+                if (hitStairs.collider.CompareTag("EscalerasEnter") || hitStairs.collider.CompareTag("BarrelEscaleras"))
+                {
+                    animator.SetBool("falling", false);
+                    boxColl.enabled = true;
+                    speed *= -1;
+                    state = State.MOVEMENT;
+                }
+
+
                 /*if (hitStairs.collider.tag == "EscaleraEnter")
                 {
                     state = State.MOVEMENT;
