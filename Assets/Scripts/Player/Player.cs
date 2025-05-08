@@ -59,7 +59,7 @@ public class Player
 
     public void UpdatePlayer()
     {
-        Debug.Log(state);
+        //Debug.Log(state);
 
         switch (state)
         {

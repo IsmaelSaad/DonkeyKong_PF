@@ -33,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 7937966433732928202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &2819005977092231329
@@ -162,12 +163,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46552a63d36a83848acd8e7b62efd1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4395340545328235321}
   speed: 3
+  raycastOriginStairs: {fileID: 7937966433732928202}
   bounceForce: 3
   groundRayDistance: 0.4
+  stairRayDistance: 0.75
   groundMask:
     serializedVersion: 2
     m_Bits: 823
+  stairMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!95 &4395340545328235321
 Animator:
   serializedVersion: 5
@@ -189,3 +196,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8562204914679768122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7937966433732928202}
+  m_Layer: 0
+  m_Name: RaycastOriginStairs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7937966433732928202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562204914679768122}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.003, y: 0.006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7395521587905708742}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
