@@ -4,25 +4,29 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.XR;
+using TMPro;
 
 public class BarrelController : MonoBehaviour
 {
 
     [SerializeField] Animator animator;
     [SerializeField] public float speed;
-    [SerializeField] Transform raycastOriginStairs;
+    [SerializeField] Transform raycastOriginStairs, raycastOriginPoints;
     [SerializeField] float bounceForce;
-    [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
-    [SerializeField] LayerMask groundMask, stairMask;
-    int downStairs;
+    [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f, playerRayDistance = 2.0f;
+    [SerializeField] LayerMask groundMask, stairMask, playerMask;
     
+    GameManager gameManager;
+
+    int downStairs;
 
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
-
+    string playerPoints;
     BoxCollider2D boxColl;
 
-    bool hasGround = false, hasStairs = false;
+    bool hasGround = false, hasStairs = false, hasPlayerOn = false;
+    int points = 0;
 
     enum State { MOVEMENT, FALLING, BOUNCING, BOUNCING_FALL , ONSTAIRS, FALLSTAIRS};
     State state = State.MOVEMENT;
@@ -39,6 +43,13 @@ public class BarrelController : MonoBehaviour
             Debug.Log("asda");
         }
 
+        if (hasPlayerOn)
+        {
+            Debug.Log("Añado punto");
+            gameManager = FindObjectOfType<GameManager>();
+            gameManager.AddPoints(points);
+            playerPoints = GameObject.FindObjectOfType<GameManager>().GetComponent<TMP_Text>().text = points.ToString();
+        }
 
         if (collision.CompareTag("OilBarrel"))
         {
@@ -52,9 +63,10 @@ public class BarrelController : MonoBehaviour
         RaycastHit2D hitStairs = Physics2D.Raycast(raycastOriginStairs.position, -raycastOriginStairs.up, stairRayDistance, stairMask);
         hasStairs = hitStairs.collider != null;
 
-         
+        RaycastHit2D hitPlayer = Physics2D.Raycast(raycastOriginPoints.position, raycastOriginPoints.up, playerRayDistance, playerMask);
+        hasPlayerOn = hitPlayer.collider != null;
 
-        
+
         if (hasStairs && state != State.ONSTAIRS) { // PONER TODOS LOS QUE TENGAN QUE VER CON BARRIL CAYENDO
             downStairs = Random.Range(0, 15);
             if (downStairs == 1)
@@ -66,6 +78,10 @@ public class BarrelController : MonoBehaviour
             }
                     
         }
+
+        
+
+        
 
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
         hasGround = hit2D.collider != null;

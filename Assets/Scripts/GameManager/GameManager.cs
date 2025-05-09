@@ -6,15 +6,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+
     /*
         FindObjectOfType<PlayerController o GameManager>();
      */
 
     int lifes = 3;
-    private static int points = 0;
+    private static int points = 100;
     void Start()
     {
-
+        Text
     }
 
     private void Awake()
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    static void AddPoints(int p) {
+    public void AddPoints(int p) {
         points += p;
     }
 
