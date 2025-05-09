@@ -12,6 +12,9 @@ TagManager:
   - ChangeDirection
   - OilBarrel
   - Barrel
+  - EscalerasExit
+  - EscalerasEnter
+  - EscalerasMiddle
   - BarrelRolling
   - BarrelEscaleras
   layers:
