@@ -30,7 +30,7 @@ public class BarrelController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxColl = GetComponent<BoxCollider2D>(); 
+        boxColl = GetComponentInChildren<BoxCollider2D>(); 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,11 +52,11 @@ public class BarrelController : MonoBehaviour
         RaycastHit2D hitStairs = Physics2D.Raycast(raycastOriginStairs.position, -raycastOriginStairs.up, stairRayDistance, stairMask);
         hasStairs = hitStairs.collider != null;
 
-         
 
+        Debug.DrawLine(raycastOriginStairs.position, raycastOriginStairs.position - raycastOriginStairs.up * stairRayDistance);
         
         if (hasStairs && state != State.ONSTAIRS) { // PONER TODOS LOS QUE TENGAN QUE VER CON BARRIL CAYENDO
-            downStairs = Random.Range(0, 15);
+            downStairs = Random.Range(0, 50);
             if (downStairs == 1)
             {
                 if (hitStairs.collider.CompareTag("Escaleras"))
@@ -85,7 +85,7 @@ public class BarrelController : MonoBehaviour
                 {
                     if (transform.position.x < hitStairs.transform.position.x)
                     {
-                        rb.gravityScale = 0.5f;
+                        rb.velocity = new Vector2(0, speed / 2);
                         transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y); 
                         state = State.FALLSTAIRS;
                         animator.SetBool("falling", true);
@@ -96,6 +96,7 @@ public class BarrelController : MonoBehaviour
                 {
                     if (transform.position.x > hitStairs.transform.position.x)
                     {
+                        rb.velocity = new Vector2(0, speed / 2);
                         transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y);
                         state = State.FALLSTAIRS;
                         boxColl.enabled = false;
@@ -109,8 +110,8 @@ public class BarrelController : MonoBehaviour
                 animator.SetBool("falling", true);
                 if (hitStairs.collider.CompareTag("EscalerasEnter") || hitStairs.collider.CompareTag("BarrelEscaleras"))
                 {
-                    animator.SetBool("falling", false);
                     boxColl.enabled = true;
+                    animator.SetBool("falling", false);
                     speed *= -1;
                     state = State.MOVEMENT;
                 }
