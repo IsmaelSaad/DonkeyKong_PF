@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
      */
 
     int lifes = 3;
-    private static int points = 100;
+    private static int points = 0;
     void Start()
     {
-        Text
+        
     }
 
     private void Awake()
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         points += p;
     }
 
-    static int ReturnPoints() {
+    public int GetPoints() {
         return points;
     }
 

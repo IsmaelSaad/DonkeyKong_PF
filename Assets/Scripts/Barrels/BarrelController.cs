@@ -11,9 +11,9 @@ public class BarrelController : MonoBehaviour
 
     [SerializeField] Animator animator;
     [SerializeField] public float speed;
-    [SerializeField] Transform raycastOriginStairs, raycastOriginPoints;
+    [SerializeField] Transform raycastOriginStairs;
     [SerializeField] float bounceForce;
-    [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f, playerRayDistance = 2.0f;
+    [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
     [SerializeField] LayerMask groundMask, stairMask, playerMask;
     
     GameManager gameManager;
@@ -23,18 +23,22 @@ public class BarrelController : MonoBehaviour
     //RigiBody para la clase de Enemies
     Rigidbody2D rb;
     string playerPoints;
-    BoxCollider2D boxColl;
+    
 
-    bool hasGround = false, hasStairs = false, hasPlayerOn = false;
-    int points = 0;
+    [SerializeField] BoxCollider2D playerColl, boxColl;
+    [SerializeField] CircleCollider2D crcColl;
+
+    bool hasGround = false, hasStairs = false, hasPlayerOn = false, isPlayerTouchingPoints = false;
+    int barrelPoints = 100;
 
     enum State { MOVEMENT, FALLING, BOUNCING, BOUNCING_FALL , ONSTAIRS, FALLSTAIRS};
     State state = State.MOVEMENT;
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
-        boxColl = GetComponent<BoxCollider2D>(); 
+        boxColl = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,13 +47,16 @@ public class BarrelController : MonoBehaviour
             Debug.Log("asda");
         }
 
-        if (hasPlayerOn)
+        
+
+        if (playerColl.IsTouching(collision) && !isPlayerTouchingPoints) 
         {
-            Debug.Log("Añado punto");
-            gameManager = FindObjectOfType<GameManager>();
-            gameManager.AddPoints(points);
-            playerPoints = GameObject.FindObjectOfType<GameManager>().GetComponent<TMP_Text>().text = points.ToString();
-        }
+            if (collision.CompareTag("Player"))
+            {
+                hasPlayerOn = true;
+                isPlayerTouchingPoints = true;
+            }
+        } 
 
         if (collision.CompareTag("OilBarrel"))
         {
@@ -57,28 +64,44 @@ public class BarrelController : MonoBehaviour
         }
     }
 
+    /*
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (playerColl.IsTouching(collision))
+        {
+            if (collision.CompareTag("Player"))
+            {
+                isPlayerTouchingPoints = true;
+            }
+        }
+    }*/
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!playerColl.IsTouching(collision))
+        {
+            if (collision.CompareTag("Player"))
+            {
+                hasPlayerOn = false;
+                isPlayerTouchingPoints = false;
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        RaycastHit2D hitStairs = Physics2D.Raycast(raycastOriginStairs.position, -raycastOriginStairs.up, stairRayDistance, stairMask);
-        hasStairs = hitStairs.collider != null;
 
-        RaycastHit2D hitPlayer = Physics2D.Raycast(raycastOriginPoints.position, raycastOriginPoints.up, playerRayDistance, playerMask);
-        hasPlayerOn = hitPlayer.collider != null;
+        if (hasPlayerOn && isPlayerTouchingPoints)
+        {
+            hasPlayerOn = false;
+            
+            gameManager.AddPoints(barrelPoints);
+            //playerPoints = barrelPoints;
 
-
-        if (hasStairs && state != State.ONSTAIRS) { // PONER TODOS LOS QUE TENGAN QUE VER CON BARRIL CAYENDO
-            downStairs = Random.Range(0, 15);
-            if (downStairs == 1)
-            {
-                if (hitStairs.collider.CompareTag("Escaleras"))
-                {
-                    state = State.ONSTAIRS;
-                }
-            }
-                    
+            playerPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString();
         }
-
+        Debug.Log(gameManager.GetPoints());
         
 
         
@@ -97,79 +120,12 @@ public class BarrelController : MonoBehaviour
                 break;
             case State.ONSTAIRS:
                 rb.velocity = new Vector2(speed, rb.velocity.y);
-                if (rb.velocity.x < 0)
-                {
-                    if (transform.position.x < hitStairs.transform.position.x)
-                    {
-                        rb.gravityScale = 0.5f;
-                        transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y); 
-                        state = State.FALLSTAIRS;
-                        animator.SetBool("falling", true);
-                        boxColl.enabled = false;
-                    }
-                }
-                else 
-                {
-                    if (transform.position.x > hitStairs.transform.position.x)
-                    {
-                        transform.position = new Vector2(hitStairs.transform.position.x, transform.position.y);
-                        state = State.FALLSTAIRS;
-                        boxColl.enabled = false;
-                        animator.SetBool("falling", true);
-                    }
-                }
+                
                 
                 break;
             case State.FALLSTAIRS:
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 animator.SetBool("falling", true);
-                if (hitStairs.collider.CompareTag("EscalerasEnter") || hitStairs.collider.CompareTag("BarrelEscaleras"))
-                {
-                    animator.SetBool("falling", false);
-                    boxColl.enabled = true;
-                    speed *= -1;
-                    state = State.MOVEMENT;
-                }
-
-
-                /*if (hitStairs.collider.tag == "EscaleraEnter")
-                {
-                    state = State.MOVEMENT;
-                    animator.SetBool("falling", false);
-                    boxColl.enabled = true;
-                }
-                /*
-                if (hitStairs.collider.transform.position.y - 2f > transform.position.y) {
-                    
-                        if (hasGround)
-                        {
-                            state = State.MOVEMENT;
-                            animator.SetBool("falling", false);
-                            boxColl.enabled = true;
-                        }
-                    }
-                } else {
-                    boxColl.enabled = false;
-                }*/
-
-                //if (!boxColl.enabled) {
-                //    if (hasGround) {
-                //        return;
-                //    }
-                //}
-                //else if (animator.GetBool("falling")) 
-                //{
-                //    if (hasGround)
-                //    {
-                //        boxColl.enabled = false;
-                //    }
-                //    else 
-                //    {
-                //        boxColl.enabled = true;
-                //        state = State.MOVEMENT;
-                //        animator.SetBool("falling", false);
-                //    }
-                //}
                 break;
             case State.FALLING:
                 
