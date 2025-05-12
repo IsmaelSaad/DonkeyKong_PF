@@ -97,7 +97,6 @@ public class BarrelController : MonoBehaviour
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 if (detectStair.transform.position.x <= actualEscalera.transform.position.x) {
                     transform.position = new Vector2(actualEscalera.transform.position.x, transform.position.y);
-                    speed = 0;
                     boxColl.enabled = false;
                     state = State.FALLSTAIRS;
                 }
@@ -107,6 +106,7 @@ public class BarrelController : MonoBehaviour
                 if (!hasStairs)
                 {
                     boxColl.enabled = true;
+                    state = State.MOVEMENT;
                 }
                 break;
             case State.BOUNCING:
