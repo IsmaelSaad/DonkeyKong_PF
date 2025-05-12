@@ -119,7 +119,6 @@ public class Player
             // Intentar transición a escaleras primero
             if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && DetectFloor()) return;
         }
-
         if (ToOnFloor()) return;
 
         hDir = hor_ia.ReadValue<float>();
