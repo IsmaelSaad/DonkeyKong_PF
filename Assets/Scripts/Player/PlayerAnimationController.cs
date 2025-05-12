@@ -53,6 +53,10 @@ public class PlayerAnimationController : MonoBehaviour
                 mario.animator.SetBool("onStair", false);
                 mario.animator.SetBool("idleStair", true);
                 break;
+            /*case (Player.PLAYERSTATE.HAMMERIDLE)
+                mario.animator.SetBool("")
+
+            */
         }
     }
 }
