@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232173443339726104}
   - component: {fileID: 7896792722133154843}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Exit
   m_TagString: EscalerasExit
   m_Icon: {fileID: 0}
@@ -75,84 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4}
-  m_EdgeRadius: 0
---- !u!1 &2787591737989699022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6477639819810326292}
-  - component: {fileID: 4670856762236191819}
-  m_Layer: 7
-  m_Name: ActiveBarrel
-  m_TagString: EscalerasEnter
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6477639819810326292
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2787591737989699022}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.061, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6243908898756525864}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4670856762236191819
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2787591737989699022}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.08}
+  m_Size: {x: 0.31, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &3346156434677259344
 GameObject:
@@ -164,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2436352774322963222}
   - component: {fileID: 2917036616042247067}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Enter
   m_TagString: EscalerasEnter
   m_Icon: {fileID: 0}
@@ -229,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4}
+  m_Size: {x: 0.31, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &6632279711639500810
 GameObject:
@@ -241,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4849063217372640919}
   - component: {fileID: 6197822015711105686}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Middle
   m_TagString: EscalerasMiddle
   m_Icon: {fileID: 0}
@@ -306,7 +229,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4}
+  m_Size: {x: 0.31, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &6762691696865355147
 GameObject:
@@ -319,7 +242,7 @@ GameObject:
   - component: {fileID: 6243908898756525864}
   - component: {fileID: 4774157200856828819}
   - component: {fileID: 5285824194024978405}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Escaleras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +263,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2436352774322963222}
-  - {fileID: 6477639819810326292}
   - {fileID: 1232173443339726104}
   - {fileID: 4849063217372640919}
   m_Father: {fileID: 0}
@@ -357,14 +279,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1782af15f28f1408f66dbbe74645b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escaleraLength: 5.3
+  escaleraLength: 6
   escalera: {fileID: 5160466791190432839, guid: 23416148207555f44bf40606d008ad8d, type: 3}
   escaleraSprite: {fileID: 4712003224172310696, guid: 23416148207555f44bf40606d008ad8d, type: 3}
   entrar: {fileID: 2917036616042247067}
   salir: {fileID: 7896792722133154843}
   middle: {fileID: 6197822015711105686}
   sizeCollider: {fileID: 5285824194024978405}
-  activeBarrel: {fileID: 4670856762236191819}
 --- !u!61 &5285824194024978405
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -397,7 +318,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.33076927}
+  m_Offset: {x: 0, y: 0.3846154}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -408,5 +329,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8153847}
+  m_Size: {x: 1, y: 0.923077}
   m_EdgeRadius: 0

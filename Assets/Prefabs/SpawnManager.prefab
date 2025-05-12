@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1287338868720060758}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3901517, y: 1.892, z: -2.2472696}
+  m_LocalPosition: {x: -5.9, y: 3.27, z: -2.2472696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Barrels:
   - {fileID: 7270672901590242996, guid: 0108bf872a98a714584d1de1bf5169ea, type: 3}
-  - {fileID: 5405870211953198987, guid: 3d74ca9d8cdd12b4e8a963f6337f5164, type: 3}
+  - {fileID: 7270672901590242996, guid: ae1d2f78105fe044388f9abd63f136e1, type: 3}
   - {fileID: 5750204928180654594, guid: a46d600467da232448fcc4603c0c804d, type: 3}
   - {fileID: 3066437501088341490, guid: 5685d85bab26c0f4a910c1d766adb04e, type: 3}
   rollingBarrelsSpawn: {fileID: 0}

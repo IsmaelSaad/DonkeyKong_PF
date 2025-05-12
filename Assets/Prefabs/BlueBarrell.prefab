@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7395521587905708742}
   - component: {fileID: 2819005977092231329}
-  - component: {fileID: 9032193518304102495}
+  - component: {fileID: 992189684415937672}
+  - component: {fileID: 4995056137256063324}
   - component: {fileID: 7728563062259121396}
   - component: {fileID: 1265525987668974501}
   - component: {fileID: 2617000623783539473}
   - component: {fileID: 4395340545328235321}
-  m_Layer: 6
-  m_Name: BlueBarrel
+  m_Layer: 10
+  m_Name: BlueBarrell
   m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +74,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.21
---- !u!61 &9032193518304102495
+--- !u!61 &992189684415937672
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,6 +118,51 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.07}
+  m_EdgeRadius: 0
+--- !u!61 &4995056137256063324
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270672901590242996}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.34}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.46153846, y: 0.3846154}
+    newSize: {x: 0.6, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 0.3846154}
   m_EdgeRadius: 0
 --- !u!50 &7728563062259121396
 Rigidbody2D:
@@ -211,16 +257,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4395340545328235321}
   speed: 2
-  raycastOriginStairs: {fileID: 7937966433732928202}
+  detectStair: {fileID: 4995056137256063324}
   bounceForce: 1.5
   groundRayDistance: 0.35
-  stairRayDistance: 0.6
+  stairRayDistance: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 823
-  stairMask:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!95 &4395340545328235321
 Animator:
   serializedVersion: 5
@@ -251,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7937966433732928202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RaycastOriginStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 8562204914679768122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003, y: -0.217, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -15,7 +15,7 @@ public class EscalerasController : MonoBehaviour
     [SerializeField]
     public SpriteRenderer escaleraSprite;
     [SerializeField]
-    public BoxCollider2D entrar, salir, middle, sizeCollider, activeBarrel;
+    public BoxCollider2D entrar, salir, middle, sizeCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,11 @@ public class EscalerasController : MonoBehaviour
     void OnValidate()
     {
         float stairHeight = (escaleraSprite.sprite.rect.height / escaleraSprite.sprite.pixelsPerUnit);
-        sizeCollider.offset = new Vector3(sizeCollider.offset.x, ((stairHeight * escaleraLength) / 2) - stairHeight/2, 0);
-        sizeCollider.size = new Vector3(sizeCollider.size.x, (stairHeight * escaleraLength), 0);
+        if (escaleraSprite != null && entrar != null && salir != null)
+        {
+            sizeCollider.offset = new Vector3(sizeCollider.offset.x, ((stairHeight * escaleraLength) / 2) - stairHeight/2, 0);
+            sizeCollider.size = new Vector3(sizeCollider.size.x, (stairHeight * escaleraLength), 0);
+        }
     }
 
     public void CreateEscaleras()
@@ -35,7 +38,6 @@ public class EscalerasController : MonoBehaviour
         float stairHeight = (escaleraSprite.sprite.rect.height / escaleraSprite.sprite.pixelsPerUnit);
 
         entrar.offset = new Vector3(entrar.offset.x, -0.05f, 0);
-        activeBarrel.offset = entrar.offset;
         salir.offset = new Vector3(entrar.offset.x, ((stairHeight * escaleraLength)) - stairHeight / 4, 0);
         /* DESCOMENTAR PARA VISUALIZAR ESCALERAS
         for (int i = 0; i < escaleraLength; i++)

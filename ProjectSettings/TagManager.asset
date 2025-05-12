@@ -12,12 +12,7 @@ TagManager:
   - ChangeDirection
   - OilBarrel
   - Barrel
-  - EscalerasExit
-  - EscalerasEnter
-  - EscalerasMiddle
   - BarrelRolling
-  - BarrelEscaleras
-  - Points
   layers:
   - Default
   - TransparentFX
@@ -31,7 +26,7 @@ TagManager:
   - LastFloor
   - Barrel
   - Stairs
-  - Player
+  - 
   - 
   - 
   - 
