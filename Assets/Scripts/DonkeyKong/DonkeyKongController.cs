@@ -97,7 +97,7 @@ public class DonkeyKongController : MonoBehaviour
 
         Instantiate(Barrels[barrelIndex], spawnPosition, Barrels[0].transform.rotation);
 
-        float randomTime = Random.Range(3f, 5f);
+        float randomTime = Random.Range(3f, 10f);
         Invoke("AnimationThrow", randomTime);
     }
 
