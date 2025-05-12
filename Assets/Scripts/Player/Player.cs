@@ -9,7 +9,7 @@ public class Player
     private Transform raycastOrigin;
     private Rigidbody2D rb;
     private LayerMask layer;
-    private bool enEscaleraUp, enEscaleraMid, enEscaleraDown;
+    private bool enEscaleraUp, enEscaleraMid, enEscaleraDown, touchingDeath;
     private Vector3 actualEscalera;
     public float speed;
     public float jumpSpeed;
@@ -59,7 +59,7 @@ public class Player
 
     public void UpdatePlayer()
     {
-        //Debug.Log(state);
+        Debug.Log(state);
 
         switch (state)
         {
@@ -78,11 +78,28 @@ public class Player
             case PLAYERSTATE.ONSTAIRSDOWN:
                 OnDownStairs();
                 break;
+            case PLAYERSTATE.HAMMERIDLE:
+                OnHammerMode();
+                break;
+            //case PLAYERSTATE.DEATH:
+            //    OnDeath();
+            //    break;
         }
+    }
+
+    private void OnDeath() 
+    {
+        
+    }
+
+    private void OnHammerMode() 
+    {
+
     }
 
     private void OnFloor()
     {
+        if (ToOnDeath()) return;
         // Primero verificar transición a escaleras
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && !jump_ia.triggered) return;
 
@@ -97,6 +114,7 @@ public class Player
 
     private void OnAir()
     {
+        if (ToOnDeath()) return;
         if (DetectFloor()) {
             // Intentar transición a escaleras primero
             if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && DetectFloor()) return;
@@ -108,26 +126,9 @@ public class Player
         Run(hDir);
     }
 
-    // sin uso
-    /*
-    public void IgnoreOutStairs(Collision2D collision) {
-        if (exitingStair)
-        {
-            if ((collision.gameObject.layer == 6) && rb.velocity.y > 0)
-            {
-                Physics2D.IgnoreCollision(capsuleCollider, collision.collider, exitingStair);
-            }
-        }
-        else {
-            if (collision.gameObject.layer == 6)
-            {
-                Physics2D.IgnoreCollision(capsuleCollider, collision.collider, exitingStair);
-            }
-        }       
-    }*/
-
     private void OnStairsOut()
     {
+        if (ToOnDeath()) return;
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
@@ -141,6 +142,7 @@ public class Player
 
     private void OnUpStairs()
     {
+        if (ToOnDeath()) return;
         vDir = ver_ia.ReadValue<float>();
 
         if (Mathf.Abs(vDir) > 0.1f)
@@ -170,6 +172,7 @@ public class Player
 
     private void OnDownStairs()
     {
+        if (ToOnDeath()) return;
         hDir = hor_ia.ReadValue<float>();
 
         if (ToOnUpStairs()) return;
@@ -206,6 +209,14 @@ public class Player
         else if (hDir < -0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+        }
+    }
+
+    public void BarrilCollisionEnter(Collision2D collision) 
+    {
+        if (collision.collider.CompareTag("Barrel")) 
+        {
+            touchingDeath = true;
         }
     }
 
@@ -268,18 +279,14 @@ public class Player
         return false;
     }
 
-    /*
-    bool ToOnStairs()
+    bool ToOnDeath()
     {
-        if (enEscaleraMid)
-        {
-            state = PLAYERSTATE.ONSTAIRS;
-            rb.gravityScale = 0;
-            rb.velocity = Vector2.zero;
+        if (touchingDeath) {
+            state = PLAYERSTATE.DEATH;
             return true;
         }
         return false;
-    }*/
+    }
 
     bool ToOnUpStairs()
     {
