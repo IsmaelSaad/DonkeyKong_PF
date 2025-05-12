@@ -1052,6 +1052,10 @@ PrefabInstance:
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 7230911150585473221, guid: fd4e7ada204341c45821a9b8816f92a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230911150585473221, guid: fd4e7ada204341c45821a9b8816f92a2, type: 3}
       propertyPath: rollingBarrelsSpawn
       value: 
       objectReference: {fileID: 943830860}
@@ -1769,7 +1773,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 70
+  m_SideArc: 80
 --- !u!1 &1464348242
 GameObject:
   m_ObjectHideFlags: 0

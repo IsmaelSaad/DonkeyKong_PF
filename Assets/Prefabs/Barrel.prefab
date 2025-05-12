@@ -134,7 +134,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2039
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -258,16 +258,12 @@ MonoBehaviour:
   animator: {fileID: 4395340545328235321}
   speed: 2
   detectStair: {fileID: 4995056137256063324}
-  raycastOriginStairs: {fileID: 7937966433732928202}
   bounceForce: 1.5
   groundRayDistance: 0.35
   stairRayDistance: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 823
-  stairMask:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!95 &4395340545328235321
 Animator:
   serializedVersion: 5
