@@ -381,6 +381,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: -3.613}
+--- !u!1001 &94323326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.406
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587758492973095562, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811934088911135639, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
+      propertyPath: m_Name
+      value: OilBarrel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 934037d1075c0e34b9b408835e005b7b, type: 3}
 --- !u!1001 &262487989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7230911150585473221, guid: fd4e7ada204341c45821a9b8816f92a2, type: 3}
+      propertyPath: rollingBarrelsSpawn
+      value: 
+      objectReference: {fileID: 943830860}
     - target: {fileID: 8841066101927729447, guid: fd4e7ada204341c45821a9b8816f92a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.789
@@ -2083,11 +2144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4009798584047958523, guid: 432ced1bfb96e80498beec878404863b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.89
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 4009798584047958523, guid: 432ced1bfb96e80498beec878404863b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.61
+      value: -4.17
       objectReference: {fileID: 0}
     - target: {fileID: 4009798584047958523, guid: 432ced1bfb96e80498beec878404863b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2786,10 +2847,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464806979780521979, guid: efdc498a7f748734ca6b9b82401ee2ac, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6464806979780521979, guid: efdc498a7f748734ca6b9b82401ee2ac, type: 3}
       propertyPath: normalBarrelSpawn
       value: 
       objectReference: {fileID: 934590069}
@@ -2998,3 +3055,4 @@ SceneRoots:
   - {fileID: 2022372311}
   - {fileID: 934590068}
   - {fileID: 943830859}
+  - {fileID: 94323326}
