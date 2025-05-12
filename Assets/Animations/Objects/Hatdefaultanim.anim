@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Purse_default_anim
+  m_Name: Hatdefaultanim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 38efa509e83517243b7d512842a0f3fe, type: 2}
+      value: {fileID: 21300000, guid: 5d13f7fd1d09baf49a55ce8b3f56099c, type: 2}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 38efa509e83517243b7d512842a0f3fe, type: 2}
+    - {fileID: 21300000, guid: 5d13f7fd1d09baf49a55ce8b3f56099c, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

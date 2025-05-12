@@ -16,6 +16,8 @@ TagManager:
   - EscalerasEnter
   - EscalerasMiddle
   - BarrelRolling
+  - BarrelEscaleras
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -29,7 +31,7 @@ TagManager:
   - LastFloor
   - Barrel
   - Stairs
-  - 
+  - Fire
   - 
   - 
   - 

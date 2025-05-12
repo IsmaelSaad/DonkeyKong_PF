@@ -19,4 +19,5 @@ public class OilBarrelController : MonoBehaviour
     {
         fireAnimator.gameObject.SetActive(false);
     }
+
 }
