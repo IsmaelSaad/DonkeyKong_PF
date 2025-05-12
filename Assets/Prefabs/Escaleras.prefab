@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232173443339726104}
   - component: {fileID: 7896792722133154843}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Exit
   m_TagString: EscalerasExit
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4}
+  m_Size: {x: 0.31, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &3346156434677259344
 GameObject:
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2436352774322963222}
   - component: {fileID: 2917036616042247067}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Enter
   m_TagString: EscalerasEnter
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4}
+  m_Size: {x: 0.31, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &6632279711639500810
 GameObject:
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4849063217372640919}
   - component: {fileID: 6197822015711105686}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Middle
   m_TagString: EscalerasMiddle
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4}
+  m_Size: {x: 0.31, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &6762691696865355147
 GameObject:
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 6243908898756525864}
   - component: {fileID: 4774157200856828819}
   - component: {fileID: 5285824194024978405}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Escaleras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
