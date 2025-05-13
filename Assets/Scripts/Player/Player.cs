@@ -1,15 +1,10 @@
 using System;
-using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class Player
 {
-    private Transform transform;
-    private Transform raycastOrigin;
+    private Transform transform, raycastOrigin, actualFloor;
     private Rigidbody2D rb;
     private LayerMask layer;
     private bool enEscaleraUp, enEscaleraMid, enEscaleraDown, touchingDeath;
@@ -64,7 +59,7 @@ public class Player
 
     public void UpdatePlayer()
     {
-        Debug.Log(enEscaleraUp);
+        //Debug.Log(state);
 
         switch (state)
         {
@@ -143,18 +138,22 @@ public class Player
         }
     }
 
-    private void OnStairsPhase() 
+    private void OnStairsPhase()
     {
-        if (enEscaleraUp)
-        {
-            transform.position += new Vector3(0, 0.1f, 0);
-        }
-        else 
-        {
-            rb.gravityScale = 1.0f;
-            state = PLAYERSTATE.ONSTAIRSDOWN;
-        }
+        float angleDeg = actualFloor.rotation.eulerAngles.z;
+        float angleRad = angleDeg * Mathf.Deg2Rad;
+
+        float slopeLength = actualFloor.localScale.y; // vertical scale is slope length
+        float verticalHeight = slopeLength * Mathf.Sin(angleRad);
+
+        Debug.Log(verticalHeight);
+
+        transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.07f, 0);
+
+        state = PLAYERSTATE.ONSTAIRSDOWN;
     }
+
+
 
     private void OnUpStairs()
     {
@@ -228,17 +227,9 @@ public class Player
         }
     }
 
-    public void BloqueEscalerasCollisionExit(Collision2D collision) {
-        if (collision.collider.CompareTag("ChangeDirection") && enEscaleraUp) {
-            enEscaleraUp = false;
-        }
-    }
-
-    public void BloqueEscalerasCollisionStay(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("ChangeDirection") && enEscaleraUp)
-        {
-            enEscaleraUp = true;
+    public void SueloCollisionEnter(Collision2D collision) {
+        if (collision.collider.CompareTag("ChangeDirection")) {
+            actualFloor = collision.transform;
         }
     }
 
@@ -280,6 +271,10 @@ public class Player
         else if (collision.CompareTag("EscalerasMiddle"))
         {
             enEscaleraMid = false;
+        }
+        else if (collision.CompareTag("EscalerasExit"))
+        {
+            enEscaleraUp = false;
         }
     }
 

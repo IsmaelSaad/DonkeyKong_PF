@@ -87,15 +87,15 @@ public class BarrelController : MonoBehaviour
             state = State.ONSTAIRS;
         }
 
-        Debug.Log(genRandom);
-        Debug.Log(state);
+        //Debug.Log(genRandom);
+        //Debug.Log(state);
 
         if (!genRandom && state != State.ONSTAIRS && state != State.FALLSTAIRS && state != State.EXITSTAIRS) {
             goDown = Random.Range(0, 15);
             genRandom = true;
         }
 
-        Debug.Log(goDown);
+        //Debug.Log(goDown);
         //Debug.Log(hasStairs);
 
         switch (state)
