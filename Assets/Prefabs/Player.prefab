@@ -299,8 +299,8 @@ MonoBehaviour:
     m_Bits: 833
   raycastOrigin: {fileID: 7784311267162775648}
   inputActionMapping: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
-  speed: 2
-  jumpSpeed: 3.5
+  speed: 1.5
+  jumpSpeed: 3
   detectFloor: {fileID: 2324293877636097475}
   capsuleCollider: {fileID: 7985452638554380372}
 --- !u!114 &881500613896044835

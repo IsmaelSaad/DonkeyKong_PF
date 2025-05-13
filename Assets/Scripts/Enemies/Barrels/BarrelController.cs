@@ -26,11 +26,6 @@ public class BarrelController : MonoBehaviour
         barrel = new Barrel(transform, animator, speed, rb, boxColl, detectStair, bounceForce, groundRayDistance, stairRayDistance, groundMask);
     }
 
-    void Update()
-    {
-        Debug.Log(barrel.state);
-    }
-
     void FixedUpdate()
     {
         barrel.BarrelFixedUpdate();

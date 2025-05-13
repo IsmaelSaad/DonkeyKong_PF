@@ -59,7 +59,7 @@ public class Player
 
     public void UpdatePlayer()
     {
-        //Debug.Log(state);
+        Debug.Log(state);
 
         switch (state)
         {
@@ -155,7 +155,10 @@ public class Player
         else {
             transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.07f, 0);
         }
-        
+
+        actualEscalera = Vector3.zero;
+
+        rb.gravityScale = 1f;
 
         state = PLAYERSTATE.ONSTAIRSDOWN;
     }
@@ -201,6 +204,7 @@ public class Player
 
         if (hDir != 0) {
             animator.SetBool("idleStair", false);
+            actualEscalera = Vector3.zero;
             if (ToOnFloor()) return;
         }
     }
@@ -319,7 +323,7 @@ public class Player
     bool ToOnUpStairs()
     {
 
-        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered)
+        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered && actualEscalera != Vector3.zero)
         {
             transform.position = new Vector2(actualEscalera.x, transform.position.y);
             state = PLAYERSTATE.ONSTAIRSUP;

@@ -18,7 +18,7 @@ public class EscalerasController : MonoBehaviour
     public BoxCollider2D entrar, salir, middle, sizeCollider;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CreateEscaleras();
     }
@@ -48,6 +48,6 @@ public class EscalerasController : MonoBehaviour
         }*/
 
         middle.offset = new Vector3(middle.offset.x, (stairHeight*escaleraLength)/2 - 0.05f);
-        middle.size = new Vector3(middle.size.x, stairHeight * escaleraLength - 0.1f);
+        middle.size = new Vector3(middle.size.x, stairHeight * escaleraLength - 0.08f);
     }
 }
