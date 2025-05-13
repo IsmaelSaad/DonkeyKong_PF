@@ -24,6 +24,7 @@ public class BarrelRolling : Enemy
 
     public BarrelRolling(Animator animator, float speed, GameObject itself, Rigidbody2D rb, CapsuleCollider2D crcColl, Transform transform, GameObject barrel, float bounceForce, float groundRayDistance, LayerMask groundMaskRolling) : base(animator, speed) {
         this.rb = rb;
+        this.itself = itself;
         this.crcColl = crcColl;
         this.transform = transform;
         this.barrel = barrel;

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 250750570019486924}
   - component: {fileID: 2947753707967857816}
   - component: {fileID: 7005533855887020287}
-  - component: {fileID: 4485473868368626568}
   - component: {fileID: 7304168348978122482}
   - component: {fileID: 5962837976670601659}
+  - component: {fileID: 7092856373581703176}
   m_Layer: 7
   m_Name: BlueBarrelRolling
   m_TagString: BarrelRolling
@@ -109,25 +109,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4485473868368626568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750204928180654594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ae5d6416f257f448f2674cead6632c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3.5
-  Barrel: {fileID: 7270672901590242996, guid: 3f89f2a1514fa02419103b5b0b604288, type: 3}
-  bounceForce: 3
-  groundRayDistance: 0.3
-  groundMaskRolling:
-    serializedVersion: 2
-    m_Bits: 567
 --- !u!70 &7304168348978122482
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,3 +171,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7092856373581703176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750204928180654594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9031bf965677b3b44bb85933be7612e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3.5
+  barrel: {fileID: 7270672901590242996, guid: 3f89f2a1514fa02419103b5b0b604288, type: 3}
+  bounceForce: 3
+  groundRayDistance: 0.3
+  groundMaskRolling:
+    serializedVersion: 2
+    m_Bits: 567

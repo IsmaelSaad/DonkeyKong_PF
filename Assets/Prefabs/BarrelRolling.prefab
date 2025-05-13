@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7365672456920167228}
   - component: {fileID: 5596424174196607848}
   - component: {fileID: 322675529704038159}
-  - component: {fileID: 6592534231108209784}
+  - component: {fileID: -1015869412973719767}
   - component: {fileID: 8838052836802818}
   - component: {fileID: 3999963720302136907}
   m_Layer: 7
@@ -109,7 +109,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6592534231108209784
+--- !u!114 &-1015869412973719767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,11 +118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3066437501088341490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ae5d6416f257f448f2674cead6632c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9031bf965677b3b44bb85933be7612e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  Barrel: {fileID: 7270672901590242996, guid: 0108bf872a98a714584d1de1bf5169ea, type: 3}
+  barrel: {fileID: 7270672901590242996, guid: 0108bf872a98a714584d1de1bf5169ea, type: 3}
   bounceForce: 3
   groundRayDistance: 0.3
   groundMaskRolling:
