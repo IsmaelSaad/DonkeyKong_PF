@@ -31,12 +31,10 @@ public class Barrel : Enemy
 
     public Barrel(Transform transform, Animator animator, float speed, Rigidbody2D rb, BoxCollider2D boxColl, BoxCollider2D detectStair, float bounceForce, float groundRayDistance, float stairRayDistance, LayerMask groundMask) : base(animator, speed) {
         this.transform = transform;
-        this.animator = animator;
         this.rb = rb;
         this.boxColl = boxColl;
         this.bounceForce = bounceForce;
         this.groundRayDistance = groundRayDistance;
-        this.speed = speed;
         this.detectStair = detectStair;
         this.bounceForce = bounceForce;
         this.groundRayDistance = groundRayDistance;
