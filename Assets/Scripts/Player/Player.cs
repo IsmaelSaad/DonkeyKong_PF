@@ -148,7 +148,14 @@ public class Player
 
         Debug.Log(verticalHeight);
 
-        transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.07f, 0);
+        if (angleDeg == 0)
+        {
+            transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.03f, 0);
+        }
+        else {
+            transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.07f, 0);
+        }
+        
 
         state = PLAYERSTATE.ONSTAIRSDOWN;
     }
