@@ -6,7 +6,7 @@ public class Hat_object : MonoBehaviour
 {
     [SerializeField] int Score = 500;
     [SerializeField] Animator animator;
-    [SerializeField] private High_Score_Contoller highScoreController;
+    [SerializeField] private HighScoreContoller highScoreController;
     float destroyDelay = 2.5f;
     string IsScored = "IsScored";
 
