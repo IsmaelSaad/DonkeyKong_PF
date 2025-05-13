@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player
 {
@@ -15,6 +18,7 @@ public class Player
     public float jumpSpeed;
     public float hDir;
     public float vDir;
+    public bool startPhase;
     public Animator animator;
     public InputActionAsset inputActionMapping;
     public Collider2D capsuleCollider;
@@ -24,6 +28,7 @@ public class Player
         FLOOR, AIR,
         ONSTAIRSOUT,
         ONSTAIRSUP, ONSTAIRSDOWN,
+        ONSTAIRSPHASE,
         DEATH, HAMMERIDLE,
         HAMMERWALK, FALLING
     }
@@ -59,7 +64,7 @@ public class Player
 
     public void UpdatePlayer()
     {
-        Debug.Log(state);
+        Debug.Log(enEscaleraUp);
 
         switch (state)
         {
@@ -78,6 +83,9 @@ public class Player
             case PLAYERSTATE.ONSTAIRSDOWN:
                 OnDownStairs();
                 break;
+            case PLAYERSTATE.ONSTAIRSPHASE:
+                OnStairsPhase();
+                break;
             case PLAYERSTATE.HAMMERIDLE:
                 OnHammerMode();
                 break;
@@ -86,7 +94,6 @@ public class Player
             //    break;
         }
     }
-
     private void OnDeath() 
     {
         
@@ -131,10 +138,20 @@ public class Player
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
-            transform.position += new Vector3(0,0.35f,0);
-            rb.gravityScale = 1.0f;
-            Debug.Log("finishexit");
             animator.SetBool("exitStair", false);
+            state = PLAYERSTATE.ONSTAIRSPHASE;
+        }
+    }
+
+    private void OnStairsPhase() 
+    {
+        if (enEscaleraUp)
+        {
+            transform.position += new Vector3(0, 0.1f, 0);
+        }
+        else 
+        {
+            rb.gravityScale = 1.0f;
             state = PLAYERSTATE.ONSTAIRSDOWN;
         }
     }
@@ -211,6 +228,20 @@ public class Player
         }
     }
 
+    public void BloqueEscalerasCollisionExit(Collision2D collision) {
+        if (collision.collider.CompareTag("ChangeDirection") && enEscaleraUp) {
+            enEscaleraUp = false;
+        }
+    }
+
+    public void BloqueEscalerasCollisionStay(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("ChangeDirection") && enEscaleraUp)
+        {
+            enEscaleraUp = true;
+        }
+    }
+
     public void BarrilCollisionEnter(Collision2D collision) 
     {
         if (collision.collider.CompareTag("Barrel")) 
@@ -249,10 +280,6 @@ public class Player
         else if (collision.CompareTag("EscalerasMiddle"))
         {
             enEscaleraMid = false;
-        }
-        else if (collision.CompareTag("EscalerasExit"))
-        {
-            enEscaleraUp = false;
         }
     }
 

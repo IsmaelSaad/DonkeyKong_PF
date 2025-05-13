@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5285824194024978405}
   m_Layer: 11
   m_Name: Escaleras
-  m_TagString: Untagged
+  m_TagString: Escaleras
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
