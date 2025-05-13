@@ -18,7 +18,6 @@ public class Barrel : Enemy
     public LayerMask groundMask;
 
     private int goDown;
-    private Animator animator;
 
     public enum State
     {
@@ -45,14 +44,7 @@ public class Barrel : Enemy
         this.groundMask = groundMask;
     }
 
-    //void Start()
-    //{
-    //    rb = GetComponent<Rigidbody2D>();
-    //    boxColl = GetComponentInChildren<BoxCollider2D>();
-    //    animator = GetComponent<Animator>();
-    //}
-
-    private void BarrelOnTriggerEnter2D(Collider2D collision)
+    public void BarrelOnTriggerEnter2D(Collider2D collision)
     {
         if (detectStair.IsTouching(collision))
         {
@@ -68,14 +60,9 @@ public class Barrel : Enemy
                 exitStairs = true;
             }
         }
-
-        //if (collision.CompareTag("OilBarrel"))
-        //{
-        //    Destroy(gameObject);
-        //}
     }
 
-    private void BarrelOnTriggerExit2D(Collider2D collision)
+    public void BarrelOnTriggerExit2D(Collider2D collision)
     {
         if (!detectStair.IsTouching(collision))
         {
@@ -87,19 +74,24 @@ public class Barrel : Enemy
         }
     }
 
-    void BarrelFixedUpdate()
+    public void BarrelUpdate() 
+    {
+        Debug.Log(state);
+    }
+
+    public void BarrelFixedUpdate()
     {
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
         hasGround = hit2D.collider != null;
 
-        if (hasStairs && (state != State.FALLSTAIRS && state != State.EXITSTAIRS))
+        if (hasStairs && (state != State.FALLSTAIRS || state != State.EXITSTAIRS))
         {
             state = State.ONSTAIRS;
         }
 
         if (!genRandom && state != State.ONSTAIRS && state != State.FALLSTAIRS && state != State.EXITSTAIRS)
         {
-            goDown = Random.Range(0, 15);
+            goDown = Random.Range(0, 20);
             genRandom = true;
         }
 
@@ -155,9 +147,14 @@ public class Barrel : Enemy
                 }
                 break;
             case State.BOUNCING:
-                if (!hasGround && rb.velocity.y < 0)
+
+                if (!hasGround)
                 {
-                    state = State.BOUNCING_FALL;
+                    if (rb.velocity.y < 0)
+                    {
+                        state = State.BOUNCING_FALL;
+                    }
+
                 }
                 break;
             case State.BOUNCING_FALL:
@@ -168,6 +165,7 @@ public class Barrel : Enemy
                     state = State.MOVEMENT;
                 }
                 break;
+
         }
     }
 

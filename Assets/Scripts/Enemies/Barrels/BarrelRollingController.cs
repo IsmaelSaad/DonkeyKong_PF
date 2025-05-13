@@ -44,7 +44,6 @@ public class BarrelRollingController : MonoBehaviour
                 }
                 break;
             case State.FALLING:
-
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 if (hasGround)
                 {
@@ -68,22 +67,15 @@ public class BarrelRollingController : MonoBehaviour
                     {
                         state = State.BOUNCING_FALL;
                     }
-
-                    
                 }
                 break;
             case State.BOUNCING_FALL:
-                
                 if (hasGround)
                 {
                     state = State.MOVEMENT;
                 }
-                
                 break;
-
         }
-
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

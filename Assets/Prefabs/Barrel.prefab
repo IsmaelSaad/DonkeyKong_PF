@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4995056137256063324}
   - component: {fileID: 7728563062259121396}
   - component: {fileID: 1265525987668974501}
-  - component: {fileID: 2617000623783539473}
   - component: {fileID: 4395340545328235321}
+  - component: {fileID: -9143577037127074754}
   m_Layer: 10
   m_Name: Barrel
   m_TagString: Barrel
@@ -243,27 +243,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2617000623783539473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270672901590242996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46552a63d36a83848acd8e7b62efd1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4395340545328235321}
-  speed: 2
-  detectStair: {fileID: 4995056137256063324}
-  bounceForce: 1.5
-  groundRayDistance: 0.35
-  stairRayDistance: 0.5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 823
 --- !u!95 &4395340545328235321
 Animator:
   serializedVersion: 5
@@ -285,6 +264,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-9143577037127074754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270672901590242996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ed4d96d6c61924f9308462b6e1e141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4395340545328235321}
+  speed: 2
+  detectStair: {fileID: 4995056137256063324}
+  bounceForce: 1.5
+  groundRayDistance: 0.35
+  stairRayDistance: 0.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 823
 --- !u!1 &8562204914679768122
 GameObject:
   m_ObjectHideFlags: 0

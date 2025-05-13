@@ -5,7 +5,7 @@ using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class BarrelController : MonoBehaviour
+public class BarrelControllerOLD : MonoBehaviour
 {
 
     [SerializeField] Animator animator;
