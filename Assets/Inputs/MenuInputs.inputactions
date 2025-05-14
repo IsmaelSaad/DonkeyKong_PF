@@ -1,0 +1,73 @@
+{
+    "name": "MenuInputs",
+    "maps": [
+        {
+            "name": "PressAnyKey",
+            "id": "5cbe4640-dcbd-40b2-9261-2f7eb778a359",
+            "actions": [
+                {
+                    "name": "AnyKeyButton",
+                    "type": "Button",
+                    "id": "42c7237a-c996-403a-bfe2-8ae040116fc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "84b3e41e-2626-45d1-887f-335bf6a314d0",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyKeyButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "VerticalMenu",
+            "id": "64fa5165-5d43-4e43-846f-c81d040caced",
+            "actions": [
+                {
+                    "name": "MenuMovement",
+                    "type": "Value",
+                    "id": "0d3534e2-48a3-434d-85c0-1da969bea598",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "de9fe567-c4a1-4675-99c2-15582c27410a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f697cabe-caa4-4fd4-a914-7126f57cc943",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
