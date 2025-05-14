@@ -59,7 +59,12 @@ public class Player
 
     public void UpdatePlayer()
     {
-        Debug.Log(state);
+        //Debug.Log(state);
+
+        //Debug.Log(enEscaleraUp);
+        //Debug.Log(enEscaleraMid);
+        //Debug.Log(enEscaleraDown);
+
 
         switch (state)
         {
@@ -68,9 +73,6 @@ public class Player
                 break;
             case PLAYERSTATE.AIR:
                 OnAir();
-                break;
-            case PLAYERSTATE.ONSTAIRSTOP:
-                OnStairsTop();
                 break;
             case PLAYERSTATE.ONSTAIRSOUT:
                 OnStairsOut();
@@ -107,6 +109,7 @@ public class Player
         if (ToOnDeath()) return;
         // Primero verificar transición a escaleras
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && !jump_ia.triggered) return;
+        if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
 
         if (ToOnDownStairs()) return;
         if (ToOnAir()) return;
@@ -130,11 +133,6 @@ public class Player
         Run(hDir);
     }
 
-    private void OnStairsTop() 
-    {
-        if (ToOnDeath()) return;
-
-    }
 
     private void OnStairsOut()
     {
@@ -159,7 +157,7 @@ public class Player
 
         if (angleDeg == 0)
         {
-            transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.03f, 0);
+            transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.05f, 0);
         }
         else {
             transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.07f, 0);
@@ -171,8 +169,6 @@ public class Player
 
         state = PLAYERSTATE.ONSTAIRSDOWN;
     }
-
-
 
     private void OnUpStairs()
     {
@@ -209,6 +205,7 @@ public class Player
         if (ToOnDeath()) return;
         hDir = hor_ia.ReadValue<float>();
 
+        if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
         if (ToOnUpStairs()) return;
 
         if (hDir != 0) {
@@ -244,6 +241,14 @@ public class Player
         else if (hDir < -0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+        }
+    }
+
+    public void SueloCollisionEnter(Collision2D collision) 
+    {
+        if (collision.collider.CompareTag("ChangeDirection")) 
+        {
+            actualFloor = collision.collider.transform;
         }
     }
 
@@ -292,6 +297,7 @@ public class Player
         }
     }
 
+
     bool ToOnFloor()
     {
         if (DetectFloor() && rb.velocity.y <= 0)
@@ -336,6 +342,29 @@ public class Player
         }
         return false;
     }
+
+    bool ToEnterDownStairsFromTop()
+    {
+        RaycastHit2D hitStairs = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.5f, LayerMask.GetMask("Stairs"));
+        bool getStairs = hitStairs.collider != null;
+
+        vDir = ver_ia.ReadValue<float>();
+
+        if (getStairs) {
+            if (hitStairs.collider.CompareTag("EscalerasExit") && vDir < 0)
+            {
+                transform.position = new Vector2(hitStairs.collider.transform.position.x, hitStairs.collider.transform.position.y);
+                enEscaleraUp = false;
+                state = PLAYERSTATE.ONSTAIRSUP;
+                rb.gravityScale = 0;
+                rb.velocity = Vector2.zero;
+                animator.SetBool("idleStair", false);
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     bool ToOnDownStairs()
     {

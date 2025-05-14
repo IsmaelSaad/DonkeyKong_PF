@@ -31,13 +31,13 @@ public class DonkeyKongController : MonoBehaviour
     public void LanzarBarrilNormal()
     {
         animator.SetTrigger("ThrowBarrel");
-        Debug.Log("Lanzo Barril");
+        //Debug.Log("Lanzo Barril");
         
     }
     public void LanzarBarrilCritico()
     {
         animator.SetTrigger("ThrowSpecialBarrel");
-        Debug.Log("Lanzo Barril critico");
+        //Debug.Log("Lanzo Barril critico");
         
     }
 
