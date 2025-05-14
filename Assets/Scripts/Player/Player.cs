@@ -210,7 +210,6 @@ public class Player
 
         if (hDir != 0) {
             animator.SetBool("idleStair", false);
-            actualEscalera = Vector3.zero;
             if (ToOnFloor()) return;
         }
     }
