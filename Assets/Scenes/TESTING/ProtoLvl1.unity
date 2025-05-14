@@ -707,15 +707,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4774157200856828819, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: escaleraLength
-      value: 4.05
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5285824194024978405, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_Size.y
-      value: 0.623077
+      value: 0.61538464
       objectReference: {fileID: 0}
     - target: {fileID: 5285824194024978405, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_Offset.y
-      value: 0.23461542
+      value: 0.23076925
       objectReference: {fileID: 0}
     - target: {fileID: 6243908898756525864, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -723,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6243908898756525864, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1242
+      value: -3.124
       objectReference: {fileID: 0}
     - target: {fileID: 6243908898756525864, guid: 34f465e15c77d8248a86ff006a829ad2, type: 3}
       propertyPath: m_LocalPosition.z
