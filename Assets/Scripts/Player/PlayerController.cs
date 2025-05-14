@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] LayerMask floorLayer;
+    [SerializeField] LayerMask floorLayer, stairsLayer;
     [SerializeField] Transform raycastOrigin;
     [SerializeField] InputActionAsset inputActionMapping;
     [SerializeField] float speed = 5f;
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         mario.BarrilCollisionEnter(collision);
-        mario.SueloCollisionEnter(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

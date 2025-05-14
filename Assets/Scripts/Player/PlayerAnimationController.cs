@@ -45,13 +45,13 @@ public class PlayerAnimationController : MonoBehaviour
                 mario.animator.SetBool("jumping", true);
                 break;
             case (Player.PLAYERSTATE.ONSTAIRSUP):
-                mario.animator.SetBool("jumping", false);
+                //mario.animator.SetBool("jumping", false);
                 mario.animator.SetBool("onStair", true);
                 mario.animator.SetFloat("speed", 0);
                 mario.animator.SetFloat("speedStair", Mathf.Abs(mario.speed * mario.vDir));
                 break;
             case (Player.PLAYERSTATE.ONSTAIRSDOWN):
-                mario.animator.SetBool("jumping", false);
+                //mario.animator.SetBool("jumping", false);
                 mario.animator.SetBool("onStair", false);
                 mario.animator.SetBool("idleStair", true);
                 break;

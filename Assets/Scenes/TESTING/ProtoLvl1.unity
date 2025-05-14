@@ -2183,6 +2183,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4308179039382318042, guid: 432ced1bfb96e80498beec878404863b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308179039382318042, guid: 432ced1bfb96e80498beec878404863b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308179039382318042, guid: 432ced1bfb96e80498beec878404863b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374769052897086724, guid: 432ced1bfb96e80498beec878404863b, type: 3}
+      propertyPath: boxCollEscalera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5781228856786063588, guid: 432ced1bfb96e80498beec878404863b, type: 3}
       propertyPath: m_Name
       value: Player

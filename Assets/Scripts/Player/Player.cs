@@ -23,7 +23,7 @@ public class Player
         FLOOR, AIR,
         ONSTAIRSOUT,
         ONSTAIRSUP, ONSTAIRSDOWN,
-        ONSTAIRSPHASE,
+        ONSTAIRSPHASE, ONSTAIRSTOP,
         DEATH, HAMMERIDLE,
         HAMMERWALK, FALLING
     }
@@ -68,6 +68,9 @@ public class Player
                 break;
             case PLAYERSTATE.AIR:
                 OnAir();
+                break;
+            case PLAYERSTATE.ONSTAIRSTOP:
+                OnStairsTop();
                 break;
             case PLAYERSTATE.ONSTAIRSOUT:
                 OnStairsOut();
@@ -125,6 +128,12 @@ public class Player
 
         hDir = hor_ia.ReadValue<float>();
         Run(hDir);
+    }
+
+    private void OnStairsTop() 
+    {
+        if (ToOnDeath()) return;
+
     }
 
     private void OnStairsOut()
@@ -235,12 +244,6 @@ public class Player
         else if (hDir < -0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-        }
-    }
-
-    public void SueloCollisionEnter(Collision2D collision) {
-        if (collision.collider.CompareTag("ChangeDirection")) {
-            actualFloor = collision.transform;
         }
     }
 

@@ -297,6 +297,9 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 833
+  stairsLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   raycastOrigin: {fileID: 7784311267162775648}
   inputActionMapping: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
   speed: 1.5
