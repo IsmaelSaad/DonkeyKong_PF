@@ -59,13 +59,6 @@ public class Player
 
     public void UpdatePlayer()
     {
-        //Debug.Log(state);
-
-        //Debug.Log(enEscaleraUp);
-        //Debug.Log(enEscaleraMid);
-        //Debug.Log(enEscaleraDown);
-
-
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -240,6 +233,13 @@ public class Player
         else if (hDir < -0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+        }
+    }
+
+    public void HammerCollisionEnter(Collider2D collision) 
+    {
+        if (collision.CompareTag("Hammer")) {
+            state = PLAYERSTATE.HAMMERIDLE;
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectController : MonoBehaviour
 {
 
-    [SerializeField] int scorePoints = 500;
+    [SerializeField] int scorePoints;
     [SerializeField] Animator animator;
     [SerializeField] float destroyDelay;
     [SerializeField] bool isHammer;
@@ -29,13 +29,12 @@ public class ObjectController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             boxColl.enabled = false;
-            gameManager.AddPoints(500);
+            gameManager.AddPoints(scorePoints);
             if (!isHammer)
             {
                 animator.SetBool("IsScored", false);
-                CoroutineRunner.Instance.StartCoroutine(DestroyAfterAnimation());
             }
-            
+            CoroutineRunner.Instance.StartCoroutine(DestroyAfterAnimation());
             //objectPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString("D6");
         }
     }
