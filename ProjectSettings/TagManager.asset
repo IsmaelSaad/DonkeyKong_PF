@@ -15,6 +15,7 @@ TagManager:
   - BarrelRolling
   - BarrelEscaleras
   - Flame
+  - Hammer
   layers:
   - Default
   - TransparentFX

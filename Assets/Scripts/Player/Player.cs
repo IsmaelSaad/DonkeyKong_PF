@@ -59,12 +59,6 @@ public class Player
 
     public void UpdatePlayer()
     {
-        //Debug.Log(state);
-
-        //Debug.Log(enEscaleraUp);
-        //Debug.Log(enEscaleraMid);
-        //Debug.Log(enEscaleraDown);
-
 
         switch (state)
         {
