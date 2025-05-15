@@ -82,6 +82,9 @@ public class Player
             case PLAYERSTATE.HAMMERIDLE:
                 OnHammerMode();
                 break;
+            case PLAYERSTATE.HAMMERWALK:
+                OnHammerMode();
+                break;
                 //case PLAYERSTATE.DEATH:
                 //    OnDeath();
                 //    break;
@@ -366,6 +369,14 @@ public class Player
     }
     */
 
+
+    bool ToHammerWalk() {
+        return false;
+    }
+
+    bool ToHammerIdle() {
+        return false;
+    }
 
     bool ToOnDownStairs()
     {
