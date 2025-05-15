@@ -79,7 +79,7 @@ public class Barrel : Enemy
                 actualEscalera = collision.transform;
                 genRandom = false;
             }
-            if (collision.CompareTag("EscalerasEnter"))
+            if (collision.CompareTag("EscalerasEnter") || collision.CompareTag("BarrelEscaleras"))
             {
                 hasStairs = false;
                 exitStairs = true;
@@ -111,13 +111,8 @@ public class Barrel : Enemy
 
         if (hasPlayerOn && isPlayerTouchingPoints)
         {
-            Debug.Log("pingas");
             hasPlayerOn = false;
-
             gameManager.AddPoints(barrelPoints);
-            //playerPoints = barrelPoints;
-
-            //playerPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString("D6");
         }
 
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);

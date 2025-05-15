@@ -44,6 +44,9 @@ public class PlayerAnimationController : MonoBehaviour
             case (Player.PLAYERSTATE.AIR):
                 mario.animator.SetBool("jumping", true);
                 break;
+            case (Player.PLAYERSTATE.HAMMERIDLE):
+                mario.animator.SetBool("hammerMode", true);
+                break;
             case (Player.PLAYERSTATE.ONSTAIRSUP):
                 mario.animator.SetBool("jumping", false);
                 mario.animator.SetBool("onStair", true);
