@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player
 {
@@ -85,14 +86,18 @@ public class Player
             case PLAYERSTATE.HAMMERWALK:
                 OnHammerMode();
                 break;
-                //case PLAYERSTATE.DEATH:
-                //    OnDeath();
-                //    break;
+            case PLAYERSTATE.DEATH:
+                OnDeath();
+                break;
         }
     }
     private void OnDeath()
     {
-
+        Debug.Log("lifes: " + GameManager.Instance.GetLifes());
+        if (GameManager.Instance.GetLifes() != 0) 
+        { 
+            SceneManager.LoadScene("Lvl1");
+        }
     }
 
     private void OnHammerMode()
@@ -256,8 +261,9 @@ public class Player
 
     public void BarrilCollisionEnter(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Barrel"))
+        if (collision.collider.CompareTag("Barrel") || collision.collider.CompareTag("BarrelRolling"))
         {
+            GameManager.Instance.DecrementLife(1);
             touchingDeath = true;
         }
     }
@@ -326,6 +332,7 @@ public class Player
     {
         if (touchingDeath) {
             state = PLAYERSTATE.DEATH;
+
             return true;
         }
         return false;

@@ -71,6 +71,9 @@ public class Barrel : Enemy
 
     public void BarrelOnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Barrel")) {
+            Physics2D.IgnoreCollision(boxColl, boxColl);
+        }
         if (detectStair.IsTouching(collision))
         {
             if (collision.CompareTag("EscalerasExit"))

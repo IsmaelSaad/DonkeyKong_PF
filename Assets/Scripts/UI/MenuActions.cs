@@ -69,6 +69,11 @@ public class MenuActions : MonoBehaviour
         }
     }
 
+    public void PressExitSettings() 
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     void PressKeysMenu ()
     {
         if (menuKey.ReadValue<float>() < 0 && menuKey.triggered) 
@@ -92,6 +97,7 @@ public class MenuActions : MonoBehaviour
         if (menuSelect.triggered && arrowIndex == 0)
         {
             SceneManager.LoadScene("Lvl1");
+            GameManager.Instance.AddLife(3);
         }
         else if (menuSelect.triggered && arrowIndex == 1) 
         {
@@ -101,10 +107,11 @@ public class MenuActions : MonoBehaviour
             }
             else 
             {
-                // TODO
+                SceneManager.LoadScene("Settings");
             }
                 
         }
+
         //  if (isGameOver)
     }
 
