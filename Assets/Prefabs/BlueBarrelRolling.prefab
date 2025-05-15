@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  barrel: {fileID: 7270672901590242996, guid: 3f89f2a1514fa02419103b5b0b604288, type: 3}
+  barrel: {fileID: 7270672901590242996, guid: 4cc8f862f289ebb4788e7b9a33e4af69, type: 3}
   bounceForce: 3
   groundRayDistance: 0.3
   groundMaskRolling:

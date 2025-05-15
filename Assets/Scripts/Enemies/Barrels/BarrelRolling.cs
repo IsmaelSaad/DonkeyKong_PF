@@ -57,9 +57,9 @@ public class BarrelRolling : Enemy
                 }
                 if (hit2D.collider.CompareTag("LastFloor") || hit2D.collider.CompareTag("OilBarrel"))
                 {
-                    GameObject barrelInstantiate = Object.Instantiate(barrel, transform.position, Quaternion.identity);
+                    GameObject barrelInstantiate = MonoBehaviour.Instantiate(barrel, transform.position, Quaternion.identity);
                     barrelInstantiate.GetComponent<BarrelController>().speed *= -1;
-                    Object.Destroy(itself);
+                    MonoBehaviour.Destroy(itself);
                     crcColl.enabled = true;
                 }
                 break;
@@ -86,7 +86,7 @@ public class BarrelRolling : Enemy
     {
         if (collision.CompareTag("OilBarrel"))
         {
-            Object.Destroy(itself);
+            MonoBehaviour.Destroy(itself);
         }
     }
 }

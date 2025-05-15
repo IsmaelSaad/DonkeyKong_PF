@@ -89,17 +89,17 @@ public class Player
             case PLAYERSTATE.HAMMERIDLE:
                 OnHammerMode();
                 break;
-            //case PLAYERSTATE.DEATH:
-            //    OnDeath();
-            //    break;
+                //case PLAYERSTATE.DEATH:
+                //    OnDeath();
+                //    break;
         }
     }
-    private void OnDeath() 
+    private void OnDeath()
     {
-        
+
     }
 
-    private void OnHammerMode() 
+    private void OnHammerMode()
     {
 
     }
@@ -109,7 +109,7 @@ public class Player
         if (ToOnDeath()) return;
         // Primero verificar transición a escaleras
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && !jump_ia.triggered) return;
-        if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
+        //if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
 
         if (ToOnDownStairs()) return;
         if (ToOnAir()) return;
@@ -205,7 +205,7 @@ public class Player
         if (ToOnDeath()) return;
         hDir = hor_ia.ReadValue<float>();
 
-        if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
+        //if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
         if (ToOnUpStairs()) return;
 
         if (hDir != 0) {
@@ -243,17 +243,17 @@ public class Player
         }
     }
 
-    public void SueloCollisionEnter(Collision2D collision) 
+    public void SueloCollisionEnter(Collision2D collision)
     {
-        if (collision.collider.CompareTag("ChangeDirection")) 
+        if (collision.collider.CompareTag("ChangeDirection"))
         {
             actualFloor = collision.collider.transform;
         }
     }
 
-    public void BarrilCollisionEnter(Collision2D collision) 
+    public void BarrilCollisionEnter(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Barrel")) 
+        if (collision.collider.CompareTag("Barrel"))
         {
             touchingDeath = true;
         }
@@ -331,7 +331,7 @@ public class Player
     bool ToOnUpStairs()
     {
 
-        if (enEscaleraDown  && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered && actualEscalera != Vector3.zero)
+        if (enEscaleraDown && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered && actualEscalera != Vector3.zero)
         {
             transform.position = new Vector2(actualEscalera.x, transform.position.y);
             state = PLAYERSTATE.ONSTAIRSUP;
@@ -342,6 +342,7 @@ public class Player
         return false;
     }
 
+    /*
     bool ToEnterDownStairsFromTop()
     {
         RaycastHit2D hitStairs = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.5f, LayerMask.GetMask("Stairs"));
@@ -363,6 +364,7 @@ public class Player
         }
         return false;
     }
+    */
 
 
     bool ToOnDownStairs()

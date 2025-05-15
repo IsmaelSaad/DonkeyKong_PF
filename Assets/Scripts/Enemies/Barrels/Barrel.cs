@@ -117,7 +117,7 @@ public class Barrel : Enemy
             gameManager.AddPoints(barrelPoints);
             //playerPoints = barrelPoints;
 
-            playerPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString();
+            //playerPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString("D6");
         }
 
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);

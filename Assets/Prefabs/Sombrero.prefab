@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -141,11 +141,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5595106117719436869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19bba914f34462c4e820cba42f70c510, type: 3}
+  m_Script: {fileID: 11500000, guid: 9db5fd2795a7ecf44988a2a6e53f3626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 500
+  scorePoints: 500
   animator: {fileID: 4105932772700851419}
+  destroyDelay: 2
+  isHammer: 0
 --- !u!95 &4105932772700851419
 Animator:
   serializedVersion: 5
@@ -156,7 +158,7 @@ Animator:
   m_GameObject: {fileID: 5595106117719436869}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c836ad66bd5cc2e4080cad2edb38dbf9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4789d513d90efac43ab931d03822914a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
