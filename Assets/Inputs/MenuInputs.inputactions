@@ -37,10 +37,19 @@
                     "name": "MenuMovement",
                     "type": "Value",
                     "id": "0d3534e2-48a3-434d-85c0-1da969bea598",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SelectionMenu",
+                    "type": "Button",
+                    "id": "642f3f72-3c29-4c8a-a648-313bec115b6d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -63,6 +72,28 @@
                     "processors": "Invert",
                     "groups": "",
                     "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bcee02e0-5054-4e16-b3f6-7a145dd8221e",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectionMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5be72e9a-9e03-444f-a377-6e9572de9ff8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectionMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
