@@ -11,7 +11,7 @@ public class Barrel : Enemy
     private float bounceForce;
     private float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
     private Transform actualEscalera;
-    private int goDown, barrelPoints;
+    private int goDown, barrelPoints = 100;
     private bool hasGround = false, hasStairs = false, exitStairs = false, genRandom = false, hasPlayerOn = false, isPlayerTouchingPoints = false;
     private BoxCollider2D detectStair;
     private GameManager gameManager;
@@ -47,7 +47,7 @@ public class Barrel : Enemy
 
     public void PointsOnTriggerEnter2D(Collider2D collision) 
     {
-        if (playerPointsColl.IsTouching(collision) && !isPlayerTouchingPoints) 
+        if (playerPointsColl.IsTouching(collision) && !isPlayerTouchingPoints)
         {
             if (collision.CompareTag("Player")) 
             {
@@ -111,6 +111,7 @@ public class Barrel : Enemy
 
         if (hasPlayerOn && isPlayerTouchingPoints)
         {
+            Debug.Log("pingas");
             hasPlayerOn = false;
 
             gameManager.AddPoints(barrelPoints);

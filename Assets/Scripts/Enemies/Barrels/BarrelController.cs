@@ -25,7 +25,7 @@ public class BarrelController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxColl = GetComponentInChildren<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        barrel = new Barrel(transform, animator, speed, rb, boxColl, playerPointsColl, detectStair, bounceForce, groundRayDistance, stairRayDistance, groundMask, gameManager);
+        barrel = new Barrel(transform, animator, speed, rb, boxColl, detectStair, playerPointsColl, bounceForce, groundRayDistance, stairRayDistance, groundMask, gameManager);
     }
 
     void FixedUpdate()
