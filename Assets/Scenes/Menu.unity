@@ -1214,6 +1214,7 @@ MonoBehaviour:
   - {fileID: 1799547028}
   - {fileID: 1640920247}
   - {fileID: 1132102646}
+  isGameOver: 0
   anyKey:
     m_Name: Any Key
     m_Type: 0
@@ -1233,7 +1234,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   menuSelect:
-    m_Name: 
+    m_Name: Menu Select
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 45c30d82-0014-42c2-b564-0ade067860b0
