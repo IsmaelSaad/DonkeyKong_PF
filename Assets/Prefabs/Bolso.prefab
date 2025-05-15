@@ -141,11 +141,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8497553304906979240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1d494aa2ade134588237c9f0d43968, type: 3}
+  m_Script: {fileID: 11500000, guid: 9db5fd2795a7ecf44988a2a6e53f3626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 0
+  scorePoints: 500
   animator: {fileID: 9094723152996806506}
+  destroyDelay: 2
+  isHammer: 0
 --- !u!95 &9094723152996806506
 Animator:
   serializedVersion: 5
@@ -156,7 +158,7 @@ Animator:
   m_GameObject: {fileID: 8497553304906979240}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9a9a26362bd40764aa65cf9c3cdd0720, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2b62a574dd75a94479c17648e89c26bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

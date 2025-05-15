@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     int lifes = 3;
     private static int points = 0;
+    private static string textPoints;
     void Start()
     {
         
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
+        GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = GetPoints().ToString("D6");
     }
 
     public void AddPoints(int p) {

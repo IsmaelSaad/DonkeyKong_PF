@@ -26,10 +26,12 @@ public class EscalerasController : MonoBehaviour
     void OnValidate()
     {
         float stairHeight = (escaleraSprite.sprite.rect.height / escaleraSprite.sprite.pixelsPerUnit);
-        if (escaleraSprite != null && entrar != null && salir != null)
-        {
-            sizeCollider.offset = new Vector3(sizeCollider.offset.x, ((stairHeight * escaleraLength) / 2) - stairHeight/2, 0);
-            sizeCollider.size = new Vector3(sizeCollider.size.x, (stairHeight * escaleraLength), 0);
+        if (sizeCollider != null) {
+            if (escaleraSprite != null && entrar != null && salir != null)
+            {
+                sizeCollider.offset = new Vector3(sizeCollider.offset.x, ((stairHeight * escaleraLength) / 2) - stairHeight / 2, 0);
+                sizeCollider.size = new Vector3(sizeCollider.size.x, (stairHeight * escaleraLength), 0);
+            }
         }
     }
 

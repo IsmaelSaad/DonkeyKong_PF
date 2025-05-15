@@ -2984,27 +2984,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nintendo 64 - Donkey Kong 64 - DK Arcade_150
-      rect:
-        serializedVersion: 2
-        x: 321
-        y: 0
-        width: 169
-        height: 141
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 551f8ff8520fac446a174aa43d9a2bda
-      internalID: -220749303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Nintendo 64 - Donkey Kong 64 - DK Arcade_151
       rect:
         serializedVersion: 2
@@ -3409,7 +3388,7 @@ TextureImporter:
         serializedVersion: 2
         x: 33
         y: 36
-        width: 24
+        width: 11
         height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3452,7 +3431,7 @@ TextureImporter:
         x: 22
         y: 1
         width: 8
-        height: 22
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3470,9 +3449,9 @@ TextureImporter:
       name: Nintendo 64 - Donkey Kong 64 - DK Arcade_173
       rect:
         serializedVersion: 2
-        x: 1
+        x: 9
         y: 1
-        width: 16
+        width: 8
         height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

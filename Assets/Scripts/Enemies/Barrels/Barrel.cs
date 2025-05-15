@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
+using TMPro;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Barrel : Enemy
 {
     private Transform transform;
     private Rigidbody2D rb;
-    private BoxCollider2D boxColl;
+    private BoxCollider2D boxColl, playerPointsColl;
     private float bounceForce;
     private float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
     private Transform actualEscalera;
-    private bool hasGround = false, hasStairs = false, exitStairs = false, genRandom = false;
+    private int goDown, barrelPoints = 100;
+    private bool hasGround = false, hasStairs = false, exitStairs = false, genRandom = false, hasPlayerOn = false, isPlayerTouchingPoints = false;
     private BoxCollider2D detectStair;
+    private GameManager gameManager;
+    private string playerPoints;
     public LayerMask groundMask;
 
-    private int goDown;
+
 
     public enum State
     {
@@ -28,11 +29,12 @@ public class Barrel : Enemy
     };
     public State state = State.MOVEMENT;
 
-
-    public Barrel(Transform transform, Animator animator, float speed, Rigidbody2D rb, BoxCollider2D boxColl, BoxCollider2D detectStair, float bounceForce, float groundRayDistance, float stairRayDistance, LayerMask groundMask) : base(animator, speed) {
+    public Barrel(Transform transform, Animator animator, float speed, Rigidbody2D rb, BoxCollider2D boxColl, BoxCollider2D detectStair, BoxCollider2D playerPointsColl,  float bounceForce, float groundRayDistance, float stairRayDistance, LayerMask groundMask, GameManager gameManager) : base(animator, speed)
+    {
         this.transform = transform;
         this.rb = rb;
         this.boxColl = boxColl;
+        this.playerPointsColl = playerPointsColl;
         this.bounceForce = bounceForce;
         this.groundRayDistance = groundRayDistance;
         this.detectStair = detectStair;
@@ -40,6 +42,31 @@ public class Barrel : Enemy
         this.groundRayDistance = groundRayDistance;
         this.stairRayDistance = stairRayDistance;
         this.groundMask = groundMask;
+        this.gameManager = gameManager;
+    }
+
+    public void PointsOnTriggerEnter2D(Collider2D collision) 
+    {
+        if (playerPointsColl.IsTouching(collision) && !isPlayerTouchingPoints)
+        {
+            if (collision.CompareTag("Player")) 
+            {
+                hasPlayerOn = true;
+                isPlayerTouchingPoints = true;
+            }
+        }
+    }
+
+    public void PointsOnTriggerExit2D(Collider2D collision)
+    {
+        if (!playerPointsColl.IsTouching(collision))
+        {
+            if (collision.CompareTag("Player"))
+            {
+                hasPlayerOn = false;
+                isPlayerTouchingPoints = false;
+            }
+        }
     }
 
     public void BarrelOnTriggerEnter2D(Collider2D collision)
@@ -72,13 +99,22 @@ public class Barrel : Enemy
         }
     }
 
-    public void BarrelUpdate() 
-    {
-        Debug.Log(state);
-    }
+    //public void BarrelUpdate() 
+    //{
+    //    Debug.Log(state);
+    //}
 
     public void BarrelFixedUpdate()
     {
+        Debug.Log(hasPlayerOn);
+        Debug.Log(isPlayerTouchingPoints);
+
+        if (hasPlayerOn && isPlayerTouchingPoints)
+        {
+            hasPlayerOn = false;
+            gameManager.AddPoints(barrelPoints);
+        }
+
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
         hasGround = hit2D.collider != null;
 
