@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5207113218431880606}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HammerAnimator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7784311267162775648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RaycastOriginFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3082356001094836056}
   - component: {fileID: 5374769052897086724}
   - component: {fileID: 881500613896044835}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.03}
+  m_Size: {x: 0.28, y: 0.03}
   m_EdgeRadius: 0
 --- !u!50 &4347282913226216854
 Rigidbody2D:
@@ -302,8 +302,8 @@ MonoBehaviour:
     m_Bits: 2048
   raycastOrigin: {fileID: 7784311267162775648}
   inputActionMapping: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
-  speed: 2
-  jumpSpeed: 4
+  speed: 1.75
+  jumpSpeed: 3
   detectFloor: {fileID: 2324293877636097475}
   capsuleCollider: {fileID: 7985452638554380372}
 --- !u!114 &881500613896044835

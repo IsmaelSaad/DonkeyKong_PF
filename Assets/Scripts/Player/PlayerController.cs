@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {   
+        mario.HammerCollisionEnter(collision);
         if (detectFloor.IsTouching(collision)) 
         {
             mario.EscalerasCollisionEnter(collision);
