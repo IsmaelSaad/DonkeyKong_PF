@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7304168348978122482}
   - component: {fileID: 5962837976670601659}
   - component: {fileID: 7092856373581703176}
+  - component: {fileID: 529576054414193786}
   m_Layer: 7
   m_Name: BlueBarrelRolling
   m_TagString: BarrelRolling
@@ -184,9 +185,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  barrel: {fileID: 7270672901590242996, guid: 4cc8f862f289ebb4788e7b9a33e4af69, type: 3}
+  barrel: {fileID: 7270672901590242996, guid: 8b138c8a7ec26f3499abb49830a5f598, type: 3}
   bounceForce: 3
   groundRayDistance: 0.3
   groundMaskRolling:
     serializedVersion: 2
     m_Bits: 535
+--- !u!70 &529576054414193786
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750204928180654594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.8, y: 0.5}
+  m_Direction: 1

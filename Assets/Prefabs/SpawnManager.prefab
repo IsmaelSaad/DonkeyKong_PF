@@ -39,14 +39,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287338868720060758}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b9edefeeb506044b807fea2e2068a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Barrels:
   - {fileID: 7270672901590242996, guid: 0108bf872a98a714584d1de1bf5169ea, type: 3}
-  - {fileID: 7270672901590242996, guid: 4cc8f862f289ebb4788e7b9a33e4af69, type: 3}
+  - {fileID: 7270672901590242996, guid: 8b138c8a7ec26f3499abb49830a5f598, type: 3}
   - {fileID: 5750204928180654594, guid: a46d600467da232448fcc4603c0c804d, type: 3}
-  - {fileID: 3066437501088341490, guid: 5685d85bab26c0f4a910c1d766adb04e, type: 3}
+  - {fileID: 5750204928180654594, guid: d57c96a0ef4982d4da48f9aab465dcd1, type: 3}
   rollingBarrelsSpawn: {fileID: 0}

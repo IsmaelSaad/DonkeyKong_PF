@@ -99,7 +99,6 @@ public class Player
     }
     private void OnDeath()
     {
-        Debug.Log("lifes: " + GameManager.Instance.GetLifes());
         if (GameManager.Instance.GetLifes() != 0) 
         { 
             SceneManager.LoadScene("Lvl1");
