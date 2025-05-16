@@ -33,6 +33,7 @@ public class Fire : Enemy
 
     void Update() 
     {
+        Transform position 
     }
 
 
