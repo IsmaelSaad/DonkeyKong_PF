@@ -7,11 +7,19 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
 
+    private void Awake()
+    {
+        PlayerController pc;
+        Player mario;
+
+        pc = FindObjectOfType<PlayerController>();
+
+    }
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
+            PlayerPrefs.SetFloat("musicVolume", 2);
             Load();
         }
         else
