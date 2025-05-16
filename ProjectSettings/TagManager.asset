@@ -18,6 +18,10 @@ TagManager:
   - Flame
   - Hammer
   - ExitSettingsButton
+  - Pause
+  - Life1
+  - Life2
+  - Life3
   layers:
   - Default
   - TransparentFX
