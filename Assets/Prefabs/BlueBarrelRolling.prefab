@@ -189,4 +189,4 @@ MonoBehaviour:
   groundRayDistance: 0.3
   groundMaskRolling:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 535
