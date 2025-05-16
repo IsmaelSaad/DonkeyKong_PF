@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4395340545328235321}
-  speed: 2
+  speed: 2.5
   detectStair: {fileID: 4995056137256063324}
   playerPointsColl: {fileID: 3782826415594525084}
   bounceForce: 1.5

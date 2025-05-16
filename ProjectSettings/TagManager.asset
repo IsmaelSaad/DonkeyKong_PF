@@ -13,9 +13,11 @@ TagManager:
   - OilBarrel
   - Barrel
   - BarrelRolling
-  - BarrelEscaleras
   - Points
+  - BarrelEscaleras
+  - Flame
   - Hammer
+  - ExitSettingsButton
   layers:
   - Default
   - TransparentFX
@@ -29,8 +31,8 @@ TagManager:
   - LastFloor
   - Barrel
   - Stairs
+  - Player
   - 
-  - Hammer
   - 
   - 
   - 
