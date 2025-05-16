@@ -13,6 +13,9 @@ TagManager:
   - OilBarrel
   - Barrel
   - BarrelRolling
+  - BarrelEscaleras
+  - Points
+  - Hammer
   layers:
   - Default
   - TransparentFX
@@ -27,7 +30,7 @@ TagManager:
   - Barrel
   - Stairs
   - 
-  - 
+  - Hammer
   - 
   - 
   - 

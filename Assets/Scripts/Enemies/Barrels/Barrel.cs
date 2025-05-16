@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using static Player;
 
 public class Barrel : Enemy
 {
@@ -11,12 +13,13 @@ public class Barrel : Enemy
     private float bounceForce;
     private float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
     private Transform actualEscalera;
-    private int goDown, barrelPoints = 100;
+    private int goDown, barrelPoints = 100, barrelPointsDest = 300;
     private bool hasGround = false, hasStairs = false, exitStairs = false, genRandom = false, hasPlayerOn = false, isPlayerTouchingPoints = false;
     private BoxCollider2D detectStair;
     private GameManager gameManager;
     private string playerPoints;
     public LayerMask groundMask;
+    public GameObject itself;
 
 
 
@@ -25,11 +28,11 @@ public class Barrel : Enemy
         MOVEMENT, FALLING,
         BOUNCING, BOUNCING_FALL,
         ONSTAIRS, FALLSTAIRS,
-        EXITSTAIRS
+        EXITSTAIRS, DESTROY
     };
     public State state = State.MOVEMENT;
 
-    public Barrel(Transform transform, Animator animator, float speed, Rigidbody2D rb, BoxCollider2D boxColl, BoxCollider2D detectStair, BoxCollider2D playerPointsColl,  float bounceForce, float groundRayDistance, float stairRayDistance, LayerMask groundMask, GameManager gameManager) : base(animator, speed)
+    public Barrel(Transform transform, Animator animator, float speed, Rigidbody2D rb, BoxCollider2D boxColl, BoxCollider2D detectStair, BoxCollider2D playerPointsColl,  float bounceForce, float groundRayDistance, float stairRayDistance, LayerMask groundMask, GameManager gameManager, GameObject itself) : base(animator, speed)
     {
         this.transform = transform;
         this.rb = rb;
@@ -42,6 +45,7 @@ public class Barrel : Enemy
         this.groundRayDistance = groundRayDistance;
         this.stairRayDistance = stairRayDistance;
         this.groundMask = groundMask;
+        this.itself = itself;
         this.gameManager = gameManager;
     }
 
@@ -71,6 +75,12 @@ public class Barrel : Enemy
 
     public void BarrelOnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Hammer") && state != State.DESTROY) 
+        {
+            GameManager.Instance.AddPoints(barrelPointsDest);
+            animator.SetBool("destroy", true);
+            state = State.DESTROY;
+        }
         if (detectStair.IsTouching(collision))
         {
             if (collision.CompareTag("EscalerasExit"))
@@ -104,30 +114,52 @@ public class Barrel : Enemy
     //    Debug.Log(state);
     //}
 
+    IEnumerator DestroyAfterAnimation()
+    {
+        boxColl.enabled = false;
+        rb.gravityScale = 0;
+        rb.velocity = Vector3.zero;
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        while (stateInfo.normalizedTime < 1.0f || animator.IsInTransition(0))
+        {
+            yield return null;
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0); 
+        }
+
+        animator.SetBool("destroy", false);
+
+        yield return new WaitForSeconds(2f);
+        Object.Destroy(itself);
+    }
+
+
     public void BarrelFixedUpdate()
     {
-        Debug.Log(hasPlayerOn);
-        Debug.Log(isPlayerTouchingPoints);
+        if (state != State.DESTROY) {
+            if (hasPlayerOn && isPlayerTouchingPoints)
+            {
+                hasPlayerOn = false;
+                gameManager.AddPoints(barrelPoints);
+            }
 
-        if (hasPlayerOn && isPlayerTouchingPoints)
-        {
-            hasPlayerOn = false;
-            gameManager.AddPoints(barrelPoints);
+            RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
+            hasGround = hit2D.collider != null;
+
+            if (hasStairs && (state != State.FALLSTAIRS || state != State.EXITSTAIRS))
+            {
+                state = State.ONSTAIRS;
+            }
+
+            if (!genRandom && state != State.ONSTAIRS && state != State.FALLSTAIRS && state != State.EXITSTAIRS)
+            {
+                goDown = Random.Range(0, 20);
+                genRandom = true;
+            }
         }
 
-        RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMask);
-        hasGround = hit2D.collider != null;
-
-        if (hasStairs && (state != State.FALLSTAIRS || state != State.EXITSTAIRS))
-        {
-            state = State.ONSTAIRS;
-        }
-
-        if (!genRandom && state != State.ONSTAIRS && state != State.FALLSTAIRS && state != State.EXITSTAIRS)
-        {
-            goDown = Random.Range(0, 20);
-            genRandom = true;
-        }
+        Debug.Log(state);
 
         switch (state)
         {
@@ -198,6 +230,9 @@ public class Barrel : Enemy
                     speed *= -1;
                     state = State.MOVEMENT;
                 }
+                break;
+            case State.DESTROY:
+                CoroutineRunner.Instance.StartCoroutine(DestroyAfterAnimation());
                 break;
 
         }

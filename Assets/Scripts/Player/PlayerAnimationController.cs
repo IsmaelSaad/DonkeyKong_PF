@@ -37,15 +37,19 @@ public class PlayerAnimationController : MonoBehaviour
         switch (mario.state)
         {
             case (Player.PLAYERSTATE.FLOOR):
+                mario.animator.SetBool("hammerMode", false);
                 mario.animator.SetBool("onStair", false);
                 mario.animator.SetBool("jumping", false);
+                mario.hDir = mario.hor_ia.ReadValue<float>();
                 mario.animator.SetFloat("speed", Mathf.Abs(mario.speed * mario.hDir));
                 break;
             case (Player.PLAYERSTATE.AIR):
                 mario.animator.SetBool("jumping", true);
                 break;
-            case (Player.PLAYERSTATE.HAMMERIDLE):
+            case (Player.PLAYERSTATE.HAMMERMODE):
                 mario.animator.SetBool("hammerMode", true);
+                mario.hDir = mario.hor_ia.ReadValue<float>();
+                mario.animator.SetFloat("speed", Mathf.Abs(mario.speed * mario.hDir));
                 break;
             case (Player.PLAYERSTATE.ONSTAIRSUP):
                 mario.animator.SetBool("jumping", false);

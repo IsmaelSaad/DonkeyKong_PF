@@ -11,6 +11,7 @@ public class BarrelController : MonoBehaviour
     [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
     [SerializeField] LayerMask groundMask;
 
+    GameObject itself;
     GameManager gameManager;
 
     Rigidbody2D rb;
@@ -21,11 +22,12 @@ public class BarrelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        itself = gameObject;
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         boxColl = GetComponentInChildren<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        barrel = new Barrel(transform, animator, speed, rb, boxColl, detectStair, playerPointsColl, bounceForce, groundRayDistance, stairRayDistance, groundMask, gameManager);
+        barrel = new Barrel(transform, animator, speed, rb, boxColl, detectStair, playerPointsColl, bounceForce, groundRayDistance, stairRayDistance, groundMask, gameManager, itself);
     }
 
     void FixedUpdate()

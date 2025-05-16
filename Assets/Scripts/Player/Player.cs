@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,14 +11,16 @@ public class Player
     private LayerMask layer;
     private bool enEscaleraUp, enEscaleraMid, enEscaleraDown, touchingDeath;
     private Vector3 actualEscalera;
+    private SpriteRenderer hammerRenderer;
     public float speed;
     public float jumpSpeed;
     public float hDir;
     public float vDir;
     public bool startPhase;
-    public Animator animator;
+    public Animator animator, hammerAnimator;
     public InputActionAsset inputActionMapping;
     public Collider2D capsuleCollider;
+    public BoxCollider2D hammerColl;
 
     public enum PLAYERSTATE
     {
@@ -24,14 +28,13 @@ public class Player
         ONSTAIRSOUT,
         ONSTAIRSUP, ONSTAIRSDOWN,
         ONSTAIRSPHASE, ONSTAIRSTOP,
-        DEATH, HAMMERIDLE,
-        HAMMERWALK, FALLING
+        DEATH, HAMMERMODE, FALLING
     }
     public PLAYERSTATE state;
 
     public InputAction hor_ia, ver_ia, jump_ia;
 
-    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer, Collider2D capsuleCollider)
+    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer, Collider2D capsuleCollider, Animator hammerAnimator, SpriteRenderer hammerRenderer, BoxCollider2D hammerColl)
     {
         this.transform = transform;
         this.raycastOrigin = raycastOrigin;
@@ -41,7 +44,11 @@ public class Player
         this.capsuleCollider = capsuleCollider;
         this.animator = animator;
         this.inputActionMapping = inputActionMapping;
+        this.hammerAnimator = hammerAnimator;
+        this.hammerRenderer = hammerRenderer;
+        this.hammerColl = hammerColl;
         this.layer = layer;
+        this.hammerColl = hammerColl;
     }
 
     public void WakePlayer()
@@ -59,6 +66,8 @@ public class Player
 
     public void UpdatePlayer()
     {
+        //Debug.Log(state);
+
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -79,10 +88,7 @@ public class Player
             case PLAYERSTATE.ONSTAIRSPHASE:
                 OnStairsPhase();
                 break;
-            case PLAYERSTATE.HAMMERIDLE:
-                OnHammerMode();
-                break;
-            case PLAYERSTATE.HAMMERWALK:
+            case PLAYERSTATE.HAMMERMODE:
                 OnHammerMode();
                 break;
                 //case PLAYERSTATE.DEATH:
@@ -97,7 +103,31 @@ public class Player
 
     private void OnHammerMode()
     {
+        hDir = hor_ia.ReadValue<float>();
 
+        Run(hDir);
+    }
+
+    IEnumerator HammerModeEnds()
+    {
+        yield return new WaitForSeconds(7f);
+
+        Color gold = new Color(1f, 1f, 0f); 
+        Color white = Color.white;
+        float flashDuration = 0.2f;
+        int flashCount = 3; 
+
+        for (int i = 0; i < flashCount; i++)
+        {
+            hammerRenderer.color = gold;
+            yield return new WaitForSeconds(flashDuration);
+            hammerRenderer.color = white;
+            yield return new WaitForSeconds(flashDuration);
+        }
+        hammerAnimator.enabled = false;
+        hammerRenderer.enabled = false;
+        hammerColl.enabled = false;
+        state = PLAYERSTATE.FLOOR;
     }
 
     private void OnFloor()
@@ -242,7 +272,11 @@ public class Player
     public void HammerCollisionEnter(Collider2D collision) 
     {
         if (collision.CompareTag("Hammer")) {
-            state = PLAYERSTATE.HAMMERIDLE;
+            state = PLAYERSTATE.HAMMERMODE;
+            hammerAnimator.enabled = true;
+            hammerRenderer.enabled = true;
+            hammerColl.enabled = true;
+            CoroutineRunner.Instance.StartCoroutine(HammerModeEnds());
         }
     }
 
@@ -370,11 +404,12 @@ public class Player
     */
 
 
-    bool ToHammerWalk() {
-        return false;
-    }
-
-    bool ToHammerIdle() {
+    bool ToHammerMode() {
+        hDir = hor_ia.ReadValue<float>();
+        if (hDir != 0) 
+        {
+            state = PLAYERSTATE.HAMMERMODE;
+        }
         return false;
     }
 

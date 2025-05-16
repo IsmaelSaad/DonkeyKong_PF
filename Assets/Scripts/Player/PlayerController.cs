@@ -10,17 +10,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpSpeed = 10f;
     [SerializeField] Collider2D detectFloor;
     [SerializeField] Collider2D capsuleCollider;
+    [SerializeField] Animator hammerAnimator;
+    [SerializeField] SpriteRenderer hammerRenderer;
+    [SerializeField] BoxCollider2D hammerColl;
 
-    private Rigidbody2D rb;
-    private Animator animator;
+    Rigidbody2D rb;
+    Animator animator;
     
+
     public Player mario;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        mario = new Player(transform, raycastOrigin, speed, jumpSpeed, rb, animator, inputActionMapping, floorLayer, capsuleCollider);
+        mario = new Player(transform, raycastOrigin, speed, jumpSpeed, rb, animator, inputActionMapping, floorLayer, capsuleCollider, hammerAnimator, hammerRenderer, hammerColl);
         mario.WakePlayer();
     }
 
