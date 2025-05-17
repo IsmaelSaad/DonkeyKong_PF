@@ -9,6 +9,7 @@ public class BarrelRollingController : MonoBehaviour
     [SerializeField] float bounceForce;
     [SerializeField] float groundRayDistance = 2.0f;
     [SerializeField] LayerMask groundMaskRolling;
+    [SerializeField] CapsuleCollider2D crcCollDeath;
 
     Rigidbody2D rb;
     CapsuleCollider2D crcColl;
@@ -19,7 +20,7 @@ public class BarrelRollingController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crcColl = GetComponent<CapsuleCollider2D>();
-        barrelRoll = new BarrelRolling(null, speed, gameObject, rb, crcColl, transform, barrel, bounceForce, groundRayDistance, groundMaskRolling);
+        barrelRoll = new BarrelRolling(null, speed, gameObject, rb, crcColl, transform, barrel, bounceForce, groundRayDistance, groundMaskRolling, crcCollDeath);
     }
 
     void FixedUpdate()

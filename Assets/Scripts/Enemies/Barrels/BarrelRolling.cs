@@ -7,25 +7,28 @@ public class BarrelRolling : Enemy
 {
     private GameObject itself;
     private Rigidbody2D rb;
-    private CapsuleCollider2D crcColl;
+    private CapsuleCollider2D crcColl, crcDeathColl;
     private Transform transform;
     private GameObject barrel;
     private float bounceForce;
     private float groundRayDistance = 2.0f;
     private LayerMask groundMaskRolling;
     private bool hasGround;
+    private int barrelRollPoints = 300;
 
     enum State
     {
         MOVEMENT, FALLING,
-        BOUNCING, BOUNCING_FALL
+        BOUNCING, BOUNCING_FALL,
+        DESTROY
     };
     State state = State.MOVEMENT;
 
-    public BarrelRolling(Animator animator, float speed, GameObject itself, Rigidbody2D rb, CapsuleCollider2D crcColl, Transform transform, GameObject barrel, float bounceForce, float groundRayDistance, LayerMask groundMaskRolling) : base(animator, speed) {
+    public BarrelRolling(Animator animator, float speed, GameObject itself, Rigidbody2D rb, CapsuleCollider2D crcColl, Transform transform, GameObject barrel, float bounceForce, float groundRayDistance, LayerMask groundMaskRolling, CapsuleCollider2D crcDeathColl) : base(animator, speed) {
         this.rb = rb;
         this.itself = itself;
         this.crcColl = crcColl;
+        this.crcDeathColl = crcDeathColl;
         this.transform = transform;
         this.barrel = barrel;
         this.bounceForce = bounceForce;
@@ -35,6 +38,8 @@ public class BarrelRolling : Enemy
 
     public void BarrelRollingFixedUpdate()
     {
+        Debug.Log(state);
+
         RaycastHit2D hit2D = Physics2D.Raycast(rb.position, Vector2.down, groundRayDistance, groundMaskRolling);
         hasGround = hit2D.collider != null;
         crcColl.enabled = false;
@@ -79,11 +84,24 @@ public class BarrelRolling : Enemy
                     state = State.MOVEMENT;
                 }
                 break;
+            case State.DESTROY:
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 0;
+                break;
         }
     }
 
     public void BarrelRollingOnTriggerEnter2D(Collider2D collision) 
     {
+        if (crcDeathColl.IsTouching(collision)) {
+            if (collision.CompareTag("Hammer") && state != State.DESTROY)
+            {
+                GameManager.Instance.AddPoints(barrelRollPoints);
+                animator.SetBool("destroy", true);
+                state = State.DESTROY;
+            }
+        }
+        
         if (collision.CompareTag("OilBarrel"))
         {
             Object.Destroy(itself);

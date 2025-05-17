@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6468611393718370108}
   - component: {fileID: 2991090750959449474}
   - component: {fileID: 8728626782984206957}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HammerAnimator
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7784311267162775648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RaycastOriginFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 3082356001094836056}
   - component: {fileID: 5374769052897086724}
   - component: {fileID: 881500613896044835}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

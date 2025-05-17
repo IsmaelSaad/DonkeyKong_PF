@@ -191,6 +191,7 @@ MonoBehaviour:
   groundMaskRolling:
     serializedVersion: 2
     m_Bits: 535
+  crcCollDeath: {fileID: 529576054414193786}
 --- !u!70 &529576054414193786
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4087
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
