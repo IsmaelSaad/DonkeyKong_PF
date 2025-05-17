@@ -59,11 +59,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        
-
-        
     }
+
     void Update()
     {
         if (actualScene == "NamePlayer")
@@ -131,12 +128,12 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "Lvl1" || scene.name == "Lvl2")
         {
-            pauseKey = inputActionPause.FindActionMap("InGameTools").FindAction("Pause");
-            pause.GetComponent<CanvasGroup>().alpha = 0;
-
             pause = GameObject.FindGameObjectWithTag("Pause");
             life1 = GameObject.FindGameObjectWithTag("Life1");
             life2 = GameObject.FindGameObjectWithTag("Life2");
+
+            pauseKey = inputActionPause.FindActionMap("InGameTools").FindAction("Pause");
+            pause.GetComponent<CanvasGroup>().alpha = 0;
         }
 
         actualScene = scene.name;

@@ -45,4 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActionPause: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
+  inputActionName: {fileID: -944628639613478452, guid: 3a52991b9087722499722172e0b715e3, type: 3}
   pause: {fileID: 0}
+  life1: {fileID: 0}
+  life2: {fileID: 0}
