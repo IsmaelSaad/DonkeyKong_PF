@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6468611393718370108}
   - component: {fileID: 2991090750959449474}
   - component: {fileID: 8728626782984206957}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: HammerAnimator
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 881500613896044835}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 7784311267162775648}
   inputActionMapping: {fileID: -944628639613478452, guid: ce8cd3e152e4c5e4891b1bf5f15b13e5, type: 3}
   speed: 1.5
-  jumpSpeed: 3
+  jumpSpeed: 3.5
   detectFloor: {fileID: 2324293877636097475}
   capsuleCollider: {fileID: 7985452638554380372}
   hammerAnimator: {fileID: 6468611393718370108}

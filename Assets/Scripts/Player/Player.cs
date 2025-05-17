@@ -292,9 +292,18 @@ public class Player
         }
     }
 
+    public void BarrilTriggerEnter(Collider2D collision) 
+    {
+        if ((collision.CompareTag("BarrelRolling") || collision.CompareTag("BarrelDeath")) && state != PLAYERSTATE.HAMMERMODE)
+        {
+            GameManager.Instance.DecrementLife(1);
+            touchingDeath = true;
+        }
+    }
+
     public void BarrilCollisionEnter(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Barrel") || collision.collider.CompareTag("BarrelRolling"))
+        if ((collision.collider.CompareTag("Barrel") || collision.collider.CompareTag("BarrelRolling")) && state != PLAYERSTATE.HAMMERMODE)
         {
             GameManager.Instance.DecrementLife(1);
             touchingDeath = true;

@@ -22,6 +22,8 @@ TagManager:
   - Life1
   - Life2
   - Life3
+  - FirstFloor
+  - BarrelDeath
   layers:
   - Default
   - TransparentFX

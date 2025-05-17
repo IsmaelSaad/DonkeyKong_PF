@@ -8,7 +8,7 @@ public class OilBarrelController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Barrel"))
+        if (collision.CompareTag("Barrel") || collision.CompareTag("BarrelRolling"))
         {
             fireAnimator.gameObject.SetActive(true);
             fireAnimator.enabled = true;
