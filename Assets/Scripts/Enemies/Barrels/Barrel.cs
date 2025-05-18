@@ -49,11 +49,11 @@ public class Barrel : Enemy
         this.gameManager = gameManager;
     }
 
-    public void PointsOnTriggerEnter2D(Collider2D collision) 
+    public void PointsOnTriggerEnter2D(Collider2D collision)
     {
         if (playerPointsColl.IsTouching(collision) && !isPlayerTouchingPoints)
         {
-            if (collision.CompareTag("Player")) 
+            if (collision.CompareTag("Player"))
             {
                 hasPlayerOn = true;
                 isPlayerTouchingPoints = true;
@@ -72,6 +72,7 @@ public class Barrel : Enemy
             }
         }
     }
+
 
     public void BarrelOnTriggerEnter2D(Collider2D collision)
     {
@@ -159,7 +160,7 @@ public class Barrel : Enemy
             }
         }
 
-        Debug.Log(state);
+        //Debug.Log(state);
 
         switch (state)
         {

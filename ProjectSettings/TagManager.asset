@@ -24,6 +24,7 @@ TagManager:
   - Life3
   - FirstFloor
   - BarrelDeath
+  - Event
   layers:
   - Default
   - TransparentFX

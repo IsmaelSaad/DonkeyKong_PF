@@ -212,7 +212,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Nintendo 64 - Donkey Kong 64 - DK Arcade_122
+  m_Name: BarrelAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: falling

@@ -62,7 +62,6 @@ public class MenuActions : MonoBehaviour
     {
         if (anyKey.triggered)
         {
-            Debug.Log("asd");
             DK.SetActive(false);
             Start.SetActive(false);
             state = State.MENU;
@@ -96,7 +95,7 @@ public class MenuActions : MonoBehaviour
 
         if (menuSelect.triggered && arrowIndex == 0)
         {
-            SceneManager.LoadScene("Lvl1");
+            SceneManager.LoadScene("Cutscene1");
             GameManager.Instance.AddLife(3);
         }
         else if (menuSelect.triggered && arrowIndex == 1) 

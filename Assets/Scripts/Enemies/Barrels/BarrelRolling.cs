@@ -7,7 +7,7 @@ public class BarrelRolling : Enemy
 {
     private GameObject itself;
     private Rigidbody2D rb;
-    private CapsuleCollider2D crcColl, crcDeathColl;
+    private CapsuleCollider2D crcColl;
     private Transform transform;
     private GameObject barrel;
     private float bounceForce;
@@ -24,11 +24,10 @@ public class BarrelRolling : Enemy
     };
     State state = State.MOVEMENT;
 
-    public BarrelRolling(Animator animator, float speed, GameObject itself, Rigidbody2D rb, CapsuleCollider2D crcColl, Transform transform, GameObject barrel, float bounceForce, float groundRayDistance, LayerMask groundMaskRolling, CapsuleCollider2D crcDeathColl) : base(animator, speed) {
+    public BarrelRolling(Animator animator, float speed, GameObject itself, Rigidbody2D rb, CapsuleCollider2D crcColl, Transform transform, GameObject barrel, float bounceForce, float groundRayDistance, LayerMask groundMaskRolling) : base(animator, speed) {
         this.rb = rb;
         this.itself = itself;
         this.crcColl = crcColl;
-        this.crcDeathColl = crcDeathColl;
         this.transform = transform;
         this.barrel = barrel;
         this.bounceForce = bounceForce;
@@ -60,12 +59,15 @@ public class BarrelRolling : Enemy
                     rb.velocity = Vector2.zero;
                     rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
                 }
-                if (hit2D.collider.CompareTag("LastFloor") || hit2D.collider.CompareTag("OilBarrel"))
-                {
-                    GameObject barrelInstantiate = Object.Instantiate(barrel, transform.position, Quaternion.identity);
-                    barrelInstantiate.GetComponent<BarrelController>().speed *= -1;
-                    Object.Destroy(itself);
-                    crcColl.enabled = true;
+                if (hit2D.collider != null) {
+                    if (hit2D.collider.CompareTag("LastFloor") || hit2D.collider.CompareTag("OilBarrel"))
+                    {
+                        GameObject barrelInstantiate = Object.Instantiate(barrel, transform.position, Quaternion.identity);
+                        if (barrelInstantiate != null)
+                            barrelInstantiate.GetComponent<BarrelController>().speed *= -1;
+                        Object.Destroy(itself);
+                        crcColl.enabled = true;
+                    }
                 }
                 break;
             case State.BOUNCING:
@@ -92,16 +94,7 @@ public class BarrelRolling : Enemy
     }
 
     public void BarrelRollingOnTriggerEnter2D(Collider2D collision) 
-    {
-        if (crcDeathColl.IsTouching(collision)) {
-            if (collision.CompareTag("Hammer") && state != State.DESTROY)
-            {
-                GameManager.Instance.AddPoints(barrelRollPoints);
-                animator.SetBool("destroy", true);
-                state = State.DESTROY;
-            }
-        }
-        
+    {   
         if (collision.CompareTag("OilBarrel"))
         {
             Object.Destroy(itself);

@@ -11,10 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputActionAsset inputActionPause, inputActionName;
     [SerializeField] GameObject pause, life1, life2;
     private InputAction pauseKey, enterNameKey;
-    
+
     string actualScene;
     
-    public static CoroutineRunner _instance
+    public static GameManager instance
     {
         get
         {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(go);
                 Instance = go.AddComponent<GameManager>();
             }
-            return _instance;
+            return instance;
         }
     }
 
@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
 
         else if (actualScene == "Lvl1" || actualScene == "Lvl2")
         {
-             GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = GetPoints().ToString("D6");
-       
+            GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = GetPoints().ToString("D6");
+
 
             if (lifes == 0)
             {

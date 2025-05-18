@@ -67,8 +67,6 @@ public class Player
 
     public void UpdatePlayer()
     {
-        //Debug.Log(state);
-
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -270,6 +268,13 @@ public class Player
         else if (hDir < -0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+        }
+    }
+
+    public void EventCollisionEnter(Collider2D collision) 
+    {
+        if (state == PLAYERSTATE.ONSTAIRSDOWN && collision.CompareTag("Event")) {
+            SceneManager.LoadScene("Cutscene2");
         }
     }
 
