@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        MongoDBManager.Instance.GetHighestScore();
     }
 
     private void Awake()
@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        MongoDBManager.Instance.playerData.playTime = DateTime.Now.Second;
+
         Debug.Log(MongoDBManager.Instance.playerData.name);
 
         if (lifes > 3) lifes = 3;
@@ -122,7 +124,27 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
-        
+        else if (actualScene == "Informe")
+        {
+            GameObject.FindGameObjectWithTag("Nombre").GetComponent<TMP_Text>().text = "Nombre: " + MongoDBManager.Instance.playerData.name;
+
+            GameObject.FindGameObjectWithTag("Tiempo").GetComponent<TMP_Text>().text = "Tiempo de juego: " + MongoDBManager.Instance.playerData.playTime.ToString();
+
+            GameObject.FindGameObjectWithTag("Puntos").GetComponent<TMP_Text>().text = "Puntos: " + MongoDBManager.Instance.playerData.score.ToString();
+
+            GameObject.FindGameObjectWithTag("BarrilesSaltados").GetComponent<TMP_Text>().text = "Barriles saltados: " + MongoDBManager.Instance.playerData.barrelsJumped.ToString();
+
+            GameObject.FindGameObjectWithTag("Objetos").GetComponent<TMP_Text>().text = "objetos recogidos: " + MongoDBManager.Instance.playerData.objectsPickedUp.ToString();
+
+
+            GameObject.FindGameObjectWithTag("HighScore1").GetComponent<TMP_Text>().text = Database.highScoreName[0] + " - " + Database.highScorePoints[0];
+            GameObject.FindGameObjectWithTag("HighScore2").GetComponent<TMP_Text>().text = Database.highScoreName[1] + " - " + Database.highScorePoints[1];
+            GameObject.FindGameObjectWithTag("HighScore3").GetComponent<TMP_Text>().text = Database.highScoreName[2] + " - " + Database.highScorePoints[2];
+
+
+
+        }
+
     }
 
     private void OnEnable()

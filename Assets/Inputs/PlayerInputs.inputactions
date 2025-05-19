@@ -37,6 +37,28 @@
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a9f0fe4-3af6-4717-9a06-260f0d114128",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f2f5943-7066-4e43-a9d2-51de98a99845",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -59,6 +81,17 @@
                     "name": "",
                     "id": "5c048053-51fb-4e12-942b-33bd6585dcaa",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9ca673a-31f7-4fa8-8aff-e4dbadcaeb8d",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -104,6 +137,28 @@
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7d8d12b-b8ae-464c-90c8-b0c3797327b7",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3701d332-cbcd-4220-a968-651481353e73",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -126,6 +181,17 @@
                     "name": "",
                     "id": "c6b3ea0f-c839-4cd2-b095-9b81badf768d",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aae78c38-5d57-4417-bdce-d018427a28de",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

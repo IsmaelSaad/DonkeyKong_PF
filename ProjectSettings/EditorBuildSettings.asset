@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogoFinal.unity
     guid: 82af36013f9b169458915409ff97a989
   - enabled: 1
+    path: Assets/Scenes/Informe.unity
+    guid: 8af89a49a41987b4b899cd5482fc0e24
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 8c842052c2992ba43bd3566f4c949c8b
   - enabled: 0

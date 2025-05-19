@@ -27,6 +27,14 @@ TagManager:
   - Event
   - Switch
   - Text
+  - Nombre
+  - Tiempo
+  - Puntos
+  - BarrilesSaltados
+  - Objetos
+  - HighScore1
+  - HighScore2
+  - HighScore3
   layers:
   - Default
   - TransparentFX

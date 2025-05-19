@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class MongoDBManager : MonoBehaviour
 {
@@ -34,6 +35,20 @@ public class MongoDBManager : MonoBehaviour
 
     private void Awake()
     {
+        string connectionString = "mongodb+srv://a24ismsaajdi:JPuaFG1pAsNCdZEp@cluster0.2wmy0yt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+        try
+        {
+            client = new MongoClient(connectionString);
+            db = client.GetDatabase("DONKEY_KONG_PROJECT");
+            usersCollection = db.GetCollection<BsonDocument>("Users");
+            Debug.Log("Connection");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("DONKEY_KONG_PROJECT database couldn't connect: " + e.Message);
+        }
+
         if (Instance == null)
         {
             Instance = this;
@@ -49,19 +64,55 @@ public class MongoDBManager : MonoBehaviour
 
     async void Start()
     {
-        string connectionString = "mongodb+srv://a24ismsaajdi:JPuaFG1pAsNCdZEp@cluster0.2wmy0yt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
+    }
+
+    public async void GetHighestScore()
+    {
         try
         {
-            client = new MongoClient(connectionString);
-            db = client.GetDatabase("DONKEY_KONG_PROJECT");
-            usersCollection = db.GetCollection<BsonDocument>("Users");
-            Debug.Log("Connection");
-        } 
-        catch (System.Exception e) {
-            Debug.LogError("DONKEY_KONG_PROJECT database couldn't connect: " + e.Message);
+            int i = 0;
+
+            await usersCollection
+                .Find(new BsonDocument())
+                .Sort(Builders<BsonDocument>.Sort.Descending("score"))
+                .Limit(3)
+                .ForEachAsync(doc =>
+                {
+                    if (i >= 3) return; // seguridad extra
+
+                    string player = doc.Contains("player") ? doc["player"].AsString : "Unknown";
+                    int score = doc.Contains("score") ? doc["score"].AsInt32 : 0;
+
+                    Database.highScoreName[i] = player;
+                    Database.highScorePoints[i] = score;
+
+                    i++;
+                });
+        }
+        catch (System.Exception e)
+        {
+            string errorMessage = "DONKEY_KONG_PROJECT database couldn't connect: " + e.Message;
+            Debug.LogError(errorMessage);
+            LogErrorToFile(errorMessage);
+        }
+
+    }
+
+    private void LogErrorToFile(string message)
+    {
+        string path = Application.persistentDataPath + "/mongo_error_log.txt";
+        try
+        {
+            System.IO.File.AppendAllText(path, DateTime.Now + " - " + message + Environment.NewLine);
+        }
+        catch (Exception fileEx)
+        {
+            Debug.LogError("Failed to write error log: " + fileEx.Message);
         }
     }
+
+
 
     public async void SaveUserData(Database data)
     {
