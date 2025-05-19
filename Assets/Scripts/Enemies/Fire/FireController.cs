@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class FireController : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-    [SerializeField] private float directionChangeTime = 3f;
-    [SerializeField] LayerMask Firemask;
-    [SerializeField] Vector2 movementPerSecond;
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float directionChangeInterval = 3f;
+
+    Fire fire;
+    Animator animator;
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
+        fire = new Fire(animator, moveSpeed, directionChangeInterval, rb);
+        fire.EnemyStart();
     }
 
     
     void Update()
     {
-        
+        fire.EnemyUpdate();
     }
 }

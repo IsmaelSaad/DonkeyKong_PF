@@ -26,22 +26,6 @@ public class ObjectController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            boxColl.enabled = false;
-            gameManager.AddPoints(scorePoints);
-            if (!isHammer)
-            {
-                animator.SetBool("IsScored", false);
-            }
-            CoroutineRunner.Instance.StartCoroutine(DestroyAfterAnimation());
-            //objectPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString("D6");
-        }
-    }
-
-    IEnumerator DestroyAfterAnimation()
-    {
-        yield return new WaitForSeconds(destroyDelay);
-        Destroy(gameObject);
+        obj.ObjectOnTriggerEnter(collision);
     }
 }

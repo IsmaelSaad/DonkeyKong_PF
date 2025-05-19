@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using static Player;
 
 public class Barrel : Enemy
 {
@@ -142,6 +138,7 @@ public class Barrel : Enemy
             if (hasPlayerOn && isPlayerTouchingPoints)
             {
                 hasPlayerOn = false;
+                MongoDBManager.Instance.playerData.barrelsJumped++;
                 gameManager.AddPoints(barrelPoints);
             }
 

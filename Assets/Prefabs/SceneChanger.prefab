@@ -49,6 +49,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: f92942b32d44c6a45909d5f49ac77f03, type: 2}
     - {fileID: 11400000, guid: 836434cf47ebb3e47b5ebb83b125b584, type: 2}
+    - {fileID: 11400000, guid: f8230cf05737e5041ad7679db9cbe1ef, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -75,7 +76,21 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Lvl2
+            m_StringArgument: DialogoMedio
+            m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7658056677640773304}
+          m_TargetAssemblyTypeName: SignalManager, Assembly-CSharp
+          m_MethodName: ChangeCutsceneTo
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DialogoFinal
             m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &7658056677640773304

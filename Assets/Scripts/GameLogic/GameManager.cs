@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -63,6 +65,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(MongoDBManager.Instance.playerData.name);
+
+        if (lifes > 3) lifes = 3;
+
         if (actualScene == "NamePlayer")
         {
             enterNameKey = inputActionName.FindActionMap("VerticalMenu").FindAction("SelectionMenu");
@@ -77,10 +83,10 @@ public class GameManager : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = GetPoints().ToString("D6");
 
+            MongoDBManager.Instance.playerData.score = GetPoints();
 
             if (lifes == 0)
             {
-                Debug.Log("gameover");
                 SceneManager.LoadScene("GameOver");
                 ResetPoints();
             }
@@ -152,9 +158,13 @@ public class GameManager : MonoBehaviour
         points = 0;
     }
 
+    public static void ResetLifes() 
+    {
+        lifes = 3;    
+    }
+
     public int GetLifes() 
     {
-        
         return lifes;
     } 
 

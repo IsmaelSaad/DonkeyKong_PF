@@ -98,17 +98,19 @@ public class MenuActions : MonoBehaviour
             SceneManager.LoadScene("Cutscene1");
             GameManager.Instance.AddLife(3);
         }
-        else if (menuSelect.triggered && arrowIndex == 1) 
+        else if (menuSelect.triggered && arrowIndex == 1)
         {
             if (isGameOver)
             {
                 SceneManager.LoadScene("Menu");
             }
-            else 
+            else
             {
                 SceneManager.LoadScene("Settings");
             }
-                
+
+        } else if (menuSelect.triggered && arrowIndex == 2) {
+            SceneManager.LoadScene("Informe");
         }
 
         //  if (isGameOver)

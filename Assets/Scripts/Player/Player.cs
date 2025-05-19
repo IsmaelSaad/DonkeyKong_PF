@@ -13,11 +13,12 @@ public class Player
     private bool enEscaleraUp, enEscaleraMid, enEscaleraDown, touchingDeath;
     private Vector3 actualEscalera;
     private SpriteRenderer hammerRenderer;
+    public double numSwitches;
     public float speed;
     public float jumpSpeed;
     public float hDir;
     public float vDir;
-    public bool startPhase;
+    public bool startPhase, onSwitch;
     public Animator animator, hammerAnimator;
     public InputActionAsset inputActionMapping;
     public Collider2D capsuleCollider;
@@ -63,10 +64,13 @@ public class Player
     public void StartPlayer()
     {
         state = PLAYERSTATE.FLOOR;
+        numSwitches = 8;
     }
 
     public void UpdatePlayer()
     {
+        SwitchesEventCutscene();
+
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -95,20 +99,6 @@ public class Player
                 break;
         }
     }
-    private void OnDeath()
-    {
-        if (GameManager.Instance.GetLifes() != 0) 
-        { 
-            SceneManager.LoadScene("Lvl1");
-        }
-    }
-
-    private void OnHammerMode()
-    {
-        hDir = hor_ia.ReadValue<float>();
-
-        Run(hDir);
-    }
 
     IEnumerator HammerModeEnds()
     {
@@ -126,10 +116,38 @@ public class Player
             hammerRenderer.color = white;
             yield return new WaitForSeconds(flashDuration);
         }
+        
         hammerAnimator.enabled = false;
         hammerRenderer.enabled = false;
         hammerColl.enabled = false;
+
+        SoundController.Instance.sceneAudio.clip = SoundController.Instance.clip[5];
+        SoundController.Instance.sceneAudio.Play();
+
         state = PLAYERSTATE.FLOOR;
+    }
+
+    private void OnDeath()
+    {
+        if (GameManager.Instance.GetLifes() != 0)
+        {
+            if (SceneManager.GetActiveScene().name == "Lvl1")
+            {
+                SceneManager.LoadScene("Lvl1");
+            }
+            else if (SceneManager.GetActiveScene().name == "Lvl2")
+            {
+                SceneManager.LoadScene("Lvl2");
+            }
+        }
+    }
+
+    private void OnHammerMode()
+    {
+        hDir = hor_ia.ReadValue<float>();
+
+
+        Run(hDir);
     }
 
     private void OnFloor()
@@ -233,7 +251,6 @@ public class Player
         if (ToOnDeath()) return;
         hDir = hor_ia.ReadValue<float>();
 
-        //if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
         if (ToOnUpStairs()) return;
 
         if (hDir != 0) {
@@ -271,6 +288,30 @@ public class Player
         }
     }
 
+    public void SwitchesEventCutscene()
+    {
+        if (numSwitches == 0)
+        {
+            SceneManager.LoadScene("Cutscene3");
+        }
+    }
+
+    public void SwitchCollisionEnter(Collider2D collision)
+    {
+        if (collision.CompareTag("Switch"))
+        {
+            onSwitch = true;
+        }
+    }
+
+    public void SwitchCollisionExit(Collider2D collision) 
+    {
+        if (collision.CompareTag("Switch") && onSwitch) {
+            numSwitches--;
+            onSwitch = false;
+        }
+    }
+
     public void EventCollisionEnter(Collider2D collision) 
     {
         if (state == PLAYERSTATE.ONSTAIRSDOWN && collision.CompareTag("Event")) {
@@ -282,6 +323,8 @@ public class Player
     {
         if (collision.CompareTag("Hammer")) {
             state = PLAYERSTATE.HAMMERMODE;
+            SoundController.Instance.sceneAudio.clip = SoundController.Instance.clip[7];
+            SoundController.Instance.sceneAudio.Play();
             hammerAnimator.enabled = true;
             hammerRenderer.enabled = true;
             hammerColl.enabled = true;
@@ -299,7 +342,8 @@ public class Player
 
     public void BarrilTriggerEnter(Collider2D collision) 
     {
-        if ((collision.CompareTag("BarrelRolling") || collision.CompareTag("BarrelDeath")) && state != PLAYERSTATE.HAMMERMODE)
+        Debug.Log(collision.gameObject.name);
+        if ((collision.CompareTag("BarrelRolling") || collision.CompareTag("BarrelDeath") || collision.CompareTag("Flame")) && state != PLAYERSTATE.HAMMERMODE)
         {
             GameManager.Instance.DecrementLife(1);
             touchingDeath = true;
@@ -308,7 +352,7 @@ public class Player
 
     public void BarrilCollisionEnter(Collision2D collision)
     {
-        if ((collision.collider.CompareTag("Barrel") || collision.collider.CompareTag("BarrelRolling")) && state != PLAYERSTATE.HAMMERMODE)
+        if ((collision.collider.CompareTag("Barrel") || collision.collider.CompareTag("BarrelRolling") || collision.collider.CompareTag("Flame")) && state != PLAYERSTATE.HAMMERMODE)
         {
             GameManager.Instance.DecrementLife(1);
             touchingDeath = true;
@@ -395,40 +439,6 @@ public class Player
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
             return true;
-        }
-        return false;
-    }
-
-    /*
-    bool ToEnterDownStairsFromTop()
-    {
-        RaycastHit2D hitStairs = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.5f, LayerMask.GetMask("Stairs"));
-        bool getStairs = hitStairs.collider != null;
-
-        vDir = ver_ia.ReadValue<float>();
-
-        if (getStairs) {
-            if (hitStairs.collider.CompareTag("EscalerasExit") && vDir < 0)
-            {
-                transform.position = new Vector2(hitStairs.collider.transform.position.x, hitStairs.collider.transform.position.y);
-                enEscaleraUp = false;
-                state = PLAYERSTATE.ONSTAIRSUP;
-                rb.gravityScale = 0;
-                rb.velocity = Vector2.zero;
-                animator.SetBool("idleStair", false);
-                return true;
-            }
-        }
-        return false;
-    }
-    */
-
-
-    bool ToHammerMode() {
-        hDir = hor_ia.ReadValue<float>();
-        if (hDir != 0) 
-        {
-            state = PLAYERSTATE.HAMMERMODE;
         }
         return false;
     }

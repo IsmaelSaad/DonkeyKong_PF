@@ -25,6 +25,8 @@ TagManager:
   - FirstFloor
   - BarrelDeath
   - Event
+  - Switch
+  - Text
   layers:
   - Default
   - TransparentFX

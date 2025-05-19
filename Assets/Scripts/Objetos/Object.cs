@@ -13,6 +13,7 @@ public class ObjectEnv
     private int scorePoints;
     private Animator animator;
     private float destroyDelay;
+    private bool isGotten = false;
     public bool isHammer = false;
 
     public ObjectEnv(GameObject itself, int scorePoints, Animator animator, float destroyDelay, GameManager gameManager, BoxCollider2D boxColl) 
@@ -25,22 +26,22 @@ public class ObjectEnv
     }
 
     public void ObjectOnTriggerEnter(Collider2D collision) {
-        Debug.Log("SAD");
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isGotten)
         {
+            isGotten = true;
             if (!isHammer) {
                 animator.SetBool("IsScored", true);
                 CoroutineRunner.Instance.StartCoroutine(DestroyAfterAnimation());
             }
             gameManager.AddPoints(scorePoints);
+            MongoDBManager.Instance.playerData.objectsPickedUp++;
             GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = gameManager.GetPoints().ToString("D6");
-
         }
     }
 
     IEnumerator DestroyAfterAnimation()
     {
         yield return new WaitForSeconds(destroyDelay);
-        MonoBehaviour.Destroy(itself);
+        Object.Destroy(itself);
     }
 }

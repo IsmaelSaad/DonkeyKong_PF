@@ -40,15 +40,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //mario.BarrilCollisionEnter(collision);
+        mario.BarrilCollisionEnter(collision);
         mario.SueloCollisionEnter(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        mario.SwitchCollisionEnter(collision);
         mario.EventCollisionEnter(collision);
         mario.BarrilTriggerEnter(collision);
         mario.HammerCollisionEnter(collision);
+
         if (detectFloor.IsTouching(collision)) 
         {
             mario.EscalerasCollisionEnter(collision);
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        mario.SwitchCollisionExit(collision);
         mario.EscalerasCollisionExit(collision);
     }
 
