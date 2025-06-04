@@ -9,169 +9,159 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    [SerializeField] InputActionAsset inputActionPause, inputActionName;
-    [SerializeField] GameObject pause, life1, life2;
-    private InputAction pauseKey, enterNameKey;
+    public static GameManager Instance; // Instancia singleton del GameManager
+    [SerializeField] InputActionAsset inputActionPause, inputActionName; // Acciones de entrada para pausa y nombre
+    [SerializeField] GameObject pause, life1, life2; // Referencias a UI elements
+    private InputAction pauseKey, enterNameKey; // Acciones de teclado
 
-    string actualScene;
-    
-    public static GameManager instance
-    {
-        get
-        {
-            if (Instance == null)
-            {
-                GameObject go = new GameObject("GameManager");
-                DontDestroyOnLoad(go);
-                Instance = go.AddComponent<GameManager>();
-            }
-            return instance;
-        }
-    }
+    string actualScene; // Escena actual del juego
 
-    /*
-        FindObjectOfType<PlayerController o GameManager>();
-     */
+    static int lifes = 3; // Vidas del jugador (estático)
+    private static int points = 0; // Puntos del jugador (estático)
 
-    static int lifes = 3;
-    private static int points = 0;
-    private static string textPoints;
-
+    // Estados posibles del juego
     enum State
     {
-        INGAME, INPAUSE
+        INGAME, // Jugando normalmente
+        INPAUSE // Juego en pausa
     }
 
-    State state = State.INGAME;
+    State state = State.INGAME; // Estado actual
 
     void Start()
     {
-        MongoDBManager.Instance.GetHighestScore();
+        MongoDBManager.Instance.GetHighestScore(); // Obtiene los mejores puntajes al inicio
     }
 
+    // Configuración del patrón singleton
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Persiste entre escenas
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Evita duplicados
         }
     }
 
     void Update()
     {
-        MongoDBManager.Instance.playerData.playTime = DateTime.Now.Second;
+        MongoDBManager.Instance.playerData.playTime = DateTime.Now.Second; // Actualiza tiempo de juego
 
-        Debug.Log(MongoDBManager.Instance.playerData.name);
+        if (lifes > 3) lifes = 3; // Limita vidas máximas
 
-        if (lifes > 3) lifes = 3;
-
+        // Comportamiento según la escena actual
         if (actualScene == "NamePlayer")
         {
             enterNameKey = inputActionName.FindActionMap("VerticalMenu").FindAction("SelectionMenu");
 
-            if (enterNameKey.triggered)
+            if (enterNameKey.triggered) // Si se presiona la tecla asignada
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Menu"); // Va al menú
             }
         }
-
-        else if (actualScene == "Lvl1" || actualScene == "Lvl2")
+        else if (actualScene == "Lvl1" || actualScene == "Lvl2") // Niveles de juego
         {
+            // Actualiza UI de puntos con formato de 6 dígitos
             GameObject.FindGameObjectWithTag("Points").GetComponent<TMP_Text>().text = GetPoints().ToString("D6");
 
-            MongoDBManager.Instance.playerData.score = GetPoints();
+            MongoDBManager.Instance.playerData.score = GetPoints(); // Guarda puntos en BD
 
-            if (lifes == 0)
+            if (lifes == 0) // Game Over
             {
                 SceneManager.LoadScene("GameOver");
                 ResetPoints();
             }
 
+            // Actualiza visualización de vidas
             switch (lifes)
             {
                 case 2:
-                    life1.GetComponent<CanvasGroup>().alpha = 0;
+                    life1.GetComponent<CanvasGroup>().alpha = 0; // Oculta 1 vida
                     break;
                 case 1:
                     life1.GetComponent<CanvasGroup>().alpha = 0;
-                    life2.GetComponent<CanvasGroup>().alpha = 0;
+                    life2.GetComponent<CanvasGroup>().alpha = 0; // Oculta 2 vidas
                     break;
             }
 
+            // Manejo de pausa
             switch (state)
             {
                 case State.INGAME:
-                    if (pauseKey.triggered)
+                    if (pauseKey.triggered) // Pausa el juego
                     {
                         pause.GetComponent<CanvasGroup>().alpha = 1;
                         state = State.INPAUSE;
                     }
-                    Time.timeScale = 1;
+                    Time.timeScale = 1; // Tiempo normal
                     break;
                 case State.INPAUSE:
-                    if (pauseKey.triggered)
+                    if (pauseKey.triggered) // Reanuda el juego
                     {
                         pause.GetComponent<CanvasGroup>().alpha = 0;
                         state = State.INGAME;
                     }
-                    Time.timeScale = 0;
+                    Time.timeScale = 0; // Detiene el tiempo
                     break;
             }
         }
-        else if (actualScene == "Informe")
+        else if (actualScene == "Informe") // Pantalla de resultados
         {
+            // Muestra estadísticas del jugador
             GameObject.FindGameObjectWithTag("Nombre").GetComponent<TMP_Text>().text = "Nombre: " + MongoDBManager.Instance.playerData.name;
-
             GameObject.FindGameObjectWithTag("Tiempo").GetComponent<TMP_Text>().text = "Tiempo de juego: " + MongoDBManager.Instance.playerData.playTime.ToString();
-
             GameObject.FindGameObjectWithTag("Puntos").GetComponent<TMP_Text>().text = "Puntos: " + MongoDBManager.Instance.playerData.score.ToString();
-
             GameObject.FindGameObjectWithTag("BarrilesSaltados").GetComponent<TMP_Text>().text = "Barriles saltados: " + MongoDBManager.Instance.playerData.barrelsJumped.ToString();
-
             GameObject.FindGameObjectWithTag("Objetos").GetComponent<TMP_Text>().text = "objetos recogidos: " + MongoDBManager.Instance.playerData.objectsPickedUp.ToString();
 
+            // Muestra top 3 de puntajes
+            GameObject.FindGameObjectWithTag("HighScore1").GetComponent<TMP_Text>().text = DatabaseUser.highScoreName[0] + " - " + DatabaseUser.highScorePoints[0];
+            GameObject.FindGameObjectWithTag("HighScore2").GetComponent<TMP_Text>().text = DatabaseUser.highScoreName[1] + " - " + DatabaseUser.highScorePoints[1];
+            GameObject.FindGameObjectWithTag("HighScore3").GetComponent<TMP_Text>().text = DatabaseUser.highScoreName[2] + " - " + DatabaseUser.highScorePoints[2];
 
-            GameObject.FindGameObjectWithTag("HighScore1").GetComponent<TMP_Text>().text = Database.highScoreName[0] + " - " + Database.highScorePoints[0];
-            GameObject.FindGameObjectWithTag("HighScore2").GetComponent<TMP_Text>().text = Database.highScoreName[1] + " - " + Database.highScorePoints[1];
-            GameObject.FindGameObjectWithTag("HighScore3").GetComponent<TMP_Text>().text = Database.highScoreName[2] + " - " + Database.highScorePoints[2];
-
-
-
+            // Actualiza datos de highscore
+            for (int i = 0; i < 3; i++)
+            {
+                MongoDBManager.Instance.playerHighscore.name[i] = DatabaseUser.highScoreName[i];
+                MongoDBManager.Instance.playerHighscore.score[i] = DatabaseUser.highScorePoints[i];
+            }
         }
-
     }
 
+    // Evento al cargar escena
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    // Configura elementos al cargar escena
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Lvl1" || scene.name == "Lvl2")
+        if (scene.name == "Lvl1" || scene.name == "Lvl2") // Niveles de juego
         {
             pause = GameObject.FindGameObjectWithTag("Pause");
             life1 = GameObject.FindGameObjectWithTag("Life1");
             life2 = GameObject.FindGameObjectWithTag("Life2");
 
             pauseKey = inputActionPause.FindActionMap("InGameTools").FindAction("Pause");
-            pause.GetComponent<CanvasGroup>().alpha = 0;
+            pause.GetComponent<CanvasGroup>().alpha = 0; // Oculta menú pausa inicialmente
         }
 
-        actualScene = scene.name;
+        actualScene = scene.name; // Actualiza escena actual
     }
 
-    public void AddPoints(int p) {
+    // Métodos de gestión de puntos
+    public void AddPoints(int p)
+    {
         points += p;
     }
 
-    public int GetPoints() {
+    public int GetPoints()
+    {
         return points;
     }
 
@@ -180,21 +170,21 @@ public class GameManager : MonoBehaviour
         points = 0;
     }
 
-    public static void ResetLifes() 
+    // Métodos de gestión de vidas
+    public static void ResetLifes()
     {
-        lifes = 3;    
+        lifes = 3;
     }
 
-    public int GetLifes() 
+    public int GetLifes()
     {
         return lifes;
-    } 
+    }
 
     public void AddLife(int d)
     {
         lifes += d;
     }
-
 
     public void DecrementLife(int d)
     {

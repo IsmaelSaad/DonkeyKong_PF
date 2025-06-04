@@ -4,26 +4,28 @@ using System.Security.Authentication.ExtendedProtection;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// Controlador d'animacions del jugador
 public class PlayerAnimationController : MonoBehaviour
 {
-    PlayerController pc;
-    Player mario;
-    // Start is called before the first frame update
+    PlayerController pc;    // Controlador del jugador
+    Player mario;           // Instància del jugador (Mario)
+
+    // Inicialització abans del primer frame
     private void Awake()
     {
-        pc = FindObjectOfType<PlayerController>();
-        mario = pc.GetMario();
+        pc = FindObjectOfType<PlayerController>();  // Busca el controlador
+        mario = pc.GetMario();                      // Obtenir la instància de Mario
     }
 
     void Start()
     {
-
+        // Inicialització addicional si és necessària
     }
 
-    // Update is called once per frame
+    // Actualització cada frame
     void Update()
     {
-        // encontrar a mario si no existe aún 
+        // Si Mario no existeix, intenta trobar-lo de nou
         if (mario == null)
         {
             pc = FindObjectOfType<PlayerController>();
@@ -34,38 +36,43 @@ public class PlayerAnimationController : MonoBehaviour
             return;
         }
 
+        // Control d'animacions segons l'estat del jugador
         switch (mario.state)
         {
-            case (Player.PLAYERSTATE.FLOOR):
+            case (Player.PLAYERSTATE.FLOOR):    // A terra
                 mario.animator.SetBool("hammerMode", false);
                 mario.animator.SetBool("onStair", false);
                 mario.animator.SetBool("jumping", false);
                 mario.hDir = mario.hor_ia.ReadValue<float>();
                 mario.animator.SetFloat("speed", Mathf.Abs(mario.speed * mario.hDir));
                 break;
-            case (Player.PLAYERSTATE.AIR):
+
+            case (Player.PLAYERSTATE.AIR):      // A l'aire
                 mario.animator.SetBool("jumping", true);
                 break;
-            case (Player.PLAYERSTATE.HAMMERMODE):
+
+            case (Player.PLAYERSTATE.HAMMERMODE): // Mode martell
                 mario.animator.SetBool("hammerMode", true);
                 mario.hDir = mario.hor_ia.ReadValue<float>();
                 mario.animator.SetFloat("speed", Mathf.Abs(mario.speed * mario.hDir));
                 break;
-            case (Player.PLAYERSTATE.ONSTAIRSUP):
+
+            case (Player.PLAYERSTATE.ONSTAIRSUP): // Pujant escales
                 mario.animator.SetBool("jumping", false);
                 mario.animator.SetBool("onStair", true);
                 mario.animator.SetFloat("speed", 0);
                 mario.animator.SetFloat("speedStair", Mathf.Abs(mario.speed * mario.vDir));
                 break;
-            case (Player.PLAYERSTATE.ONSTAIRSDOWN):
-                //mario.animator.SetBool("jumping", false);
+
+            case (Player.PLAYERSTATE.ONSTAIRSDOWN): // Baixant escales
                 mario.animator.SetBool("onStair", false);
                 mario.animator.SetBool("idleStair", true);
                 break;
-            /*case (Player.PLAYERSTATE.HAMMERIDLE)
-                mario.animator.SetBool("")
 
-            */
+                /* (Exemple de codi comentat per possibles ampliacions)
+                case (Player.PLAYERSTATE.HAMMERIDLE):
+                    mario.animator.SetBool("")
+                */
         }
     }
 }

@@ -9,7 +9,7 @@ public class BarrelControllerOLD : MonoBehaviour
     [SerializeField] public float speed;
     [SerializeField] BoxCollider2D detectStair;
     [SerializeField] float bounceForce;
-    [SerializeField] float groundRayDistance = 2.0f, stairRayDistance = 2.0f;
+    [SerializeField] float groundRayDistance = 2.0f;
     [SerializeField] LayerMask groundMask;
 
     int goDown;

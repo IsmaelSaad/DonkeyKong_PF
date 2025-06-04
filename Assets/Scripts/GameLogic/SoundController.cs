@@ -1,102 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Controlador centralizado de sonido y música del juego
 public class SoundController : MonoBehaviour
 {
-    public AudioSource sceneAudio;
-    public AudioClip[] clip;
-    private bool noAudio = false;
+    public AudioSource sceneAudio;    // Fuente de audio principal
+    public AudioClip[] clip;         // Array de clips de audio [0]Menu [1]GameOver [2-4]Diálogos [5-6]Niveles
 
-    public static SoundController Instance;
+    public static SoundController Instance; // Instancia singleton
+
+    // Propiedad para acceso seguro a la instancia
     public static SoundController instance
     {
         get
         {
             if (Instance == null)
             {
-                GameObject go = new GameObject("GameManager");
+                // Creación dinámica si no existe
+                GameObject go = new GameObject("SoundManager");
                 DontDestroyOnLoad(go);
                 Instance = go.AddComponent<SoundController>();
             }
-            return instance;
+            return Instance; // Corregido: devolver Instance en lugar de instance
         }
     }
 
-
     void Start()
     {
+        // Configuración del patrón singleton
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Persiste entre escenas
+            sceneAudio = GetComponent<AudioSource>(); // Obtiene componente AudioSource
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Evita duplicados
         }
-        sceneAudio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
+        // Suscribe el evento de cambio de escena
         SceneManager.sceneLoaded += LoadMusic;
     }
 
+    // Carga y reproduce música según la escena actual
     public void LoadMusic(Scene scene, LoadSceneMode mode)
     {
+        if (sceneAudio == null) return;
+
         switch (scene.name)
         {
             case "Menu":
-                sceneAudio.clip = clip[0];
-                sceneAudio.loop = true;
-                sceneAudio.Play();
+                PlayTrack(0, true); // Música de menú (loop)
                 break;
             case "GameOver":
-                sceneAudio.loop = false;
-                sceneAudio.clip = clip[1];
-                sceneAudio.Play();
+                PlayTrack(1, false); // Sonido de game over (sin loop)
                 break;
             case "DialogoContexto":
-                sceneAudio.loop = false;
-                sceneAudio.clip = clip[2];
-                sceneAudio.Play();
+                PlayTrack(2, false); // Diálogo 1
                 break;
             case "DialogoMedio":
-                sceneAudio.loop = false;
-                sceneAudio.clip = clip[3];
-                sceneAudio.Play();
+                PlayTrack(3, false); // Diálogo 2
                 break;
             case "DialogoFinal":
-                sceneAudio.loop = false;
-                sceneAudio.clip = clip[4];
-                sceneAudio.Play();
+                PlayTrack(4, false); // Diálogo final
                 break;
             case "Lvl1":
-                sceneAudio.loop = true;
-                sceneAudio.clip = clip[5];
-                sceneAudio.Play();
+                PlayTrack(5, true); // Música nivel 1 (loop)
                 break;
             case "Lvl2":
-                sceneAudio.loop = true;
-                sceneAudio.clip = clip[6];
-                sceneAudio.Play();
+                PlayTrack(6, true); // Música nivel 2 (loop)
                 break;
             default:
-                sceneAudio.Stop();
-                noAudio = true;
+                sceneAudio.Stop(); // Detiene audio en escenas no configuradas
                 break;
         }
-
     }
 
-    // Update is called once per frame
-    void Update()
+    // Método helper para reproducir pistas
+    private void PlayTrack(int clipIndex, bool loop)
     {
-
-        
-
+        sceneAudio.Stop();
+        sceneAudio.clip = clip[clipIndex];
+        sceneAudio.loop = loop;
+        sceneAudio.Play();
     }
 }

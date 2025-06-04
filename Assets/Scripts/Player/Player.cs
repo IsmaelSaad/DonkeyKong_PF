@@ -5,39 +5,53 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+// Classe que controla el comportament del jugador
 public class Player
 {
+    // Variables privades
     private Transform transform, raycastOrigin, actualFloor;
     private Rigidbody2D rb;
     private LayerMask layer;
     private bool enEscaleraUp, enEscaleraMid, enEscaleraDown, touchingDeath;
     private Vector3 actualEscalera;
     private SpriteRenderer hammerRenderer;
-    public double numSwitches;
-    public float speed;
-    public float jumpSpeed;
-    public float hDir;
-    public float vDir;
-    public bool startPhase, onSwitch;
-    public Animator animator, hammerAnimator;
-    public InputActionAsset inputActionMapping;
-    public Collider2D capsuleCollider;
-    public BoxCollider2D hammerColl;
+    public double numSwitches; // Nombre d'interruptors restants
+    public float speed; // Velocitat de moviment
+    public float jumpSpeed; // Força del salt
+    public float hDir; // Direcció horitzontal (esquerra/dreta)
+    public float vDir; // Direcció vertical (amunt/avall)
+    public bool startPhase, onSwitch; // Estats del jugador
+    public Animator animator, hammerAnimator; // Animadors
+    public InputActionAsset inputActionMapping; // Controles d'entrada
+    public Collider2D capsuleCollider; // Col·lider del jugador
+    public BoxCollider2D hammerColl; // Col·lider del martell
 
+    // Estats possibles del jugador
     public enum PLAYERSTATE
     {
-        FLOOR, AIR,
-        ONSTAIRSOUT,
-        ONSTAIRSUP, ONSTAIRSDOWN,
-        ONSTAIRSPHASE, ONSTAIRSTOP,
-        DEATH, HAMMERMODE, FALLING
+        FLOOR,          // A terra
+        AIR,            // A l'aire
+        ONSTAIRSOUT,    // Sortint d'escala
+        ONSTAIRSUP,     // Pujant escala
+        ONSTAIRSDOWN,   // Baixant escala
+        ONSTAIRSPHASE,  // Transició d'escala
+        ONSTAIRSTOP,    // Aturat a escala
+        DEATH,          // Mort
+        HAMMERMODE,     // Mode martell
+        FALLING         // Caient
     }
-    public PLAYERSTATE state;
+    public PLAYERSTATE state; // Estat actual
 
+    // Accions d'entrada
     public InputAction hor_ia, ver_ia, jump_ia;
 
-    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed, Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping, LayerMask layer, Collider2D capsuleCollider, Animator hammerAnimator, SpriteRenderer hammerRenderer, BoxCollider2D hammerColl)
+    // Constructor
+    public Player(Transform transform, Transform raycastOrigin, float speed, float jumpSpeed,
+                 Rigidbody2D rb, Animator animator, InputActionAsset inputActionMapping,
+                 LayerMask layer, Collider2D capsuleCollider, Animator hammerAnimator,
+                 SpriteRenderer hammerRenderer, BoxCollider2D hammerColl)
     {
+        // Inicialitza totes les variables
         this.transform = transform;
         this.raycastOrigin = raycastOrigin;
         this.speed = speed;
@@ -53,6 +67,7 @@ public class Player
         this.hammerColl = hammerColl;
     }
 
+    // Activa els controls del jugador
     public void WakePlayer()
     {
         inputActionMapping.Enable();
@@ -61,16 +76,19 @@ public class Player
         jump_ia = inputActionMapping.FindActionMap("Jumping").FindAction("jump");
     }
 
+    // Inicialitza l'estat del jugador
     public void StartPlayer()
     {
         state = PLAYERSTATE.FLOOR;
-        numSwitches = 8;
+        numSwitches = 8; // Inicialitza els interruptors
     }
 
+    // Actualitza l'estat del jugador cada frame
     public void UpdatePlayer()
     {
-        SwitchesEventCutscene();
+        SwitchesEventCutscene(); // Comprova els interruptors
 
+        // Control d'estats
         switch (state)
         {
             case PLAYERSTATE.FLOOR:
@@ -100,14 +118,16 @@ public class Player
         }
     }
 
+    // Corrutina que gestiona la fi del mode martell
     IEnumerator HammerModeEnds()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(7f); // Duració del mode martell
 
-        Color gold = new Color(1f, 1f, 0f); 
+        // Efecte de parpelleig abans de desactivar el martell
+        Color gold = new Color(1f, 1f, 0f);
         Color white = Color.white;
         float flashDuration = 0.2f;
-        int flashCount = 3; 
+        int flashCount = 3;
 
         for (int i = 0; i < flashCount; i++)
         {
@@ -116,21 +136,25 @@ public class Player
             hammerRenderer.color = white;
             yield return new WaitForSeconds(flashDuration);
         }
-        
+
+        // Desactiva el martell
         hammerAnimator.enabled = false;
         hammerRenderer.enabled = false;
         hammerColl.enabled = false;
 
+        // So de desactivació
         SoundController.Instance.sceneAudio.clip = SoundController.Instance.clip[5];
         SoundController.Instance.sceneAudio.Play();
 
-        state = PLAYERSTATE.FLOOR;
+        state = PLAYERSTATE.FLOOR; // Torna a l'estat normal
     }
 
+    // Gestiona la mort del jugador
     private void OnDeath()
     {
-        if (GameManager.Instance.GetLifes() != 0)
+        if (GameManager.Instance.GetLifes() != 0) // Si encara té vides
         {
+            // Recarrega el nivell actual
             if (SceneManager.GetActiveScene().name == "Lvl1")
             {
                 SceneManager.LoadScene("Lvl1");
@@ -142,85 +166,92 @@ public class Player
         }
     }
 
+    // Mode martell
     private void OnHammerMode()
     {
         hDir = hor_ia.ReadValue<float>();
-
-
-        Run(hDir);
+        Run(hDir); // Es pot moure normalment
     }
 
+    // Quan està a terra
     private void OnFloor()
     {
-        if (ToOnDeath()) return;
-        // Primero verificar transición a escaleras
+        if (ToOnDeath()) return; // Comprova mort
+
+        // Transicions a escales
         if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && !jump_ia.triggered) return;
-        //if (ver_ia.ReadValue<float>() < -0.5f && ToEnterDownStairsFromTop()) return;
-
         if (ToOnDownStairs()) return;
-        if (ToOnAir()) return;
+        if (ToOnAir()) return; // Si deixa de tocar terra
 
-        // Movimiento normal
+        // Moviment normal
         hDir = hor_ia.ReadValue<float>();
         Run(hDir);
-        Jump();
+        Jump(); // Pot saltar
     }
 
+    // Quan està a l'aire
     private void OnAir()
     {
         if (ToOnDeath()) return;
-        if (DetectFloor()) {
-            // Intentar transición a escaleras primero
+        if (DetectFloor())
+        {
+            // Intentar anar a escales
             if (ver_ia.ReadValue<float>() > 0.5f && ToOnUpStairs() && DetectFloor()) return;
         }
-        if (ToOnFloor()) return;
+        if (ToOnFloor()) return; // Si torna a terra
 
+        // Moviment a l'aire
         hDir = hor_ia.ReadValue<float>();
         Run(hDir);
     }
 
-
+    // Sortint d'escala
     private void OnStairsOut()
     {
         if (ToOnDeath()) return;
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0)) {
+        // Quan acaba l'animació de sortida
+        if (stateInfo.normalizedTime >= 1.0f && !animator.IsInTransition(0))
+        {
             animator.SetBool("exitStair", false);
-            state = PLAYERSTATE.ONSTAIRSPHASE;
+            state = PLAYERSTATE.ONSTAIRSPHASE; // Canvia a fase de transició
         }
     }
 
+    // Fase de transició d'escala
     private void OnStairsPhase()
     {
+        // Càlculs per posicionar correctament el jugador
         float angleDeg = actualFloor.rotation.eulerAngles.z;
         float angleRad = angleDeg * Mathf.Deg2Rad;
-
-        float slopeLength = actualFloor.localScale.y; // vertical scale is slope length
+        float slopeLength = actualFloor.localScale.y;
         float verticalHeight = slopeLength * Mathf.Sin(angleRad);
 
         Debug.Log(verticalHeight);
 
+        // Ajusta la posició
         if (angleDeg == 0)
         {
             transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.05f, 0);
         }
-        else {
+        else
+        {
             transform.position += new Vector3(0, actualFloor.localScale.y + verticalHeight + 0.07f, 0);
         }
 
         actualEscalera = Vector3.zero;
-
         rb.gravityScale = 1f;
-
-        state = PLAYERSTATE.ONSTAIRSDOWN;
+        state = PLAYERSTATE.ONSTAIRSDOWN; // Canvia a baixar escales
     }
 
+    // Pujant escales
     private void OnUpStairs()
     {
         if (ToOnDeath()) return;
         vDir = ver_ia.ReadValue<float>();
 
+        // Moviment vertical
         if (Mathf.Abs(vDir) > 0.1f)
         {
             rb.velocity = new Vector2(0, vDir * speed);
@@ -231,7 +262,7 @@ public class Player
             rb.velocity = Vector2.zero;
         }
 
-        // Salir si ya no estamos en escalera
+        // Si surt de l'escala
         if (!enEscaleraUp && !enEscaleraMid)
         {
             animator.SetBool("idleStair", true);
@@ -239,13 +270,16 @@ public class Player
             rb.gravityScale = 1;
         }
 
-        if (enEscaleraUp) {
+        // Si arriba al final de l'escala
+        if (enEscaleraUp)
+        {
             animator.SetBool("exitStair", true);
             rb.velocity = Vector2.zero;
             state = PLAYERSTATE.ONSTAIRSOUT;
         }
     }
 
+    // Baixant escales
     private void OnDownStairs()
     {
         if (ToOnDeath()) return;
@@ -253,12 +287,15 @@ public class Player
 
         if (ToOnUpStairs()) return;
 
-        if (hDir != 0) {
+        // Moviment horitzontal
+        if (hDir != 0)
+        {
             animator.SetBool("idleStair", false);
-            if (ToOnFloor()) return;
+            if (ToOnFloor()) return; // Si torna a terra
         }
     }
 
+    // Detecta si està tocant terra
     private bool DetectFloor()
     {
         RaycastHit2D hit = Physics2D.Raycast(raycastOrigin.position, -Vector2.up, 0.1f, layer);
@@ -266,6 +303,7 @@ public class Player
         return hit.collider != null;
     }
 
+    // Funció de salt
     private void Jump()
     {
         if (jump_ia.triggered && state == PLAYERSTATE.FLOOR)
@@ -274,10 +312,12 @@ public class Player
         }
     }
 
+    // Funció de córrer
     private void Run(float hDir)
     {
         rb.velocity = new Vector2(speed * hDir, rb.velocity.y);
 
+        // Gira el personatge segons la direcció
         if (hDir > 0.1f)
         {
             transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
@@ -288,14 +328,16 @@ public class Player
         }
     }
 
+    // Comprova si s'han activat tots els interruptors
     public void SwitchesEventCutscene()
     {
         if (numSwitches == 0)
         {
-            SceneManager.LoadScene("Cutscene3");
+            SceneManager.LoadScene("Cutscene3"); // Carrega escena final
         }
     }
 
+    // Gestiona col·lisió amb interruptor
     public void SwitchCollisionEnter(Collider2D collision)
     {
         if (collision.CompareTag("Switch"))
@@ -304,34 +346,41 @@ public class Player
         }
     }
 
-    public void SwitchCollisionExit(Collider2D collision) 
+    // Gestiona sortida de col·lisió amb interruptor
+    public void SwitchCollisionExit(Collider2D collision)
     {
-        if (collision.CompareTag("Switch") && onSwitch) {
-            numSwitches--;
+        if (collision.CompareTag("Switch") && onSwitch)
+        {
+            numSwitches--; // Decrementa comptador
             onSwitch = false;
         }
     }
 
-    public void EventCollisionEnter(Collider2D collision) 
+    // Gestiona col·lisió amb esdeveniment
+    public void EventCollisionEnter(Collider2D collision)
     {
-        if (state == PLAYERSTATE.ONSTAIRSDOWN && collision.CompareTag("Event")) {
-            SceneManager.LoadScene("Cutscene2");
+        if (state == PLAYERSTATE.ONSTAIRSDOWN && collision.CompareTag("Event"))
+        {
+            SceneManager.LoadScene("Cutscene2"); // Carrega escena
         }
     }
 
-    public void HammerCollisionEnter(Collider2D collision) 
+    // Gestiona col·lisió amb martell
+    public void HammerCollisionEnter(Collider2D collision)
     {
-        if (collision.CompareTag("Hammer")) {
-            state = PLAYERSTATE.HAMMERMODE;
+        if (collision.CompareTag("Hammer"))
+        {
+            state = PLAYERSTATE.HAMMERMODE; // Activa mode martell
             SoundController.Instance.sceneAudio.clip = SoundController.Instance.clip[7];
             SoundController.Instance.sceneAudio.Play();
             hammerAnimator.enabled = true;
             hammerRenderer.enabled = true;
             hammerColl.enabled = true;
-            CoroutineRunner.Instance.StartCoroutine(HammerModeEnds());
+            CoroutineRunner.Instance.StartCoroutine(HammerModeEnds()); // Inicia temporitzador
         }
     }
 
+    // Gestiona col·lisió amb sòl que canvia direcció
     public void SueloCollisionEnter(Collision2D collision)
     {
         if (collision.collider.CompareTag("ChangeDirection"))
@@ -340,25 +389,28 @@ public class Player
         }
     }
 
-    public void BarrilTriggerEnter(Collider2D collision) 
+    // Gestiona col·lisió amb barril (trigger)
+    public void BarrilTriggerEnter(Collider2D collision)
     {
         Debug.Log(collision.gameObject.name);
         if ((collision.CompareTag("BarrelRolling") || collision.CompareTag("BarrelDeath") || collision.CompareTag("Flame")) && state != PLAYERSTATE.HAMMERMODE)
         {
-            GameManager.Instance.DecrementLife(1);
+            GameManager.Instance.DecrementLife(1); // Perd vida
             touchingDeath = true;
         }
     }
 
+    // Gestiona col·lisió amb barril
     public void BarrilCollisionEnter(Collision2D collision)
     {
         if ((collision.collider.CompareTag("Barrel") || collision.collider.CompareTag("BarrelRolling") || collision.collider.CompareTag("Flame")) && state != PLAYERSTATE.HAMMERMODE)
         {
-            GameManager.Instance.DecrementLife(1);
+            GameManager.Instance.DecrementLife(1); // Perd vida
             touchingDeath = true;
         }
     }
 
+    // Gestiona entrada a zona d'escala
     public void EscalerasCollisionEnter(Collider2D collision)
     {
         if (collision.CompareTag("Escaleras"))
@@ -366,6 +418,7 @@ public class Player
             actualEscalera = collision.transform.position;
         }
 
+        // Marca les diferents parts de l'escala
         if (collision.CompareTag("EscalerasEnter"))
         {
             enEscaleraDown = true;
@@ -380,6 +433,7 @@ public class Player
         }
     }
 
+    // Gestiona sortida de zona d'escala
     public void EscalerasCollisionExit(Collider2D collision)
     {
         if (collision.CompareTag("EscalerasEnter"))
@@ -396,7 +450,7 @@ public class Player
         }
     }
 
-
+    // Transició a estat "a terra"
     bool ToOnFloor()
     {
         if (DetectFloor() && rb.velocity.y <= 0)
@@ -408,6 +462,7 @@ public class Player
         return false;
     }
 
+    // Transició a estat "a l'aire"
     bool ToOnAir()
     {
         if (!DetectFloor())
@@ -419,19 +474,20 @@ public class Player
         return false;
     }
 
+    // Transició a estat "mort"
     bool ToOnDeath()
     {
-        if (touchingDeath) {
+        if (touchingDeath)
+        {
             state = PLAYERSTATE.DEATH;
-
             return true;
         }
         return false;
     }
 
+    // Transició a estat "pujant escales"
     bool ToOnUpStairs()
     {
-
         if (enEscaleraDown && ver_ia.ReadValue<float>() > 0.5f && !jump_ia.triggered && actualEscalera != Vector3.zero)
         {
             transform.position = new Vector2(actualEscalera.x, transform.position.y);
@@ -443,6 +499,7 @@ public class Player
         return false;
     }
 
+    // Transició a estat "baixant escales"
     bool ToOnDownStairs()
     {
         if (animator.GetBool("idleStair"))
